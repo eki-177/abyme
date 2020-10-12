@@ -1,8 +1,6 @@
 # Abyme
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/abyme`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+abyme is a modern take on handling dynamic nested forms in Rails 6+, using StimulusJS.
 
 ## Installation
 
@@ -21,6 +19,21 @@ And then execute:
 Or install it yourself as:
 
     $ gem install abyme
+
+Assuming you [already installed Stimulus](https://stimulusjs.org/handbook/introduction), add this in `app/javascript/controllers/index.js` :
+```javascript
+// app/javascript/controllers/index.js
+import { Application } from "stimulus"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
+// Add this line below
+import { AbymeController } from 'abyme'
+
+const application = Application.start()
+const context = require.context("controllers", true, /_controller\.js$/)
+application.load(definitionsFromContext(context))
+// And this one
+application.register('abyme', AbymeController)
+```
 
 ## Usage
 
