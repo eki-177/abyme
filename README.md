@@ -33,14 +33,53 @@ application.register('abyme', AbymeController)
 
 ## What are nested forms and why a new gem ?
 
-Nested forms (or more accurately *nested fields* or *nested attributes*) are forms that deal with associated models. Let's picture a `Project` model that `has_many :tasks` ; a nested form will allow you to create a project along with one or several tasks **within a single form**. If `Tasks` were to have associations on their own, like `:comments`, you could also, still in the same form, instantiate comments along with their parent models.
+Nested forms (or more accurately *nested fields* or *nested attributes*) are forms that deal with associated models. Let's picture a `Project` model that `has_many :tasks`. A nested form will allow you to create a project along with one or several tasks **within a single form**. If `Tasks` were to have associations on their own, like `:comments`, you could also, still in the same form, instantiate comments along with their parent models.
 
 Rails provides [its own helper](https://api.rubyonrails.org/v6.0.1/classes/ActionView/Helpers/FormHelper.html#method-i-fields_for) to handle nested attributes. **abyme** is basically a smart wrapper around it, offering easier syntax along with some fancy additions. To work properly, some configuration will be required in both models and controllers (see below).
 
-What Rails doesn't provide natively is the possibility to dynamically add new associations on the fly, which requires Javascript implementation. What this means it that you would normally have to know in advance how many fields you'd like to display (1, 2 or any number of `:tasks`), which isn't very usable in this day and age. This is what the [cocoon gem](https://github.com/nathanvda/cocoon) has been helping with for the past 7 years. This gem still being implemented in JQuery (which [Rails dropped as a dependency](https://github.com/rails/rails/issues/25208)), we wanted to propose a more plug'n'play approach, using Basecamp's [Stimulus](https://stimulusjs.org/) instead.
+What Rails doesn't provide natively is the possibility to **dynamically add new associations on the fly**, which requires Javascript implementation. What this means it that you would normally have to know in advance how many fields you'd like to display (1, 2 or any number of `:tasks`), which isn't very usable in this day and age. This is what the [cocoon gem](https://github.com/nathanvda/cocoon) has been helping with for the past 7 years. This gem still being implemented in JQuery (which [Rails dropped as a dependency](https://github.com/rails/rails/issues/25208)), we wanted to propose a more plug'n'play approach, using Basecamp's [Stimulus](https://stimulusjs.org/) instead.
 
-## Usage
+## Basic Configuration
 
+### Model
+Let's consider a to-do application with Projects having many Taks, themselves having many Comments.
+```ruby
+# models/project.rb
+class Project < ApplicationRecord
+  has_many :tasks, inverse_of: :project, dependent: :destroy
+end
+
+# models/task.rb
+class Task < ApplicationRecord
+  belongs_to :project
+  has_many :comments, inverse_of: :project, dependent: :destroy
+end
+
+# models/comment.rb
+class Comment < ApplicationRecord
+  belongs_to :task
+end
+```
+The end-goal is to be able to create a project along with different tasks, and immediately add comments to some of these tasks ; all in a single form.
+What we'll have is a 2-level nested form. Thus, we'll need to add these lines to both `Project` and `Task` :
+```ruby
+# models/project.rb
+class Project < ApplicationRecord
+  include Abyme::Model
+  has_many :tasks, inverse_of: :project, dependent: :destroy
+
+  abyme_for :tasks
+end
+
+# models/task.rb
+class Task < ApplicationRecord
+  include Abyme::Model
+  belongs_to :project
+  has_many :comments, inverse_of: :project, dependent: :destroy
+  
+  abyme_for :comments
+end
+```
 
 
 ## Development
