@@ -1,8 +1,15 @@
 {
   "name": "abyme",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JS companion to abyme gem",
-  "main": "index.js",
+  "main": "javascript/index.js",
+  "files": [
+    "package.json",
+    "javascript/**/*"
+  ],
+  "directories": {
+    "lib": "javascript"
+  },
   "repository": {
     "url": "https://github.com/bear-in-mind/abyme",
     "type": "git"
