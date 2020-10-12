@@ -15,6 +15,8 @@ gem 'abyme'
 And then execute:
 
     $ bundle
+    $ yarn add 'abyme'
+
 
 Or install it yourself as:
 
