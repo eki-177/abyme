@@ -1,0 +1,18 @@
+{
+  "name": "abyme",
+  "version": "0.1.0",
+  "description": "JS companion to abyme gem",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/bear-in-mind/abyme",
+    "type": "git"
+  },
+  "author": "Romain Sanson <romainsanson.gm@gmail.com> & Louis Sommer <louis.sommer@hey.com>",
+  "license": "MIT",
+  "private": false,
+  "homepage": "https://github.com/bear-in-mind/abyme",
+  "bugs": "https://github.com/bear-in-mind/abyme/issues",
+  "dependencies": {
+    "stimulus": "^1.1.1"
+  }
+}
