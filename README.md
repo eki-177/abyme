@@ -1,6 +1,6 @@
 # Abyme 🕳
 
-abyme is a modern take on handling dynamic nested forms in Rails 6+, using StimulusJS.
+abyme is a modern take on handling dynamic nested forms in Rails 6+ using StimulusJS.
 
 ## Installation
 
