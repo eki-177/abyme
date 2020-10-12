@@ -1,3 +1,9 @@
 module Abyme
-  VERSION = "0.1.0"
+  module VERSION
+    MAJOR = 0
+    MINOR = 1
+    PATCH = 2
+
+    STRING = [MAJOR, MINOR, PATCH].join(".")
+  end
 end
