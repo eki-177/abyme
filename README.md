@@ -16,10 +16,6 @@ And then execute:
     $ yarn add 'abyme'
 
 
-Or install it yourself as:
-
-    $ gem install abyme
-
 Assuming you [already installed Stimulus](https://stimulusjs.org/handbook/introduction), add this in `app/javascript/controllers/index.js` :
 ```javascript
 // app/javascript/controllers/index.js
