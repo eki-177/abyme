@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/14.5.0/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js add stimulus
+  /usr/local/Cellar/node/14.5.0/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js
 
 PATH: 
   /Users/louis/.rbenv/shims:/Users/louis/.rbenv/bin:./bin:./node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/louis/.rbenv/shims:/Users/louis/.rbenv/bin:./bin:./node_modules/.bin:/usr/local/sbin:/usr/local/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/louis/Code/bear-in-mind/abyme/package.json: Unexpected token { in JSON at position 305
+  SyntaxError: /Users/louis/Code/bear-in-mind/abyme/package.json: Unexpected token } in JSON at position 452
       at JSON.parse (<anonymous>)
       at /usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -27,18 +27,15 @@ npm manifest:
     "version": "1.0.0",
     "description": "JS companion to abyme gem",
     "main": "index.js",
-    "repository": "git@github.com:bear-in-mind/abyme.git",
+    "repository": {
+      "url": "https://github.com/bear-in-mind/abyme",
+      "type": "git"
+    },
     "author": "Romain Sanson <romainsanson.gm@gmail.com> & Louis Sommer <louis.sommer@hey.com>",
     "license": "MIT",
     "private": false,
-    {
-      "homepage": "https://github.com/bear-in-mind/abyme",
-      "bugs": "https://github.com/bear-in-mind/abyme/issues",
-      "repository": {
-        "url": "https://github.com/bear-in-mind/abyme",
-        "type": "git"
-      }
-    }
+    "homepage": "https://github.com/bear-in-mind/abyme",
+    "bugs": "https://github.com/bear-in-mind/abyme/issues",
   }
 
 yarn manifest: 
