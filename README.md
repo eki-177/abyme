@@ -41,23 +41,26 @@ What Rails doesn't provide natively is the possibility to **dynamically add new 
 
 ## Basic Configuration
 
-### Model
+### Models
 Let's consider a to-do application with Projects having many Taks, themselves having many Comments.
 ```ruby
 # models/project.rb
 class Project < ApplicationRecord
   has_many :tasks, inverse_of: :project, dependent: :destroy
+  validates :title, :description, presence: true
 end
 
 # models/task.rb
 class Task < ApplicationRecord
   belongs_to :project
   has_many :comments, inverse_of: :project, dependent: :destroy
+  validates :title, :description, presence: true
 end
 
 # models/comment.rb
 class Comment < ApplicationRecord
   belongs_to :task
+  validates :content, presence: true
 end
 ```
 The end-goal is to be able to create a project along with different tasks, and immediately add comments to some of these tasks ; all in a single form.
@@ -66,21 +69,39 @@ What we'll have is a 2-level nested form. Thus, we'll need to add these lines to
 # models/project.rb
 class Project < ApplicationRecord
   include Abyme::Model
-  has_many :tasks, inverse_of: :project, dependent: :destroy
-
+  #...
   abyme_for :tasks
 end
 
 # models/task.rb
 class Task < ApplicationRecord
   include Abyme::Model
-  belongs_to :project
-  has_many :comments, inverse_of: :project, dependent: :destroy
-  
+  #...
   abyme_for :comments
 end
 ```
 
+### Controller
+Since we're dealing with one form, we're only concerned with one controller : the one the form routes to. In our example, this would be the `ProjectsController`.
+The only configuration needed here will be our strong_params. Nested attributes require a very specific syntax to white-list the permitted attributes. It looks like this :
+
+```ruby
+  def project_params
+  	params.require(:project).permit(
+      :title, :description, tasks_attributes: [
+        :id, :title, :description, :_destroy, comments_attributes: [
+          :id, :content, :_destroy
+        ]
+      ]
+    )
+  end
+```
+A few explanations here. 
+--* To permit a nested model attributes in your params, you'll need to pass the `association_attributes: [...]` hash at the end of your resource attributes. Key will always be `association_name` followed by `_attributes`, while the value will be an array of symbolized attributes, just like usual.
+
+**Note**: if your association is a singular one (`has_one` or `belongs_to`, the association will be singular ; if a Project `has_one :owner`, you would then need to pass `owner_attributes: [...]`)
+
+--* You may have remarked the presence of `id` and `_destroy` among those params. These are necessary for edit actions : if you want to allow your users to destroy or update existing records, these are **mandatory**.  Otherwise, Rails won't be able to recognize these records as existing ones, and will just create new ones.
 
 ## Development
 
