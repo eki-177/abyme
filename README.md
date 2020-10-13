@@ -106,21 +106,28 @@ A few explanations here.
 
 ## Basic Usage
 
-Here's our form for `Project` :
+Dealing with nested attributes means you'll generally have to handle a few things inside your form :
+* Display fields for the persisted records (here, already existing `:tasks`)
+* Display fields for the new records (future `:tasks` not yet persisted)
+* A button to trigger the addition of fields for a new resource (an 'Add a new task" button)
+* A button to remove fields for a given resource ("Remove task")
+
+abyme provides helper methods for all these. Here's how our form for `Project` looks like :
+
 ```ruby
 <%= simple_form_for @project do |f| %>
-	<%= f.input :title %>
-	<%= f.input :description %>
-	<%= f.submit 'Save' %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit 'Save' %>
 
-	<%= abymize(:participants, f, add: 'add participant') %>
   <%= abymize(:tasks, f) do |abyme| %>
-    <%= abyme.records(order: {created_at: :asc}) %>
-    <%= abyme.new_records(position: :end, partial: 'projects/task_fields') %>
-    <%= add_association(content: '+', tag: :div) %>
+    <%= abyme.records %>
+    <%= abyme.new_records %>
+    <%= add_association %>
   <% end %>
 <% end %>
 ```
+
 
 ## Development
 
