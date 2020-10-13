@@ -112,9 +112,10 @@ Dealing with nested attributes means you'll generally have to handle a few thing
 * A button to trigger the addition of fields for a new resource (an 'Add a new task" button)
 * A button to remove fields for a given resource ("Remove task")
 
-abyme provides helper methods for all these. Here's how our form for `Project` looks like :
+abyme provides helper methods for all these. Here's how our form for `Project` looks like when using default values for every helper :
 
 ```ruby
+# views/projects/_form.html.erb
 <%= simple_form_for @project do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
@@ -126,6 +127,22 @@ abyme provides helper methods for all these. Here's how our form for `Project` l
     <%= add_association %>
   <% end %>
 <% end %>
+```
+
+`abyme.records` will contain the persisted associations fields, while `abyme.new_records` will contain fields for the new associations. `add_association` will by default generate a button with a text of type "Add resource_name". To work properly, this button **has** to be inside the block passed to the `abymize` method.
+
+Now where's the code for these fields ? abyme will assume a partial to be present in the directory `/views/abyme` with a name respecting this naming convention (just like with [cocoon](https://github.com/nathanvda/cocoon#basic-usage)) : `_singular_association_name_fields.html.erb`. Here's what this partial looks like :
+```ruby
+# views/abyme/_task_fields.html.erb
+<%= f.input :title %>
+<%= f.input :description %>
+<%= f.hidden_field :_destroy %>
+
+<%= remove_association(tag: :div) do %>
+  <i id="remove-task" class="fas fa-trash"></i>
+<% end %>
+
+<%= abymize(:comments, f) %>
 ```
 
 
