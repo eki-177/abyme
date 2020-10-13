@@ -237,7 +237,9 @@ Here a the options that can be passed to `abyme.new_records`:
 * `add-button-text:` : this will set the `add_association` button text to the string of your choice.
 * All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
 
-## Lifecycle Events
+## Events
+### Lifecycle events
+TODO...
 
 ## Development
 
