@@ -112,7 +112,7 @@ Dealing with nested attributes means you'll generally have to handle a few thing
 * A button to trigger the addition of fields for a new resource (an 'Add a new task" button)
 * A button to remove fields for a given resource ("Remove task")
 
-abyme provides helper methods for all these. Here's how our form for `Project` looks like when using default values for every helper :
+abyme provides helper methods for all these. Here's how our form for `Project` looks like when using default values :
 
 ```ruby
 # views/projects/_form.html.erb
@@ -129,9 +129,11 @@ abyme provides helper methods for all these. Here's how our form for `Project` l
 <% end %>
 ```
 
-`abyme.records` will contain the persisted associations fields, while `abyme.new_records` will contain fields for the new associations. `add_association` will by default generate a button with a text of type "Add resource_name". To work properly, this button **has** to be inside the block passed to the `abymize` method.
+`abyme.records` will contain the persisted associations fields, while `abyme.new_records` will contain fields for the new associations. `add_association` will by default generate a button with a text of type "Add resource_name". To work properly, this method **has** to be called inside the block passed to the `abymize` method.
 
-Now where's the code for these fields ? abyme will assume a partial to be present in the directory `/views/abyme` with a name respecting this naming convention (just like with [cocoon](https://github.com/nathanvda/cocoon#basic-usage)) : `_singular_association_name_fields.html.erb`. Here's what this partial looks like :
+Now where's the code for these fields ? abyme will assume a partial to be present in the directory `/views/abyme` with a name respecting this naming convention (just like with [cocoon](https://github.com/nathanvda/cocoon#basic-usage)) : `_singular_association_name_fields.html.erb`. 
+
+Here's what this partial looks like :
 ```ruby
 # views/abyme/_task_fields.html.erb
 <%= f.input :title %>
@@ -141,10 +143,19 @@ Now where's the code for these fields ? abyme will assume a partial to be presen
 <%= remove_association(tag: :div) do %>
   <i id="remove-task" class="fas fa-trash"></i>
 <% end %>
-
-<%= abymize(:comments, f) %>
 ```
 
+Here is where you'll find the `remove_association` button. Here, we pass it an option to make it a `<div>`, as well as a block to customize its content.
+
+### Auto mode
+
+But where are our comments ? Let's add them using the abyme automatic mode : just stick this line at the end of the partial :
+```ruby
+# views/abyme/_task_fields.html.erb
+# ... rest of the partial above
+<%= abymize(:comments, f) %>
+```
+Where's the rest of the code ? Well, if the default configuration you saw above in the `_form.html.erb` suits you, and the order in which the different resources appear feels good (persisted first, new fields second, and the 'Add' button at the end), then you can just spare the block, and it will be taken care of for you.
 
 ## Development
 
