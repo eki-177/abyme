@@ -237,6 +237,8 @@ Here a the options that can be passed to `abyme.new_records`:
 * `add-button-text:` : this will set the `add_association` button text to the string of your choice.
 * All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
 
+#### #Lifecycle Events
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
