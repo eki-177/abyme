@@ -104,9 +104,23 @@ A few explanations here.
 
 * You may have remarked the presence of `id` and `_destroy` among those params. These are necessary for edit actions : if you want to allow your users to destroy or update existing records, these are **mandatory**.  Otherwise, Rails won't be able to recognize these records as existing ones, and will just create new ones. More info [here](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html).
 
-### Views
+## Basic Usage
 
-TODO...
+Here's our form for `Project` :
+```ruby
+<%= simple_form_for @project do |f| %>
+	<%= f.input :title %>
+	<%= f.input :description %>
+	<%= f.submit 'Save' %>
+
+	<%= abymize(:participants, f, add: 'add participant') %>
+  <%= abymize(:tasks, f) do |abyme| %>
+    <%= abyme.records(order: {created_at: :asc}) %>
+    <%= abyme.new_records(position: :end, partial: 'projects/task_fields') %>
+    <%= add_association(content: '+', tag: :div) %>
+  <% end %>
+<% end %>
+```
 
 ## Development
 
