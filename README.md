@@ -183,7 +183,7 @@ A few options can be passed to `abyme.records`:
 * `collection:` : allows you to pass a collection of your choice to only display specific objects.
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
-    <%= abyme.records(collection: f.object.where(done: false)) %>
+    <%= abyme.records(collection: @project.tasks.where(done: false)) %>
     <%= abyme.new_records %>
     <%= add_association %>
   <% end %>
