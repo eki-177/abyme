@@ -109,8 +109,8 @@ A few explanations here.
 Dealing with nested attributes means you'll generally have to handle a few things inside your form:
 * Display fields for the persisted records (here, already existing `:tasks`)
 * Display fields for the new records (future `:tasks` not yet persisted)
-* A button to trigger the addition of fields for a new resource (an 'Add a new task" button)
-* A button to remove fields for a given resource ("Remove task")
+* A button to trigger the addition of fields for a new resource (an `Add a new task` button)
+* A button to remove fields for a given resource (`Remove task`)
 
 abyme provides helper methods for all these. Here's how our form for `Project` looks like when using default values:
 
@@ -141,21 +141,101 @@ Here's what this partial looks like:
 <%= f.hidden_field :_destroy %>
 
 <%= remove_association(tag: :div) do %>
-  <i id="remove-task" class="fas fa-trash"></i>
+  <i class="fas fa-trash"></i>
 <% end %>
 ```
 
 Here is where you'll find the `remove_association` button. Here, we pass it an option to make it a `<div>`, as well as a block to customize its content. Don't forget the `_destroy` attribute, needed to mark items for destruction.
 
+### What about the controller ?
+
+What about it ? Well, not much. That's the actual magical thing about `nested_attributes` : once your model is aware of its acceptance of those for a given association and your strong params are correctly configured, there's nothing else to do.
+
+`@project.create(project_params)` is all you'll need to save a project along with its descendants 👨‍👧‍👧
+
 ### Auto mode
 
-But where are our comments fields ? Let's add them using our neat *automatic mode*: just stick this line at the end of the partial:
+Let's now take care of our comments fields. We'll add these using our neat *automatic mode*: just stick this line at the end of the partial:
 ```ruby
 # views/abyme/_task_fields.html.erb
 # ... rest of the partial above
 <%= abymize(:comments, f) %>
 ```
 Where's the rest of the code ? Well, if the default configuration you saw above in the `_form.html.erb` suits you, and the order in which the different resources appear feels right (persisted first, new fields second, and the 'Add' button last), then you can just spare the block, and it will be taken care of for you. We'll just write our `_comment_fields.html.erb` partial in the `views/abyme` directory and we'll be all set.
+
+## Advanced usage
+### Models
+In models, the `abyme_for :association` acts as an alias for this command :
+
+```ruby
+  accepts_nested_attributes_for :association, reject_if: :all_blank, :allow_destroy: true
+```
+
+Which is the way you would configure `nested_attributes` 90% of the time. Should you want to pass [any available options](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for) to this method or change those, you may just pass them as with the original method :
+```ruby
+  abyme_for :association, limit: 3, allow_destroy: false
+```
+
+### Views
+
+#### #records
+Here a few options that can be passed to `abyme.records`:
+* `collection:` : allows you to pass a collection of your choice to only display specific objects.
+```ruby
+  <%= abymize(:tasks, f) do |abyme| %>
+    <%= abyme.records(collection: f.object.where(done: false)) %>
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
+* `order:` : allows you to pass an ActiveRecord `order` method to sort your instances the way you want.
+```ruby
+  <%= abymize(:tasks, f) do |abyme| %>
+    <%= abyme.records(order: { created_at: :asc }) %>
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
+* `html:` : gives you the possibility to add any HTML attribute you may want to the container. By default, an `abyme--fields` class is already present.
+```ruby
+  <%= abymize(:tasks, f) do |abyme| %>
+    <%= abyme.records(html: { id: "persisted-records" }) %>
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
+
+#### #new_records
+Here a the options that can be passed to `abyme.new_records`:
+* `position:` : allows you to specify whether new fields added dynamically should go at the top or at the bottom. `:end` is the default value.
+```ruby
+  <%= abymize(:tasks, f) do |abyme| %>
+    <%= abyme.records(position: :start) %>
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
+* `partial:` : allows you to indicate a custom partial.
+```ruby
+  <%= abymize(:tasks, f) do |abyme| %>
+    <%= abyme.records %>
+		<%= abyme.new_records(position: :end, partial: 'projects/task_fields') %>
+    <%= add_association %>
+  <% end %>
+```
+* `html:` : gives you the possibility to add any HTML attribute you may want to the container. By default, an `abyme--fields` class is already present.
+```ruby
+  <%= abymize(:tasks, f) do |abyme| %>
+    <%= abyme.records %>
+    <%= abyme.new_records(html: { id: "new-records" }) %>
+    <%= add_association %>
+  <% end %>
+```
+
+#### #abymize
+*When in auto mode*, the abymize method can take a few options:
+* `add-button-text:` : this will set the `add_association` button text to the string of your choice.
+* All options that should be passed to either `records` or `new_records`, can be passed here and will be passed down.
 
 ## Development
 

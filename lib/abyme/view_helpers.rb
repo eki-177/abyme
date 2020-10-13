@@ -25,7 +25,7 @@ module Abyme
                 # Here, f is the fields_for ; f.object becomes association.new rather than the original form.object
                 yield(f)
               else
-                render "shared/#{association.to_s.singularize}_fields", f: f
+                render "abyme/#{association.to_s.singularize}_fields", f: f
               end
             end
           end
@@ -56,7 +56,7 @@ module Abyme
           if block_given?
             yield(f)
           else
-            render "shared/#{association.to_s.singularize}_fields", f: f
+            render "abyme/#{association.to_s.singularize}_fields", f: f
           end
         end
       end
