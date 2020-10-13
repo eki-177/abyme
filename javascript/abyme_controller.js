@@ -1,4 +1,5 @@
 import { Controller } from 'stimulus';
+
 export default class extends Controller {
   static targets = ['template', 'associations'];
 
@@ -26,49 +27,45 @@ export default class extends Controller {
       html = html.replace(/<template[\s\S]+<\/template>/g, template);
     }
 
-    this.dispatch('abyme:before-add')
+    this.create_event('before-add', html)
     this.associationsTarget.insertAdjacentHTML(this.position, html);
-    this.dispatch('abyme:after-add')
+    this.create_event('after-add', html)
   }
 
   remove_association(event) {
     event.preventDefault();
 
-    this.dispatch('abyme:before-remove')
+    this.create_event('before-remove')
     let wrapper = event.target.closest('.abyme--fields');
     wrapper.querySelector("input[name*='_destroy']").value = 1;
     wrapper.style.display = 'none';
-    this.dispatch('abyme:before-after')
+    this.create_event('after-remove')
   }
 
-  dispatch(type) {
-    const event = new CustomEvent(type, { detail: this })
+  create_event(stage, html = null) {
+    const event = new CustomEvent(`abyme:${stage}`, { detail: {controller: this, content: html} })
     this.element.dispatchEvent(event)
+    // WIP
+    this.dispatch(event, stage)
+  }
 
-    if (type === 'abyme:before-add') {
-      if (this.beforeAdd) this.abymeBeforeAdd(event)
-    } else if (type === 'abyme:after-add') {
-      if (this.afterAdd) this.abymeAfterAdd(event)
-    } else if (type === 'abyme:before-remove') {
-      if (this.beforeRemove) this.abymeBeforeRemove(event)
-    } else if (type === 'abyme:after-remove') {
-      if (this.afterRemove) this.abymeAfterRemove(event)
-    }
+  // WIP : Trying to integrate event handling through controller inheritance
+  dispatch(event, stage) {
+    if (stage === 'before-add' && this.abymeBeforeAdd) this.abymeBeforeAdd(event)
+    if (stage === 'after-add' && this.abymeAfterAdd) this.abymeAfterAdd(event)
+    if (stage === 'before-remove' && this.abymeBeforeRemove) this.abymeBeforeAdd(event)
+    if (stage === 'after-remove' && this.abymeAfterRemove) this.abymeAfterRemove(event)
   }
 
   abymeBeforeAdd(event) {
-    console.log(event)
   }
 
   abymeAfterAdd(event) {
-    console.log(event)
   }
 
-  abymeBeforeRevome(event) {
-    console.log(event)
+  abymeBeforeRemove(event) {
   }
 
   abymeAfterRemove(event) {
-    console.log(event)
   }
 }
