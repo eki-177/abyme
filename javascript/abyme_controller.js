@@ -20,7 +20,6 @@ export default class extends Controller {
       return false
     }
 
-
     const html = this.build_html();
     this.create_event('before-add');
     this.associationsTarget.insertAdjacentHTML(this.position, html);
@@ -65,7 +64,7 @@ export default class extends Controller {
   abymeAfterRemove(event) {
   }
 
-  // UTILITIES
+  // ** UTILITIES FUNCTIONS ** //
 
   // build html
   build_html() {
