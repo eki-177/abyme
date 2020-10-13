@@ -179,7 +179,7 @@ Which is the way you would configure `nested_attributes` 90% of the time. Should
 ### Views
 
 #### #records
-Here a few options that can be passed to `abyme.records`:
+A few options can be passed to `abyme.records`:
 * `collection:` : allows you to pass a collection of your choice to only display specific objects.
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
@@ -219,7 +219,7 @@ Here a the options that can be passed to `abyme.new_records`:
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
     <%= abyme.records %>
-		<%= abyme.new_records(position: :end, partial: 'projects/task_fields') %>
+    <%= abyme.new_records(position: :end, partial: 'projects/task_fields') %>
     <%= add_association %>
   <% end %>
 ```
@@ -235,7 +235,7 @@ Here a the options that can be passed to `abyme.new_records`:
 #### #abymize
 *When in auto mode*, the abymize method can take a few options:
 * `add-button-text:` : this will set the `add_association` button text to the string of your choice.
-* All options that should be passed to either `records` or `new_records`, can be passed here and will be passed down.
+* All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
 
 ## Development
 
