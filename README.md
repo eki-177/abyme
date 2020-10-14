@@ -291,9 +291,9 @@ This is the container for all your nested fields. It takes two parameters (the s
     <%= add_association %>
   <% end %>
 ```
-* `min-count` : by default, there won't be any blank fields added on page load. By passing a `min-count` option, you can set how many empty fields should appear in the form.
+* `min_count` : by default, there won't be any blank fields added on page load. By passing a `min_count` option, you can set how many empty fields should appear in the form.
 ```ruby
-  <%= abymize(:tasks, f, min-count: 1) do |abyme| %>
+  <%= abymize(:tasks, f, min_count: 1) do |abyme| %>
     # 1 blank task will automatically be added to the form.
     <%= abyme.records %>
     <%= abyme.new_records %>
