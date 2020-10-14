@@ -238,11 +238,7 @@ Here a the options that can be passed to `abyme.new_records`:
 * All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
 
 ## Events
-### Lifecycle events
-TODO...
 
-### Other events
-TODO...
 
 ## Development
 
