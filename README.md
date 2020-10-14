@@ -228,7 +228,7 @@ A few options can be passed to `abyme.records`:
 * `wrapper_html:` : gives you the possibility to add any HTML attribute you may want to the wrapper containing all fields.
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
-    <%= abyme.records(html: { class: "persisted-records" }) %>
+    <%= abyme.records(wrapper_html: { class: "persisted-records" }) %>
     # The wrapper containing all persisted task fields will have an id "abyme-tasks-wrapper" and a class "persisted-records"
     <%= abyme.new_records %>
     <%= add_association %>
