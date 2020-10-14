@@ -46,14 +46,14 @@ Let's consider a to-do application with Projects having many Taks, themselves ha
 ```ruby
 # models/project.rb
 class Project < ApplicationRecord
-  has_many :tasks, inverse_of: :project, dependent: :destroy
+  has_many :tasks
   validates :title, :description, presence: true
 end
 
 # models/task.rb
 class Task < ApplicationRecord
   belongs_to :project
-  has_many :comments, inverse_of: :task, dependent: :destroy
+  has_many :comments
   validates :title, :description, presence: true
 end
 
@@ -64,22 +64,25 @@ class Comment < ApplicationRecord
 end
 ```
 The end-goal here is to be able to create a project along with different tasks, and immediately add comments to some of these tasks ; all within a single form.
-What we'll have is a 2-level nested form. Thus, we'll need to add these lines to both `Project` and `Task` :
+What we'll have is a 2-level nested form. Thus, we'll need to configure our `Project` and `Task` models like so :
 ```ruby
 # models/project.rb
 class Project < ApplicationRecord
   include Abyme::Model
-  #...
+  has_many :tasks, inverse_of: :project
+  # ...
   abyme_for :tasks
 end
 
 # models/task.rb
 class Task < ApplicationRecord
   include Abyme::Model
-  #...
+  has_many :comments, inverse_of: :task
+  # ...
   abyme_for :comments
 end
 ```
+Note the use of the `inverse_of` option. It is needed for Rails to effectively associate children to their yet unsaved parent. Have a peek to the bottom of [this page](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for) for more info.
 
 ### Controller
 Since we're dealing with one form, we're only concerned with one controller : the one the form routes to. In our example, this would be the `ProjectsController`.
@@ -231,7 +234,34 @@ Here are the options that can be passed to `abyme.new_records`:
   <% end %>
 ```
 
-#### #abymize
+#### #add_association, #remove_association
+These 2 methods behave the same. Here are their options :
+* `tag:` : allows you to specify a tag of your choosing, like `:a`, or `:div`. Default is `:button`.
+* `content:` : the text to display inside the element. Default is `Add association_name`
+* `html:` : gives you the possibility to add any HTML attribute you may want to the element.
+```ruby
+  <%= abymize(:tasks, f) do |abyme| %>
+    # ...
+    <%= add_association(tag: :a, content: "Add a super task", html: {id: "add-super-task"}) %>
+  <% end %>
+```
+
+As you may have seen above, you can also pass a block to the method to give it whatever HTML content you want :
+```ruby
+  <%= abymize(:tasks, f) do |abyme| %>
+    # ...
+    <%= add_association(tag: :div, html: {id: "add-super-task", class: "flex"}) do %>
+      <i class="fas fa-plus"></i>
+      <h2>Add a super task</h2>
+    <% end %>
+  <% end %>
+```
+
+
+#### #abymize(:association, form_object)
+This is the container for all your nested fields. It takes two parameters (the symbolized association and the `form_builder`), and some optional ones :
+* `limit:` : allows you to limit the number of fields that can be created through JS. If you need to limit the number of associations in database, you will need to pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for). 
+
 *When in auto mode*, the abymize method can take a few options:
 * `add-button-text:` : this will set the `add_association` button text to the string of your choice.
 * All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
