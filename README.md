@@ -210,8 +210,8 @@ Here a the options that can be passed to `abyme.new_records`:
 * `position:` : allows you to specify whether new fields added dynamically should go at the top or at the bottom. `:end` is the default value.
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
-    <%= abyme.records(position: :start) %>
-    <%= abyme.new_records %>
+    <%= abyme.records %>
+    <%= abyme.new_records(position: :start) %>
     <%= add_association %>
   <% end %>
 ```
