@@ -198,6 +198,14 @@ A few options can be passed to `abyme.records`:
     <%= add_association %>
   <% end %>
 ```
+* `partial:` : allows you to indicate a custom partial, if one has not already been passed to `abymize`.
+```ruby
+  <%= abymize(:tasks, f) do |abyme| %>
+    <%= abyme.records %>
+    <%= abyme.new_records(partial: 'projects/task_fields') %>
+    <%= add_association %>
+  <% end %>
+```
 * `html:` : gives you the possibility to add any HTML attribute you may want to the container. By default, an `abyme--fields` class is already present.
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
@@ -217,22 +225,8 @@ Here are the options that can be passed to `abyme.new_records`:
     <%= add_association %>
   <% end %>
 ```
-* `partial:` : allows you to indicate a custom partial.
-```ruby
-  <%= abymize(:tasks, f) do |abyme| %>
-    <%= abyme.records %>
-    <%= abyme.new_records(partial: 'projects/task_fields') %>
-    <%= add_association %>
-  <% end %>
-```
-* `html:` : gives you the possibility to add any HTML attribute you may want to the container. By default, an `abyme--fields` class is already present.
-```ruby
-  <%= abymize(:tasks, f) do |abyme| %>
-    <%= abyme.records %>
-    <%= abyme.new_records(html: { id: "new-records" }) %>
-    <%= add_association %>
-  <% end %>
-```
+* `partial:` : same as `#records`
+* `html:` : same as `#records`
 
 #### #add_association, #remove_association
 These 2 methods behave the same. Here are their options :
@@ -260,7 +254,32 @@ As you may have seen above, you can also pass a block to the method to give it w
 
 #### #abymize(:association, form_object)
 This is the container for all your nested fields. It takes two parameters (the symbolized association and the `form_builder`), and some optional ones. Please note an id is automatically added to this element, which value is : `abyme--association`. 
-* `limit:` : allows you to limit the number of fields that can be created through JS. If you need to limit the number of associations in database, you will need to pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for). 
+* `partial:` : allows you to indicate a custom partial path for both `records` and `new_records`
+```ruby
+  <%= abymize(:tasks, f, partial: 'projects/task_fields') do |abyme| %>
+    <%= abyme.records %>
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
+* `limit:` : allows you to limit the number of fields that can be created through JS. If you need to limit the number of associations in database, you will need to add validations. You can also pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for).
+```ruby
+  <%= abymize(:tasks, f, limit: 5) do |abyme| %>
+    # Beyond 5 tasks, the add button won't add any more fields. See events section below to see how to handle the 'abyme:limit-reached' event
+    <%= abyme.records %>
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
+* `min-count` : by default, there won't be any blank fields added on page load. By passing a `min-count` option, you can set how many empty fields should appear in the form.
+```ruby
+  <%= abymize(:tasks, f, min-count: 1) do |abyme| %>
+    # 1 blank task will automatically be added to the form.
+    <%= abyme.records %>
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
 
 *When in auto mode*, the abymize method can take a few options:
 * `add-button-text:` : this will set the `add_association` button text to the string of your choice.
