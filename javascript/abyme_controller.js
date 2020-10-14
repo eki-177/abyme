@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
-  static targets = ['template', 'associations'];
+  static targets = ['template', 'associations', 'fields'];
 
   connect() {
     console.log('Abyme Connect');
@@ -14,47 +14,42 @@ export default class extends Controller {
   add_association(event) {
     event.preventDefault();
 
-    let html = this.templateTarget.innerHTML.replace(
-      /NEW_RECORD/g,
-      new Date().getTime()
-    );
-
-    if (html.match(/<template[\s\S]+<\/template>/)) {
-      const template = html
-        .match(/<template[\s\S]+<\/template>/)[0]
-        .replace(/(\[\d{12,}\])(\[[^\[\]]+\]"){1}/g, `[NEW_RECORD]$2`);
-
-      html = html.replace(/<template[\s\S]+<\/template>/g, template);
+    // check for limit reached
+    if (this.element.dataset.limit && this.limit_check()) {
+      this.create_event('limit-reached')
+      return false
     }
 
-    this.create_event('before-add', html)
+    const html = this.build_html();
+    this.create_event('before-add');
     this.associationsTarget.insertAdjacentHTML(this.position, html);
-    this.create_event('after-add', html)
+    this.create_event('after-add');
   }
 
   remove_association(event) {
     event.preventDefault();
 
-    this.create_event('before-remove')
-    let wrapper = event.target.closest('.abyme--fields');
-    wrapper.querySelector("input[name*='_destroy']").value = 1;
-    wrapper.style.display = 'none';
-    this.create_event('after-remove')
+
+    this.create_event('before-remove');
+    this.mark_for_destroy(event);
+    this.create_event('after-remove');
   }
 
+  // LIFECYCLE EVENTS RELATED
+
   create_event(stage, html = null) {
-    const event = new CustomEvent(`abyme:${stage}`, { detail: {controller: this, content: html} })
-    this.element.dispatchEvent(event)
+    const event = new CustomEvent(`abyme:${stage}`, { detail: {controller: this, content: html} });
+    this.element.dispatchEvent(event);
     // WIP
-    this.dispatch(event, stage)
+    this.dispatch(event, stage);
   }
 
   // WIP : Trying to integrate event handling through controller inheritance
   dispatch(event, stage) {
-    if (stage === 'before-add' && this.abymeBeforeAdd) this.abymeBeforeAdd(event)
-    if (stage === 'after-add' && this.abymeAfterAdd) this.abymeAfterAdd(event)
-    if (stage === 'before-remove' && this.abymeBeforeRemove) this.abymeBeforeAdd(event)
-    if (stage === 'after-remove' && this.abymeAfterRemove) this.abymeAfterRemove(event)
+    if (stage === 'before-add' && this.abymeBeforeAdd) this.abymeBeforeAdd(event);
+    if (stage === 'after-add' && this.abymeAfterAdd) this.abymeAfterAdd(event);
+    if (stage === 'before-remove' && this.abymeBeforeRemove) this.abymeBeforeAdd(event);
+    if (stage === 'after-remove' && this.abymeAfterRemove) this.abymeAfterRemove(event);
   }
 
   abymeBeforeAdd(event) {
@@ -67,5 +62,40 @@ export default class extends Controller {
   }
 
   abymeAfterRemove(event) {
+  }
+
+  // ** UTILITIES FUNCTIONS ** //
+
+  // build html
+  build_html() {
+    let html = this.templateTarget.innerHTML.replace(
+      /NEW_RECORD/g,
+      new Date().getTime()
+    );
+      
+    if (html.match(/<template[\s\S]+<\/template>/)) {
+      const template = html
+      .match(/<template[\s\S]+<\/template>/)[0]
+      .replace(/(\[\d{12,}\])(\[[^\[\]]+\]"){1}/g, `[NEW_RECORD]$2`);
+      
+      html = html.replace(/<template[\s\S]+<\/template>/g, template);
+    }
+
+    return html;
+  }
+    
+  // mark association for destroy
+  mark_for_destroy(event) {
+    let item = event.target.closest('.abyme--fields');
+    item.querySelector("input[name*='_destroy']").value = 1;
+    item.style.display = 'none';
+    item.classList.add('abyme--marked-for-destroy')
+  }
+
+  // check if associations limit is reached
+  limit_check() {
+    return (this.fieldsTargets
+                .filter(item => !item.classList.contains('abyme--marked-for-destroy'))).length 
+                >= parseInt(this.element.dataset.limit)
   }
 }
