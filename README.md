@@ -100,17 +100,17 @@ A few explanations here.
 
 * To permit a nested model attributes in your params, you'll need to pass the `association_attributes: [...]` hash at the end of your resource attributes. Key will always be `association_name` followed by `_attributes`, while the value will be an array of symbolized attributes, just like usual.
 
-  **Note**: if your association is a singular one (`has_one` or `belongs_to`, the association will be singular ; if a Project `has_one :owner`, you would then need to pass `owner_attributes: [...]`)
+> **Note**: if your association is a singular one (`has_one` or `belongs_to`) the association will be singular ; if a Project `has_one :owner`, you would then need to pass `owner_attributes: [...]`)
 
 * You may have remarked the presence of `id` and `_destroy` among those params. These are necessary for edit actions : if you want to allow your users to destroy or update existing records, these are **mandatory**.  Otherwise, Rails won't be able to recognize these records as existing ones, and will just create new ones. More info [here](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html).
 
 ## Basic Usage
 
 Dealing with nested attributes means you'll generally have to handle a few things inside your form:
-* Display fields for the persisted records (here, already existing `:tasks`)
-* Display fields for the new records (future `:tasks` not yet persisted)
-* A button to trigger the addition of fields for a new resource (an `Add a new task` button)
-* A button to remove fields for a given resource (`Remove task`)
+* Display fields for the **persisted records** (here, already existing `:tasks`)
+* Display fields for the **new records** (future `:tasks` not yet persisted)
+* A button to **trigger the addition** of fields for a new resource (an `Add a new task` button)
+* A button to **remove fields** for a given resource (`Remove task`)
 
 abyme provides helper methods for all these. Here's how our form for `Project` looks like when using default values:
 
@@ -129,11 +129,11 @@ abyme provides helper methods for all these. Here's how our form for `Project` l
 <% end %>
 ```
 
-`abyme.records` will contain the persisted associations fields, while `abyme.new_records` will contain fields for the new associations. `add_association` will by default generate a button with a text of type "Add `resource_name`". To work properly, this method **has** to be called inside the block passed to the `abymize` method.
+`abyme.records` will contain the persisted associations fields, while `abyme.new_records` will contain fields for the new associations. `add_association` will by default generate a button with a text of type "Add `resource_name`". To work properly, this method **has** to be called **inside the block** passed to the `abymize` method.
 
-Now where's the code for these fields ? abyme will assume a partial to be present in the directory `/views/abyme` with a name respecting this naming convention (just like with [cocoon](https://github.com/nathanvda/cocoon#basic-usage)): `_singular_association_name_fields.html.erb`. 
+Now where's the code for these fields ? abyme will assume a **partial** to be present in the directory `/views/abyme` with a *name respecting this naming convention* (just like with [cocoon](https://github.com/nathanvda/cocoon#basic-usage)): `_singular_association_name_fields.html.erb`. 
 
-Here's what this partial looks like:
+This partial might look like this:
 ```ruby
 # views/abyme/_task_fields.html.erb
 <%= f.input :title %>
@@ -145,12 +145,11 @@ Here's what this partial looks like:
 <% end %>
 ```
 
-Here is where you'll find the `remove_association` button. Here, we pass it an option to make it a `<div>`, as well as a block to customize its content. Don't forget the `_destroy` attribute, needed to mark items for destruction.
+Note the presence of the `remove_association` button. Here, we pass it an option to make it a `<div>`, as well as a block to customize its content. Don't forget the `_destroy` attribute, needed to mark items for destruction.
 
 ### What about the controller ?
 
-What about it ? Well, not much. That's the actual magical thing about `nested_attributes` : once your model is aware of its acceptance of those for a given association and your strong params are correctly configured, there's nothing else to do.
-
+What about it ? Well, not much. That's the actual magical thing about `nested_attributes`: once your model is aware of its acceptance of those for a given association, and your strong params are correctly configured, there's nothing else to do.
 `@project.create(project_params)` is all you'll need to save a project along with its descendants 👨‍👧‍👧
 
 ### Auto mode
@@ -206,7 +205,7 @@ A few options can be passed to `abyme.records`:
 ```
 
 #### #new_records
-Here a the options that can be passed to `abyme.new_records`:
+Here are the options that can be passed to `abyme.new_records`:
 * `position:` : allows you to specify whether new fields added dynamically should go at the top or at the bottom. `:end` is the default value.
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
@@ -219,7 +218,7 @@ Here a the options that can be passed to `abyme.new_records`:
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
     <%= abyme.records %>
-    <%= abyme.new_records(position: :end, partial: 'projects/task_fields') %>
+    <%= abyme.new_records(partial: 'projects/task_fields') %>
     <%= add_association %>
   <% end %>
 ```
