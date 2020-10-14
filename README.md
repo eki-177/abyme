@@ -182,7 +182,7 @@ A few options can be passed to `abyme.records`:
 * `collection:` : allows you to pass a collection of your choice to only display specific objects.
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
-    <%= abyme.records(collection: f.object.where(done: false)) %>
+    <%= abyme.records(collection: @project.tasks.where(done: false)) %>
     <%= abyme.new_records %>
     <%= add_association %>
   <% end %>
@@ -209,8 +209,8 @@ Here are the options that can be passed to `abyme.new_records`:
 * `position:` : allows you to specify whether new fields added dynamically should go at the top or at the bottom. `:end` is the default value.
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
-    <%= abyme.records(position: :start) %>
-    <%= abyme.new_records %>
+    <%= abyme.records %>
+    <%= abyme.new_records(position: :start) %>
     <%= add_association %>
   <% end %>
 ```
@@ -235,6 +235,14 @@ Here are the options that can be passed to `abyme.new_records`:
 *When in auto mode*, the abymize method can take a few options:
 * `add-button-text:` : this will set the `add_association` button text to the string of your choice.
 * All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
+
+## Events
+
+### Lifecycle events
+TODO...
+
+### Other events
+TODO...
 
 ## Development
 
