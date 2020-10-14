@@ -302,7 +302,7 @@ This is the container for all your nested fields. It takes two parameters (the s
 ```
 
 *When in auto mode*, the abymize method can take a few options:
-* `add-button-text:` : this will set the `add_association` button text to the string of your choice.
+* `button_text:` : this will set the `add_association` button text to the string of your choice.
 * All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
 
 ## Events
