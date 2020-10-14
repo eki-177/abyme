@@ -225,7 +225,7 @@ A few options can be passed to `abyme.records`:
     <%= add_association %>
   <% end %>
 ```
-* `wrapper_html:` : gives you the possibility to add any HTML attribute you may want to the wrapper containing all fields. By default, an `abyme-association-wrapper` class is already present.
+* `wrapper_html:` : gives you the possibility to add any HTML attribute you may want to the wrapper containing all fields.
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
     <%= abyme.records(html: { class: "persisted-records" }) %>
@@ -322,18 +322,19 @@ document.getElementById('abyme--tasks').addEventListener('abyme:before-add', you
 ### Other events
 * `abyme:limit-reached`
 ```javascript
-document.getElementById('abyme--tasks').addEventListener('abyme:limit-reached', () => { alert('You reached the max number of tasks !) })
+const tasksContainer = document.getElementById('abyme--tasks');
+tasksContainer.addEventListener('abyme:limit-reached', () => { 
+  alert('You reached the max number of tasks !')
+});
 ```
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/abyme.
+Bug reports and pull requests are welcome on GitHub at https://github.com/bear-in-mind/abyme.
 
 ## License
 
