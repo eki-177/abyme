@@ -2,10 +2,11 @@ module Abyme
   class AbymeBuilder < ActionView::Base
     include ActionView
 
-    def initialize(association:, form:, lookup_context:, &block)
+    def initialize(association:, form:, lookup_context:, partial:, &block)
       @association = association
       @form = form
       @lookup_context = lookup_context
+      @partial = partial
       yield(self) if block_given?
     end
   
@@ -24,7 +25,7 @@ module Abyme
     private
 
     def render_association_partial(fields, options)
-      partial = options[:partial] || "abyme/#{@association.to_s.singularize}_fields"
+      partial = @partial || options[:partial] || "abyme/#{@association.to_s.singularize}_fields"
       ActionController::Base.render(partial: partial, locals: { f: fields })
     end
   end
