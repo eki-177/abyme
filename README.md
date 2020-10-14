@@ -282,7 +282,7 @@ This is the container for all your nested fields. It takes two parameters (the s
     <%= add_association %>
   <% end %>
 ```
-* `limit:` : allows you to limit the number of fields that can be created through JS. If you need to limit the number of associations in database, you will need to add validations. You can also pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for).
+* `limit:` : allows you to limit the number of new fields that can be created through JS. If you need to limit the number of associations in database, you will need to add validations. You can also pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for).
 ```ruby
   <%= abymize(:tasks, f, limit: 5) do |abyme| %>
     # Beyond 5 tasks, the add button won't add any more fields. See events section below to see how to handle the 'abyme:limit-reached' event
