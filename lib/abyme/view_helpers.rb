@@ -2,9 +2,12 @@ module Abyme
   module ViewHelpers
 
     def abymize(association, form, options = {}, &block)
-      content_tag(:div, data: { controller: 'abyme', limit: options[:limit] }, id: "abyme--#{association}") do
+      content_tag(:div, data: { controller: 'abyme', limit: options[:limit], min_count: options[:min_count] }, id: "abyme--#{association}") do
         if block_given?
-          yield(Abyme::AbymeBuilder.new(association: association, form: form, lookup_context: self.lookup_context))
+          yield(Abyme::AbymeBuilder.new(
+            association: association, form: form, lookup_context: self.lookup_context, partial: options[:partial]
+            )
+          )
         else
           model = association.to_s.singularize.classify.constantize
           concat(persisted_records_for(association, form, options))
@@ -17,8 +20,9 @@ module Abyme
     def new_records_for(association, form, options = {}, &block)
       content_tag(:div, data: { target: 'abyme.associations', association: association, abyme_position: options[:position] || :end }) do
         content_tag(:template, class: "abyme--#{association.to_s.singularize}_template", data: { target: 'abyme.template' }) do
+
           form.fields_for association, association.to_s.classify.constantize.new, child_index: 'NEW_RECORD' do |f|
-            content_tag(:div, basic_markup(options[:html]).merge(data: { target: 'abyme.fields' })) do
+            content_tag(:div, basic_markup(options[:html], association).merge(data: { target: 'abyme.fields abyme.newFields' })) do
               # Here, if a block is passed, we're passing the association fields to it, rather than the form itself
               block_given? ? yield(f) : render("abyme/#{association.to_s.singularize}_fields", f: f)
             end
@@ -38,7 +42,7 @@ module Abyme
       end
 
       form.fields_for(association, records) do |f|
-        content_tag(:div, basic_markup(options[:html]).merge(data: { target: 'abyme.fields' })) do
+        content_tag(:div, basic_markup(options[:html], association).merge(data: { target: 'abyme.fields' })) do
           block_given? ? yield(f) : render("abyme/#{association.to_s.singularize}_fields", f: f)
         end
       end
@@ -70,12 +74,12 @@ module Abyme
       end
     end
 
-    def basic_markup(html)
+    def basic_markup(html, association = nil)
       if html && html[:class]
-        html[:class] = 'abyme--fields ' + html[:class]
+        html[:class] = "abyme--fields #{association.to_s.singularize}-fields #{html[:class]}" 
       else
         html ||= {}
-        html[:class] = 'abyme--fields'
+        html[:class] = "abyme--fields #{association.to_s.singularize}-fields"
       end
       html
     end

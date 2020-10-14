@@ -1,19 +1,26 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
-  static targets = ['template', 'associations', 'fields'];
+  static targets = ['template', 'associations', 'fields', 'newFields'];
 
   connect() {
-    console.log('Abyme Connect');
+    if (this.count) {
+      this.addDefaultAssociations();
+    }
   }
 
+  get count() {
+    return this.element.dataset.minCount || 0;
+  }
+  
   get position() {
     return this.associationsTarget.dataset.abymePosition === 'end' ? 'beforeend' : 'afterbegin';
   }
 
   add_association(event) {
-    event.preventDefault();
-
+    if (event) {
+      event.preventDefault();
+    }
     // check for limit reached
     if (this.element.dataset.limit && this.limit_check()) {
       this.create_event('limit-reached')
@@ -28,8 +35,6 @@ export default class extends Controller {
 
   remove_association(event) {
     event.preventDefault();
-
-
     this.create_event('before-remove');
     this.mark_for_destroy(event);
     this.create_event('after-remove');
@@ -64,7 +69,7 @@ export default class extends Controller {
   abymeAfterRemove(event) {
   }
 
-  // ** UTILITIES FUNCTIONS ** //
+  // UTILITIES
 
   // build html
   build_html() {
@@ -94,8 +99,23 @@ export default class extends Controller {
 
   // check if associations limit is reached
   limit_check() {
-    return (this.fieldsTargets
+    return (this.newFieldsTargets
                 .filter(item => !item.classList.contains('abyme--marked-for-destroy'))).length 
                 >= parseInt(this.element.dataset.limit)
+  }
+
+  // Add default blank associations at page load
+  async addDefaultAssociations() {
+    let i = 0
+    while (i < this.count) {
+      this.add_association()
+      i++
+      // Sleep function to ensure uniqueness of timestamp
+      await this.sleep(1);
+    }
+  }
+
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
