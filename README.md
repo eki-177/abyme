@@ -206,15 +206,24 @@ A few options can be passed to `abyme.records`:
     <%= add_association %>
   <% end %>
 ```
-* `html:` : gives you the possibility to add any HTML attribute you may want to the container. By default, an `abyme--fields` class is already present.
+* `fields_html:` : gives you the possibility to add any HTML attribute you may want to each set of fields. By default, an `abyme--fields` and an `singular_association-fields` class are already present.
 ```ruby
   <%= abymize(:tasks, f) do |abyme| %>
-    <%= abyme.records(html: { id: "persisted-records" }) %>
+    <%= abyme.records(fields_html: { class: "some-class" }) %>
+    # Every set of persisted fields will have these 3 classes : 'abyme--fields', 'task-fields', and 'some-class'
     <%= abyme.new_records %>
     <%= add_association %>
   <% end %>
 ```
-
+* `wrapper_html:` : gives you the possibility to add any HTML attribute you may want to the wrapper containing all fields. By default, an `abyme-association-wrapper` class is already present.
+```ruby
+  <%= abymize(:tasks, f) do |abyme| %>
+    <%= abyme.records(html: { class: "persisted-records" }) %>
+    # The wrapper containing all persisted task fields will have an id "abyme-tasks-wrapper" and a class "persisted-records"
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
 #### #new_records
 Here are the options that can be passed to `abyme.new_records`:
 * `position:` : allows you to specify whether new fields added dynamically should go at the top or at the bottom. `:end` is the default value.
@@ -226,7 +235,8 @@ Here are the options that can be passed to `abyme.new_records`:
   <% end %>
 ```
 * `partial:` : same as `#records`
-* `html:` : same as `#records`
+* `fields_html:` : same as `#records`
+* `wrapper_html:` : same as `#records`
 
 #### #add_association, #remove_association
 These 2 methods behave the same. Here are their options :
