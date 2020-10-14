@@ -242,6 +242,8 @@ Here a the options that can be passed to `abyme.new_records`:
 ### Lifecycle events
 TODO...
 
+### Other events
+TODO...
 
 ## Development
 
