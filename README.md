@@ -2,6 +2,16 @@
 
 abyme is a modern take on handling dynamic nested forms in Rails 6+ using StimulusJS.
 
+## Disclaimer
+This project is still a work in progress and subject to change. We encourage not to use it in production code just yet.
+
+Any enhancement proposition or bug report welcome !
+
+General remarks : 
+* A demo app will soon be online.
+* For now, the gem is tested through our demo app. Specific autonomous tests will be transfered/written in the following days.
+* Help is very much wanted on the Events part of the gem (see bottom of this documentation)
+
 ## Installation
 
 Add this line to your application's Gemfile:

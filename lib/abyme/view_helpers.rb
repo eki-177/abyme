@@ -12,17 +12,19 @@ module Abyme
           model = association.to_s.singularize.classify.constantize
           concat(persisted_records_for(association, form, options))
           concat(new_records_for(association, form, options)) 
-          concat(add_association(content: options[:add] || "Add #{model}"))
+          concat(add_association(content: options[:button_text] || "Add #{model}"))
         end
       end
     end
 
     def new_records_for(association, form, options = {}, &block)
-      content_tag(:div, data: { target: 'abyme.associations', association: association, abyme_position: options[:position] || :end }) do
+      options[:wrapper_html] ||= {}
+      content_tag(:div, options[:wrapper_html].merge(
+        data: { target: 'abyme.associations', association: association, abyme_position: options[:position] || :end }
+        )) do
         content_tag(:template, class: "abyme--#{association.to_s.singularize}_template", data: { target: 'abyme.template' }) do
-
           form.fields_for association, association.to_s.classify.constantize.new, child_index: 'NEW_RECORD' do |f|
-            content_tag(:div, basic_markup(options[:html], association).merge(data: { target: 'abyme.fields abyme.newFields' })) do
+            content_tag(:div, basic_fields_markup(options[:fields_html], association).merge(data: { target: 'abyme.fields abyme.newFields' })) do
               # Here, if a block is passed, we're passing the association fields to it, rather than the form itself
               block_given? ? yield(f) : render("abyme/#{association.to_s.singularize}_fields", f: f)
             end
@@ -33,6 +35,7 @@ module Abyme
   
     def persisted_records_for(association, form, options = {})
       records = options[:collection] || form.object.send(association)
+      options[:wrapper_html] ||= {}
       
       if options[:order].present?
         records = records.order(options[:order])
@@ -40,10 +43,12 @@ module Abyme
         invalids = form.object.send(association).reject(&:persisted?)
         records = records.to_a.concat(invalids) if invalids.any?
       end
-
-      form.fields_for(association, records) do |f|
-        content_tag(:div, basic_markup(options[:html], association).merge(data: { target: 'abyme.fields' })) do
-          block_given? ? yield(f) : render("abyme/#{association.to_s.singularize}_fields", f: f)
+      
+      content_tag(:div, options[:wrapper_html]) do
+        form.fields_for(association, records) do |f|
+          content_tag(:div, basic_fields_markup(options[:fields_html], association).merge(data: { target: 'abyme.fields' })) do
+            block_given? ? yield(f) : render("abyme/#{association.to_s.singularize}_fields", f: f)
+          end
         end
       end
     end
@@ -74,7 +79,7 @@ module Abyme
       end
     end
 
-    def basic_markup(html, association = nil)
+    def basic_fields_markup(html, association = nil)
       if html && html[:class]
         html[:class] = "abyme--fields #{association.to_s.singularize}-fields #{html[:class]}" 
       else
