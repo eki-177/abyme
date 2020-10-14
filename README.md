@@ -259,7 +259,7 @@ As you may have seen above, you can also pass a block to the method to give it w
 
 
 #### #abymize(:association, form_object)
-This is the container for all your nested fields. It takes two parameters (the symbolized association and the `form_builder`), and some optional ones :
+This is the container for all your nested fields. It takes two parameters (the symbolized association and the `form_builder`), and some optional ones. Please note an id is automatically added to this element, which value is : `abyme--association`. 
 * `limit:` : allows you to limit the number of fields that can be created through JS. If you need to limit the number of associations in database, you will need to pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for). 
 
 *When in auto mode*, the abymize method can take a few options:
@@ -267,12 +267,24 @@ This is the container for all your nested fields. It takes two parameters (the s
 * All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
 
 ## Events
+This part is still a work in progress and subject to change. We're providing some basic self-explanatory events to attach to. These are emitted by the main container (created by the `abymize` method).
+
+We're currently thinking about a way to attach to these via Stimulus. Coming soon !
 
 ### Lifecycle events
-TODO...
+* `abyme:before-add`
+* `abyme:after-add`
+* `abyme:before-remove`
+* `abyme:after-remove`
+```javascript
+document.getElementById('abyme--tasks').addEventListener('abyme:before-add', yourCallback)
+```
 
 ### Other events
-TODO...
+* `abyme:limit-reached`
+```javascript
+document.getElementById('abyme--tasks').addEventListener('abyme:limit-reached', () => { alert('You reached the max number of tasks !) })
+```
 
 ## Development
 
