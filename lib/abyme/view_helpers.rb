@@ -58,7 +58,7 @@ module Abyme
         form.fields_for(association, records) do |f|
           content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
             block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
-          endg
+          end
         end
       end
     end
