@@ -74,6 +74,7 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.3)
+    sqlite3 (1.4.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tzinfo (1.2.7)
@@ -89,6 +90,7 @@ DEPENDENCIES
   rails-dummy
   rake (~> 13.0)
   rspec-rails (~> 3.8.2)
+  sqlite3
 
 BUNDLED WITH
    2.1.4
