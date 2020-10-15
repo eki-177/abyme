@@ -4,6 +4,7 @@ export default class extends Controller {
   static targets = ['template', 'associations', 'fields', 'newFields'];
 
   connect() {
+    console.log("Abyme connected")
     if (this.count) {
       this.addDefaultAssociations();
     }
