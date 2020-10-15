@@ -83,11 +83,11 @@ module Abyme
       options[:content] ||= 'Add Association'
   
       if block_given?
-        content_tag(options[:tag], { type: :button, data: { action: action } }.merge(options[:html])) do
+        content_tag(options[:tag], { data: { action: action } }.merge(options[:html])) do
           capture(&block)
         end
       else
-        content_tag(options[:tag], options[:content], { type: :button, data: { action: action } }.merge(options[:html]))
+        content_tag(options[:tag], options[:content], { data: { action: action } }.merge(options[:html]))
       end
     end
 

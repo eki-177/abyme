@@ -1,0 +1,195 @@
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTasks (20201006141122)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "status" varchar, "project_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02e851e3b7"
+FOREIGN KEY ("project_id")
+  REFERENCES "projects" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_tasks_on_project_id" ON "tasks" ("project_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201006141122"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20201006141154)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar, "task_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_6bd05453df"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_task_id" ON "comments" ("task_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201006141154"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateParticipants (20201009214839)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "participants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "project_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f5ead802f1"
+FOREIGN KEY ("project_id")
+  REFERENCES "projects" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_participants_on_project_id" ON "participants" ("project_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201009214839"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAbymeProjects (20201015213632)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "projects" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201015213632"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-10-15 21:43:35.562832"], ["updated_at", "2020-10-15 21:43:35.562832"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-10-16 00:26:00 +0200
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  Rendered projects/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1108)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.7ms | Allocations: 9543)
+
+
+  
+ActionView::Template::Error (uninitialized constant #<Class:0x00007f85d01febb0>::ProjectCardComponent):
+     5: 			<%= link_to 'New Project', new_project_path, class: 'main-btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer' %>
+     6: 	  </div>
+     7: 	  <div class="projects">
+     8: 	  	<%= render ProjectCardComponent.with_collection(@projects) %>
+     9: 	  </div>
+    10: 	</div>
+    11: </div>
+  
+app/views/projects/index.html.erb:8
+Started GET "/projects/new" for ::1 at 2020-10-16 00:26:56 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 72.7ms | Allocations: 30541)
+  Rendered projects/new.html.erb within layouts/application (Duration: 73.7ms | Allocations: 30851)
+Completed 500 Internal Server Error in 75ms (ActiveRecord: 0.0ms | Allocations: 31271)
+
+
+  
+ActionView::Template::Error (undefined method `simple_form_for' for #<#<Class:0x00007f85d01fe958>:0x00007f8608555678>):
+    1: <%= simple_form_for @project do |f| %>
+    2: 	<div class="full-height-wrapper text-gray-800 flex" data-controller="projects">
+    3: 		<div class="project-details container bg-white p-8 w-1/3 bg-indigo-200 overflow-scroll">	
+    4: 			<div class="field mb-4">
+  
+app/views/projects/_form.html.erb:1
+app/views/projects/new.html.erb:2
+Started GET "/projects/new" for ::1 at 2020-10-16 00:28:01 +0200
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 2.6ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 1.8ms | Allocations: 1207)
+  Rendered projects/_task_fields.html.erb (Duration: 14.0ms | Allocations: 7311)
+  Rendered projects/_form.html.erb (Duration: 127.1ms | Allocations: 39765)
+  Rendered projects/new.html.erb within layouts/application (Duration: 128.6ms | Allocations: 40302)
+Completed 500 Internal Server Error in 231ms (ActiveRecord: 2.3ms | Allocations: 80548)
+
+
+  
+ActionView::Template::Error (undefined method `stylesheet_pack_tag' for #<#<Class:0x00007f8934122360>:0x00007f8934120970>):
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:   </head>
+    12: 
+  
+app/views/layouts/application.html.erb:9
+Started GET "/projects/new" for ::1 at 2020-10-16 00:28:43 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.3ms | Allocations: 757)
+  Rendered abyme/_comment_fields.html.erb (Duration: 1.4ms | Allocations: 883)
+  Rendered projects/_task_fields.html.erb (Duration: 5.0ms | Allocations: 2748)
+  Rendered projects/_form.html.erb (Duration: 12.4ms | Allocations: 6705)
+  Rendered projects/new.html.erb within layouts/application (Duration: 13.2ms | Allocations: 7007)
+Completed 500 Internal Server Error in 90ms (ActiveRecord: 0.0ms | Allocations: 38989)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<#<Class:0x00007f8953c36a70>:0x00007f8953c34978>):
+     7: 
+     8:     <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%#= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:   </head>
+    12: 
+    13:   <body class="bg-gray-100 font-sans">
+  
+app/views/layouts/application.html.erb:10
+Started GET "/projects/new" for ::1 at 2020-10-16 00:28:47 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.8ms | Allocations: 585)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.9ms | Allocations: 704)
+  Rendered projects/_task_fields.html.erb (Duration: 2.9ms | Allocations: 2167)
+  Rendered projects/_form.html.erb (Duration: 7.6ms | Allocations: 5232)
+  Rendered projects/new.html.erb within layouts/application (Duration: 7.8ms | Allocations: 5297)
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 0.0ms | Allocations: 36515)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<#<Class:0x00007f8953c36a70>:0x00007f8964393bc8>):
+     7: 
+     8:     <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%#= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:   </head>
+    12: 
+    13:   <body class="bg-gray-100 font-sans">
+  
+app/views/layouts/application.html.erb:10
+Started GET "/projects/new" for ::1 at 2020-10-16 00:30:15 +0200
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 2.2ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 1.9ms | Allocations: 1207)
+  Rendered projects/_task_fields.html.erb (Duration: 13.3ms | Allocations: 7311)
+  Rendered projects/_form.html.erb (Duration: 98.0ms | Allocations: 39765)
+  Rendered projects/new.html.erb within layouts/application (Duration: 99.7ms | Allocations: 40303)
+Completed 500 Internal Server Error in 199ms (ActiveRecord: 2.3ms | Allocations: 80445)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<#<Class:0x00007f858b2987c8>:0x00007f858b2aa630>):
+     7: 
+     8:     <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%#= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:   </head>
+    12: 
+    13:   <body class="bg-gray-100 font-sans">
+  
+app/views/layouts/application.html.erb:10
+Started GET "/projects/new" for ::1 at 2020-10-16 00:30:16 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.7ms | Allocations: 586)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.8ms | Allocations: 709)
+  Rendered projects/_task_fields.html.erb (Duration: 2.9ms | Allocations: 2173)
+  Rendered projects/_form.html.erb (Duration: 7.9ms | Allocations: 5304)
+  Rendered projects/new.html.erb within layouts/application (Duration: 8.1ms | Allocations: 5369)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 0.0ms | Allocations: 36619)
+
+
+  
+ActionView::Template::Error (undefined method `javascript_pack_tag' for #<#<Class:0x00007f858b2987c8>:0x00007f856aaeb2c0>):
+     7: 
+     8:     <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%#= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    11:   </head>
+    12: 
+    13:   <body class="bg-gray-100 font-sans">
+  
+app/views/layouts/application.html.erb:10
