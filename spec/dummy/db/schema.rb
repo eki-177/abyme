@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_213632) do
+ActiveRecord::Schema.define(version: 2020_10_09_214839) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "task_id", null: false
+    t.bigint "task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["task_id"], name: "index_comments_on_task_id"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_213632) do
 
   create_table "participants", force: :cascade do |t|
     t.string "email"
-    t.integer "project_id", null: false
+    t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_participants_on_project_id"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_213632) do
     t.string "title"
     t.text "description"
     t.string "status"
-    t.integer "project_id", null: false
+    t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"

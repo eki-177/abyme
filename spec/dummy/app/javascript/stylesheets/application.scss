@@ -1,0 +1,42 @@
+@import 'tailwindcss/base';
+.main-color {
+  @apply .bg-indigo-500;
+}
+
+.main-color-hover {
+  @apply .bg-indigo-700;
+}
+
+.main-btn {
+  @apply .main-color;
+}
+
+.main-btn:hover {
+  @apply .main-color-hover;
+}
+
+.form-input {
+  @apply .appearance-none .border .rounded .w-full .py-2 .px-3 .text-gray-700 .leading-tight .mb-1;
+
+  // &:focus {
+  //   outline: none !important;
+  //   box-shadow: none !important;
+  //   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0) !important;
+  // }
+}
+
+.form-input-alt {
+  @apply .appearance-none .border .rounded .w-full .py-2 .px-3 .text-white .leading-tight .mb-1;
+
+  // &:focus {
+  //   outline: none !important;
+  //   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0) !important;
+  // }
+}
+
+.border-1 {
+  border-width: 1px;
+}
+
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
