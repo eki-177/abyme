@@ -35,7 +35,7 @@ module Abyme
           form.fields_for association, association.to_s.classify.constantize.new, child_index: 'NEW_RECORD' do |f|
             content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
               # Here, if a block is passed, we're passing the association fields to it, rather than the form itself
-              block_given? ? yield(f) : render("abyme/#{association.to_s.singularize}_fields", f: f)
+              block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
             end
           end
         end
@@ -57,8 +57,8 @@ module Abyme
       content_tag(:div, options[:wrapper_html]) do
         form.fields_for(association, records) do |f|
           content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
-            block_given? ? yield(f) : render("abyme/#{association.to_s.singularize}_fields", f: f)
-          end
+            block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
+          endg
         end
       end
     end
