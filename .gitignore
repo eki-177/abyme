@@ -11,3 +11,11 @@ yarn-error.log
 
 # rspec failure tracking
 .rspec_status
+node_modules
+
+# Dummy app
+spec/dummy/db/*.sqlite3
+spec/dummy/db/*.sqlite3-journal
+spec/dummy/db/log/*.log
+spec/dummy/tmp/
+spec/dummy/.sass-cache
