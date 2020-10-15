@@ -1,3 +1,5 @@
+require_relative "abyme_builder"
+
 module Abyme
   module ViewHelpers
 
