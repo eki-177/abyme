@@ -11,7 +11,6 @@ load 'rails/tasks/statistics.rake'
 
 Bundler::GemHelper.install_tasks
 
-
 begin
   require 'bundler/setup'
 rescue LoadError
