@@ -23,7 +23,7 @@ gem 'abyme'
 And then execute:
 
     $ bundle
-    $ yarn add 'abyme'
+    $ yarn add abyme
 
 
 Assuming you [already installed Stimulus](https://stimulusjs.org/handbook/introduction), add this in `app/javascript/controllers/index.js` :
