@@ -1,0 +1,826 @@
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:23:27 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.4ms | Allocations: 400)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:23:28 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.2ms | Allocations: 162)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:23:29 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 154)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:23:30 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 154)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:23:31 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 154)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:23:32 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 154)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:23:33 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 154)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:26:05 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.4ms | Allocations: 402)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:26:06 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.2ms | Allocations: 162)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:31:27 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.4ms | Allocations: 402)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:31:28 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 162)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:31:29 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.2ms | Allocations: 154)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:40:39 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.4ms | Allocations: 3341)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:40:40 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 162)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:40:41 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 154)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:40:42 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 154)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:41:34 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.4ms | Allocations: 400)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:41:35 +0200
+Processing by ProjectsController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms | Allocations: 162)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProjects (20201006141005)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "projects" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201006141005"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTasks (20201006141122)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "status" varchar, "project_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_02e851e3b7"
+FOREIGN KEY ("project_id")
+  REFERENCES "projects" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_tasks_on_project_id" ON "tasks" ("project_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201006141122"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20201006141154)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar, "task_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_6bd05453df"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_task_id" ON "comments" ("task_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201006141154"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateParticipants (20201009214839)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "participants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "project_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f5ead802f1"
+FOREIGN KEY ("project_id")
+  REFERENCES "projects" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_participants_on_project_id" ON "participants" ("project_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201009214839"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2020-10-16 20:42:48.992091"], ["updated_at", "2020-10-16 20:42:48.992091"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:42:57 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 28.4ms | Allocations: 3541)
+  Rendered projects/new.html.erb within layouts/application (Duration: 31.1ms | Allocations: 4064)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 1.1ms | Allocations: 10059)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:42:58 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 5.9ms | Allocations: 2611)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2664)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2886)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:42:59 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 6.1ms | Allocations: 2610)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2662)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2875)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:00 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 11.4ms | Allocations: 2610)
+  Rendered projects/new.html.erb within layouts/application (Duration: 11.5ms | Allocations: 2662)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 2875)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:01 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 5.4ms | Allocations: 2610)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2662)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2875)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:02 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 5.8ms | Allocations: 2610)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2662)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2875)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:03 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 5.3ms | Allocations: 2610)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2662)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2875)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:04 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 5.5ms | Allocations: 2610)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2662)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2875)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:05 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 13.9ms | Allocations: 2610)
+  Rendered projects/new.html.erb within layouts/application (Duration: 14.1ms | Allocations: 2662)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 2877)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:06 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 5.7ms | Allocations: 2610)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2662)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2875)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:07 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 6.0ms | Allocations: 2610)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2662)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2875)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:48 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 26.5ms | Allocations: 3769)
+  Rendered projects/new.html.erb within layouts/application (Duration: 28.2ms | Allocations: 4292)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 1.1ms | Allocations: 10286)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:49 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 5.3ms | Allocations: 2736)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2789)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 3011)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:50 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 4.9ms | Allocations: 2735)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2787)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 3000)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:51 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 9.3ms | Allocations: 2735)
+  Rendered projects/new.html.erb within layouts/application (Duration: 9.5ms | Allocations: 2787)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 3000)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:43:52 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 4.7ms | Allocations: 2735)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2787)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 3000)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:44:58 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 2.7ms | Allocations: 556)
+  Rendered projects/_task_fields.html.erb (Duration: 13.1ms | Allocations: 6098)
+  Rendered projects/_form.html.erb (Duration: 97.8ms | Allocations: 26206)
+  Rendered projects/new.html.erb within layouts/application (Duration: 99.4ms | Allocations: 26728)
+Completed 500 Internal Server Error in 117ms (ActiveRecord: 2.4ms | Allocations: 32721)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:44:59 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered projects/_task_fields.html.erb (Duration: 17.9ms | Allocations: 5298)
+  Rendered projects/_form.html.erb (Duration: 22.0ms | Allocations: 6606)
+  Rendered projects/new.html.erb within layouts/application (Duration: 22.1ms | Allocations: 6658)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.0ms | Allocations: 6880)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:00 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered projects/_task_fields.html.erb (Duration: 9.9ms | Allocations: 5298)
+  Rendered projects/_form.html.erb (Duration: 12.5ms | Allocations: 6602)
+  Rendered projects/new.html.erb within layouts/application (Duration: 12.6ms | Allocations: 6653)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 6866)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:01 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered projects/_task_fields.html.erb (Duration: 11.4ms | Allocations: 5298)
+  Rendered projects/_form.html.erb (Duration: 14.0ms | Allocations: 6602)
+  Rendered projects/new.html.erb within layouts/application (Duration: 14.2ms | Allocations: 6653)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 6866)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:02 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered projects/_task_fields.html.erb (Duration: 9.6ms | Allocations: 5298)
+  Rendered projects/_form.html.erb (Duration: 12.2ms | Allocations: 6598)
+  Rendered projects/new.html.erb within layouts/application (Duration: 12.3ms | Allocations: 6649)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 6862)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:03 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered projects/_task_fields.html.erb (Duration: 18.1ms | Allocations: 5298)
+  Rendered projects/_form.html.erb (Duration: 20.9ms | Allocations: 6598)
+  Rendered projects/new.html.erb within layouts/application (Duration: 21.0ms | Allocations: 6649)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms | Allocations: 6864)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:04 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered projects/_task_fields.html.erb (Duration: 10.8ms | Allocations: 5298)
+  Rendered projects/_form.html.erb (Duration: 13.7ms | Allocations: 6602)
+  Rendered projects/new.html.erb within layouts/application (Duration: 13.8ms | Allocations: 6653)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 6866)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:41 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.5ms | Allocations: 556)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.9ms | Allocations: 426)
+  Rendered projects/_task_fields.html.erb (Duration: 13.5ms | Allocations: 5478)
+  Rendered projects/_form.html.erb (Duration: 86.8ms | Allocations: 25817)
+  Rendered projects/new.html.erb within layouts/application (Duration: 88.6ms | Allocations: 26337)
+Completed 500 Internal Server Error in 113ms (ActiveRecord: 2.9ms | Allocations: 35758)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:42 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 3.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 7.7ms | Allocations: 2335)
+  Rendered projects/new.html.erb within layouts/application (Duration: 7.8ms | Allocations: 2385)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms | Allocations: 5232)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:43 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.5ms | Allocations: 2330)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2379)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 5217)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:44 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2330)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2379)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 5217)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:45 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2375)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 5213)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:46 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2375)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms | Allocations: 5215)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:47 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2330)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2379)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 5217)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:48 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2375)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 5214)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:49 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.0ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 1.1ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 8.3ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 8.4ms | Allocations: 2375)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms | Allocations: 5213)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:45:50 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 1.1ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 3.1ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 7.6ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 8.4ms | Allocations: 2375)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 5214)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:46:12 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.6ms | Allocations: 556)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.8ms | Allocations: 426)
+  Rendered projects/_task_fields.html.erb (Duration: 10.4ms | Allocations: 5478)
+  Rendered projects/_form.html.erb (Duration: 84.5ms | Allocations: 25817)
+  Rendered projects/new.html.erb within layouts/application (Duration: 86.1ms | Allocations: 26337)
+Completed 500 Internal Server Error in 110ms (ActiveRecord: 3.1ms | Allocations: 35749)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:46:13 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.0ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 3.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 8.4ms | Allocations: 2335)
+  Rendered projects/new.html.erb within layouts/application (Duration: 8.5ms | Allocations: 2385)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 5232)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:46:14 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.5ms | Allocations: 2330)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2379)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 5217)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:46:15 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2330)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2379)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 5217)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:46:16 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.1ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2375)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 5213)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:46:17 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.1ms | Allocations: 2330)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2379)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 5219)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:46:18 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.0ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2375)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 5213)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:46:19 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.8ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.7ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.1ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2375)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms | Allocations: 5213)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:46:20 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 3.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 8.0ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 9.0ms | Allocations: 2375)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 5213)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:06 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.6ms | Allocations: 556)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.9ms | Allocations: 426)
+  Rendered projects/_task_fields.html.erb (Duration: 10.9ms | Allocations: 5478)
+  Rendered projects/_form.html.erb (Duration: 83.7ms | Allocations: 25817)
+  Rendered projects/new.html.erb within layouts/application (Duration: 85.6ms | Allocations: 26337)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 165)
+Completed 200 OK in 102ms (Views: 89.3ms | ActiveRecord: 2.9ms | Allocations: 32940)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:06 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"A project with no task", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.6ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "A project with no task"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-16 20:48:06.931671"], ["updated_at", "2020-10-16 20:48:06.931671"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:52725/projects
+Completed 302 Found in 6ms (ActiveRecord: 1.5ms | Allocations: 1014)
+Started GET "/projects" for 127.0.0.1 at 2020-10-16 22:48:06 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  Rendered projects/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 959)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 1338)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:07 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.1ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.2ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 7.2ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 9ms (Views: 8.9ms | ActiveRecord: 0.0ms | Allocations: 2711)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:08 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 2711)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:08 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.4ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 2705)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:09 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 2705)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:09 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>"A project description"}, "commit"=>"Save"}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 9.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 11.9ms | Allocations: 2334)
+  Rendered projects/new.html.erb within layouts/application (Duration: 12.0ms | Allocations: 2383)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 22ms (Views: 12.7ms | ActiveRecord: 0.0ms | Allocations: 6135)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:12 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.5ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 2711)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:13 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.6ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 2705)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:13 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.1ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.0ms | Allocations: 3618)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:16 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 181)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2332)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2381)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2712)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:16 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 807)
+  Rendered projects/_form.html.erb (Duration: 11.9ms | Allocations: 2330)
+  Rendered projects/new.html.erb within layouts/application (Duration: 12.0ms | Allocations: 2379)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.0ms | Allocations: 3581)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:19 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.5ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 2711)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:19 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.4ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.4ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 3574)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:20 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 3574)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:21 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 3574)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:21 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 974)
+  Rendered projects/_form.html.erb (Duration: 4.8ms | Allocations: 2649)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2698)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 3897)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:22 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.7ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 2711)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:22 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.1ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 3574)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:24 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.8ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.6ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 2705)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:25 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.6ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.6ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.2ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.8ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 2705)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:25 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.6ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.9ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.9ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 2705)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:25 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.2ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.7ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 3574)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:27 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.1ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.0ms | Allocations: 2711)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:28 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.1ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 3574)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:30 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 2705)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:30 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.9ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 3574)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:30 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2330)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2379)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 3582)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:33 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 178)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 804)
+  Rendered projects/_form.html.erb (Duration: 5.2ms | Allocations: 2370)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2419)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 2770)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:33 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.6ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 3591)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:33 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 3574)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:33 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.4ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.8ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 3574)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:33 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.5ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 3574)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:36 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.7ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.1ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.6ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 2711)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-16 22:48:37 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2711)
+Started POST "/projects" for 127.0.0.1 at 2020-10-16 22:48:37 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"", "description"=>""}}
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.1ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2375)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.0ms | Allocations: 3574)

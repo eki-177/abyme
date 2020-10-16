@@ -1,14 +1,14 @@
-<%= simple_form_for @project do |f| %>
+<%= form_for @project do |f| %>
 	<div class="full-height-wrapper text-gray-800 flex" data-controller="projects">
 		<div class="project-details container bg-white p-8 w-1/3 bg-indigo-200 overflow-scroll">	
 			<div class="field mb-4">
-				<%= f.input :title, label: false, placeholder: 'Project title...',
+				<%= f.text_field :title, label: false, placeholder: 'Project title...',
 										input_html: { class: 'text-4xl font-bold mb-4 w-full' } %>
 				
 			</div>
 			
 			<div class="field mb-4">
-				<%= f.input :description, label: false, placeholder: 'Project description...',
+				<%= f.text_area :description, label: false, placeholder: 'Project description...',
 										input_html: { class: 'w-full' } %>
 			</div>
 

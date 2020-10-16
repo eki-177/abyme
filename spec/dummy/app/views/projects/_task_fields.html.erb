@@ -2,7 +2,7 @@
   <div class="flex align-center justify-between task-card">
     <div class="w-1/2 p-6">
 	    <div class="field mb-2">
-        <%= f.input :title, 
+        <%= f.text_field :title, 
                     input_html: { class: 'text-4xl font-bold mb-2 w-full' }, 
                     label: false,
                     placeholder: 'Task title...' %>
@@ -10,7 +10,7 @@
       </div>
 
 	    <div class="field mb-2">
-        <%= f.input :description, 
+        <%= f.text_area :description, 
                     input_html: { class: 'field mb-2 w-full' },
                     label: false,
                     placeholder: 'Task description...' %>

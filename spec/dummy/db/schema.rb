@@ -12,12 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_10_09_214839) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.bigint "task_id", null: false
+    t.integer "task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["task_id"], name: "index_comments_on_task_id"
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_10_09_214839) do
 
   create_table "participants", force: :cascade do |t|
     t.string "email"
-    t.bigint "project_id", null: false
+    t.integer "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_participants_on_project_id"
@@ -42,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_10_09_214839) do
     t.string "title"
     t.text "description"
     t.string "status"
-    t.bigint "project_id", null: false
+    t.integer "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"

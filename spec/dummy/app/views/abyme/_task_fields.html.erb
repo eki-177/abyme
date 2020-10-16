@@ -2,16 +2,16 @@
   <div class="flex align-center justify-between">
     <div class="w-1/2 p-6">
 	    <div class="field mb-4">
-        <%= f.input :title, 
-                    input_html: { class: 'text-4xl font-bold mb-4 w-full' }, 
+        <%= f.text_field :title, 
+                    class: 'text-4xl font-bold mb-4 w-full', 
                     label: false,
                     placeholder: 'Task title...' %>
         
       </div>
 
 	    <div class="field mb-4">
-        <%= f.input :description, 
-                    input_html: { class: 'field mb-4 w-full' },
+        <%= f.text_area :description, 
+                    class: 'field mb-4 w-full',
                     label: false,
                     placeholder: 'Task description...' %>
                     
