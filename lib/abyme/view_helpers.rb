@@ -67,11 +67,13 @@ module Abyme
   
     def add_association(options = {}, &block)
       action = 'click->abyme#add_association'
+      options[:content] ||= 'Add Association'
       create_button(action, options, &block)
     end
   
     def remove_association(options = {}, &block)
       action = 'click->abyme#remove_association'
+      options[:content] ||= 'Remove Association'
       create_button(action, options, &block)
     end
 
@@ -80,7 +82,6 @@ module Abyme
     def create_button(action, options, &block)
       options[:html] ||= {}
       options[:tag] ||= :button
-      options[:content] ||= 'Add Association'
   
       if block_given?
         content_tag(options[:tag], { data: { action: action } }.merge(options[:html])) do
