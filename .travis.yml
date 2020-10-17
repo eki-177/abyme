@@ -18,5 +18,5 @@ services:
 script:
   - RAILS_ENV=test bundle exec rake db:create
   - RAILS_ENV=test bundle exec rake db:migrate
-  - SECRET_KEY_BASE=a RAILS_ENV=development
+  - bundle exec rake db:test:prepare
   - bundle exec rake spec
