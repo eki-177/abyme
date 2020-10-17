@@ -28,9 +28,9 @@ jobs:
       with:
         ruby-version: 2.6
     - name: Install sqlite headers
-        run: |
-          sudo apt-get update
-          sudo apt-get install libsqlite3-dev
+      run: |
+        sudo apt-get update
+        sudo apt-get install libsqlite3-dev
     - name: Install dependencies
       run: bundle install
       
