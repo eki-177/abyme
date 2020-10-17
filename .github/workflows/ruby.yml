@@ -35,9 +35,7 @@ jobs:
       run: bundle install
       
     - name: Prepare Database
-      run: |
-        cp config/database.yml.github-actions spec/dummy/config/database.yml
-        bundle exec rails db:create db:migrate
+      run: bundle exec rails db:create db:migrate
       env:
         RAILS_ENV: test
           
