@@ -20,28 +20,28 @@ RSpec.describe "Helper options" do
       end
     end
     
-    describe "Render error feedback", type: :system do
-      it 'should render error feedback for main resource' do
-        visit new_project_path
-        fill_in('project_description', with: 'A project description')
-        click_on('Save')
-        save_and_open_page
-        element = find('.error')
-        expect(element).not_to be_nil
-      end
+    # describe "Render error feedback", type: :system do
+    #   it 'should render error feedback for main resource' do
+    #     visit new_project_path
+    #     fill_in('project_description', with: 'A project description')
+    #     click_on('Save')
+    #     save_and_open_page
+    #     element = find('.error')
+    #     expect(element).not_to be_nil
+    #   end
     
-      it 'should render error feedback for nested resources' do
-        visit new_project_path
-        fill_in('project_title', with: "A project with two tasks")
-        fill_in('project_description', with: 'A project description')
-        add_tasks(1)
-        add_tasks_with_errors(1)
-        click_on('Save')
-        save_and_open_page
-        element = find('.error')
-        expect(element).not_to be_nil
-      end
-    end
+    #   it 'should render error feedback for nested resources' do
+    #     visit new_project_path
+    #     fill_in('project_title', with: "A project with two tasks")
+    #     fill_in('project_description', with: 'A project description')
+    #     add_tasks(1)
+    #     add_tasks_with_errors(1)
+    #     click_on('Save')
+    #     save_and_open_page
+    #     element = find('.error')
+    #     expect(element).not_to be_nil
+    #   end
+    # end
   
     describe "HTML attributes for 'abyme-fields' & add/remove association", type: :system do
       it 'should create the correct id' do
