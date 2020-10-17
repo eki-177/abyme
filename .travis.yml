@@ -13,8 +13,8 @@ before_install:
 - sudo apt-get update
 - sudo apt-get install google-chrome-stable
 
-# addons:
-#   postgresql: '9.6'
+services:
+  - sqlite3
 script:
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare

@@ -12,19 +12,14 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 
-# Capybara.register_driver :headless_chrome do |app|
-#   options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu window-size=1400,900])
-#   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
-# end
-# Capybara.save_path = Rails.root.join('tmp/capybara')
-# Capybara.javascript_driver = :headless_chrome
-
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
