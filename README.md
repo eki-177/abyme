@@ -271,7 +271,6 @@ As you may have seen above, you can also pass a block to the method to give it w
   <% end %>
 ```
 
-
 #### #abymize(:association, form_object)
 This is the container for all your nested fields. It takes two parameters (the symbolized association and the `form_builder`), and some optional ones. Please note an id is automatically added to this element, which value is : `abyme--association`. 
 * `partial:` : allows you to indicate a custom partial path for both `records` and `new_records`
