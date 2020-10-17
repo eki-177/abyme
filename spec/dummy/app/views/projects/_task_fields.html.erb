@@ -1,0 +1,30 @@
+<div class="custom-partial border-solid border-grey-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal mb-5">
+  <div class="flex align-center justify-between task-card">
+    <div class="w-1/2 p-6">
+	    <div class="field mb-2">
+        <%= f.text_field :title, 
+                    input_html: { class: 'text-4xl font-bold mb-2 w-full' }, 
+                    label: false,
+                    placeholder: 'Task title...' %>
+        
+      </div>
+
+	    <div class="field mb-2">
+        <%= f.text_area :description, 
+                    input_html: { class: 'field mb-2 w-full' },
+                    label: false,
+                    placeholder: 'Task description...' %>
+                    
+      </div>
+
+      <%= f.hidden_field :_destroy %>
+
+      <%= remove_association(tag: :div) do %>
+        <p id="remove-task">Remove task</p>
+      <% end %>
+    </div>
+    <div class="w-1/2 border-gray-300 comments-container bg-gray-200 p-4">
+      <%= abymize(:comments, f, min_count: 1) %>
+    </div>
+  </div>
+</div>

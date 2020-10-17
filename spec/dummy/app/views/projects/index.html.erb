@@ -1,0 +1,13 @@
+<div class="full-height-wrapper p-8 text-gray-800">
+	<div class="container mx-auto bg-white p-8" data-controller="projects">
+	  <div class="projects-header flex items-center justify-between mb-5">
+	  	<h1 class="text-4xl font-bold">My Projects</h1>
+			<%= link_to 'New Project', new_project_path, class: 'main-btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer' %>
+	  </div>
+	  <div class="projects">
+			<% @projects.each do |project| %>
+				<%= render "project_card", project: project %>
+			<% end %>
+	  </div>
+	</div>
+</div>

@@ -28,7 +28,15 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 13.0"
+  # Tests
   spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "rails-dummy"
+  spec.add_development_dependency 'rails-controller-testing'
+  spec.add_development_dependency 'database_cleaner-active_record'
+  spec.add_development_dependency 'capybara'
+  spec.add_development_dependency 'webdrivers', '~> 4.0'
+  # Dummy app
   spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency 'rails'
+  spec.add_development_dependency 'puma'
+  spec.add_development_dependency 'simplecov'
 end
