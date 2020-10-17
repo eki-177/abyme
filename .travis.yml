@@ -6,8 +6,8 @@ cache:
   yarn: true
 rvm:
   - 2.6.3
+sudo: required
 
-# sudo: required
 before_install: 
 - gem install bundler -v 2.0.2
 - sudo apt-get update
