@@ -33,10 +33,10 @@ RSpec.configure do |config|
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
   #
-  config.before(:each, type: :system) do
-    driven_by :rack_test
-  end
-  
+  # config.before(:each, type: :system) do
+  #   driven_by :rack_test
+  # end
+
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do
       example.run
