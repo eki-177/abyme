@@ -2,6 +2,8 @@
 require 'spec_helper'
 require 'factory_bot'
 require 'database_cleaner'
+require 'webpacker'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('dummy/config/environment.rb', __dir__)
 # Prevent database truncation if the environment is production

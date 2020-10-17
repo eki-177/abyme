@@ -37,8 +37,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'webdrivers', '~> 4.0'
   spec.add_development_dependency 'launchy'
   # Dummy app
-  spec.add_development_dependency "rails"
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency 'webpacker'
+  spec.add_development_dependency 'rails'
   spec.add_development_dependency 'puma'
 end

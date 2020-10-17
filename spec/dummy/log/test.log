@@ -824,3 +824,70 @@ Processing by ProjectsController#create as HTML
   Rendered projects/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2375)
   Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
 Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.0ms | Allocations: 3574)
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-17 13:04:43 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 3.3ms | Allocations: 551)
+  Rendered abyme/_comment_fields.html.erb (Duration: 1.5ms | Allocations: 426)
+  Rendered projects/_task_fields.html.erb (Duration: 13.1ms | Allocations: 5478)
+  Rendered projects/_form.html.erb (Duration: 81.1ms | Allocations: 25810)
+  Rendered projects/new.html.erb within layouts/application (Duration: 83.8ms | Allocations: 26330)
+Completed 500 Internal Server Error in 137ms (ActiveRecord: 3.1ms | Allocations: 35744)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-17 13:04:44 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.7ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.7ms | Allocations: 2335)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2385)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms | Allocations: 5232)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-17 13:04:45 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2330)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2379)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 5217)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-17 13:04:46 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2330)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2379)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 5217)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-17 13:04:47 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2375)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 5213)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-17 13:04:48 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2326)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2375)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 5215)
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-17 13:05:40 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.7ms | Allocations: 551)
+  Rendered abyme/_comment_fields.html.erb (Duration: 1.0ms | Allocations: 426)
+  Rendered projects/_task_fields.html.erb (Duration: 11.7ms | Allocations: 5478)
+  Rendered projects/_form.html.erb (Duration: 70.4ms | Allocations: 25776)
+  Rendered projects/new.html.erb within layouts/application (Duration: 72.6ms | Allocations: 26296)
+Completed 500 Internal Server Error in 97ms (ActiveRecord: 3.2ms | Allocations: 35708)
