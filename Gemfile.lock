@@ -200,6 +200,7 @@ DEPENDENCIES
   rails-controller-testing
   rake (~> 13.0)
   rspec-rails
+  selenium-webdriver
   simplecov
   sqlite3
   webdrivers
