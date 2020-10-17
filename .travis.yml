@@ -1,7 +1,22 @@
 ---
 sudo: false
 language: ruby
-cache: bundler
+cache:
+  bundler: true
+  yarn: true
 rvm:
   - 2.6.3
-before_install: gem install bundler -v 2.0.2
+
+# sudo: required
+before_install: 
+- gem install bundler -v 2.0.2
+- sudo apt-get update
+- sudo apt-get install google-chrome-stable
+
+# addons:
+#   postgresql: '9.6'
+script:
+  - bundle exec rake db:schema:load
+  - bundle exec rake db:test:prepare
+  - SECRET_KEY_BASE=a RAILS_ENV=development
+  - bundle exec rake rspec
