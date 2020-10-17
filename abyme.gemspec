@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rails-controller-testing'
   spec.add_development_dependency 'database_cleaner-active_record'
   spec.add_development_dependency 'capybara'
-  spec.add_development_dependency 'webdrivers', '~> 4.0'
+  spec.add_development_dependency 'webdrivers'
   # Dummy app
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency 'rails'

@@ -202,7 +202,7 @@ DEPENDENCIES
   rspec-rails
   simplecov
   sqlite3
-  webdrivers (~> 4.0)
+  webdrivers
 
 BUNDLED WITH
    2.1.4

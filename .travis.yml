@@ -10,13 +10,16 @@ sudo: required
 
 before_install: 
 - gem install bundler -v 2.0.2
+- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 - sudo apt-get update
 - sudo apt-get install google-chrome-stable
 
 services:
   - sqlite3
+  - chrome: stable
+
 script:
   - RAILS_ENV=test bundle exec rake db:create
   - RAILS_ENV=test bundle exec rake db:migrate
-  - bundle exec rake db:test:prepare
+  - 
   - bundle exec rake spec
