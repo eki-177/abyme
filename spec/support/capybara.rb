@@ -1,5 +1,4 @@
 RSpec.configure do |config|
-  config.include FactoryBot::Syntax::Methods
   config.include Capybara::DSL
 
   Capybara.server = :puma, { Silent: true }

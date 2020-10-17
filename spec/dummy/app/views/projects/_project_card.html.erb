@@ -10,14 +10,14 @@
         Members only
       </p>
       <div class="text-gray-800 font-bold text-xl mb-2">
-        <%= link_to title, edit_project_path(project) %>    
+        <%= link_to project.title, edit_project_path(project) %>    
       </div>
-      <p class="text-gray-700 text-base"><%= description %></p>
+      <p class="text-gray-700 text-base"><%= project.description.truncate(500) %></p>
     </div>
     <div class="flex items-center">
       <img class="w-10 h-10 rounded-full mr-4" src='https://picsum.photos/id/304/200/300' alt="Avatar of Jonathan Reinink">
       <div class="text-sm">
-        <p class="text-gray-600"><%= created_at %></p>
+        <p class="text-gray-600"><%=   	project.created_at.strftime('%A, %b %d') %></p>
       </div>
     </div>
     <div class="absolute top-0 right-0 p-4">

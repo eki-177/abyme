@@ -1,4 +1,5 @@
 require "rails_helper"
+require_relative "../support/helpers/add_nested_attributes"
 
 RSpec.describe "Nested attributes behaviour", type: :system do
   let(:description) { "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)." }
@@ -42,7 +43,9 @@ RSpec.describe "Nested attributes behaviour", type: :system do
   end
 
   context "Adding tasks to an existing project" do
-    before(:example) { @project = create(:project) }
+    before(:example) do 
+      @project = Project.create(title: "test", description: "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire")
+    end
 
     xit 'updates a project without any tasks', js: true do
       visit edit_project_path(@project)
@@ -65,7 +68,7 @@ RSpec.describe "Nested attributes behaviour", type: :system do
 
   context "Removing tasks from an existing project" do
     before(:context) do 
-      @project = create(:project)
+      @project = Project.create(title: "test", description: "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire")
       3.times { |n| @project.tasks.create!(title: "task #{n}", description: "who cares") }
     end
 

@@ -1,4 +1,6 @@
 require "rails_helper"
+require_relative "../support/helpers/add_nested_attributes"
+
 RSpec.describe "Helper options" do
   context 'For new resources' do
     describe "Partials default & custom path", type: :system do
@@ -111,7 +113,7 @@ RSpec.describe "Helper options" do
 
   context "With existing tasks" do
     before(:all) do
-      @project = create(:project)
+      @project = Project.create(title: "test", description: "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire")
       3.times { |n| @project.tasks.create!(title: "task #{n}", description: "who cares") }
     end
 
