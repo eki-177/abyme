@@ -6,17 +6,12 @@ def add_tasks(number = 2)
   descriptions.each_with_index {|title, n| title.fill_in(with: "Small description for task number #{n + 1}") }
 end
 
-def add_tasks_with_errors(number = 2)
-  number.times { find_by_id("add-task").click }
-  titles = find_all_by_id('input', /project_tasks_attributes_\d*_title/)
-  descriptions = find_all_by_id('textarea', /project_tasks_attributes_\d*_description/ )
-  descriptions.each_with_index {|title, n| title.fill_in(with: "Small description for task number #{n + 1}") }
-end
-
-def fill_project_fields(title)
-  fill_in('project_title', with: title)
-  fill_in('project_description', with: "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction).")
-end
+# def add_tasks_with_errors(number = 2)
+#   number.times { find_by_id("add-task").click }
+#   titles = find_all_by_id('input', /project_tasks_attributes_\d*_title/)
+#   descriptions = find_all_by_id('textarea', /project_tasks_attributes_\d*_description/ )
+#   descriptions.each_with_index {|title, n| title.fill_in(with: "Small description for task number #{n + 1}") }
+# end
 
 def add_comments(number = 2)
   add_comment_buttons = all('button', text: 'Add Comment')
