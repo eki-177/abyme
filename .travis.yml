@@ -19,4 +19,4 @@ script:
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
   - SECRET_KEY_BASE=a RAILS_ENV=development
-  - bundle exec rake rspec
+  - bundle exec rake spec
