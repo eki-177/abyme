@@ -4,6 +4,7 @@ SimpleCov.start
 
 require 'spec_helper'
 require 'database_cleaner'
+require "capybara"
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('dummy/config/environment.rb', __dir__)
@@ -25,6 +26,15 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage] }
+  )
+
+  Capybara::Selenium::Driver.new app,
+                                 browser: :chrome,
+                                 desired_capabilities: capabilities
+end
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 Dir['support', '*.rb'].each {|file| require file }
 
@@ -33,9 +43,6 @@ RSpec.configure do |config|
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
   #
-  # config.before(:each, type: :system) do
-  #   driven_by :rack_test
-  # end
 
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do
