@@ -16,7 +16,7 @@ before_install:
 services:
   - sqlite3
 script:
-  - bundle exec rake db:schema:load
-  - bundle exec rake db:test:prepare
+  - RAILS_ENV=test bundle exec rake db:create
+  - RAILS_ENV=test bundle exec rake db:migrate
   - SECRET_KEY_BASE=a RAILS_ENV=development
   - bundle exec rake spec
