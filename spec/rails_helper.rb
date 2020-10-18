@@ -26,19 +26,6 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Capybara.register_driver :headless_chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage] }
-  )
-
-  Capybara::Selenium::Driver.new app,
-                                  browser: :chrome,
-                                  desired_capabilities: capabilities
-
-end
-
-Capybara.default_driver = :selenium_headless
-Capybara.javascript_driver = :selenium_headless
   
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 Dir['support', '*.rb'].each {|file| require file }
