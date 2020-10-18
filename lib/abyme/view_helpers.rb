@@ -37,7 +37,21 @@ module Abyme
       end
     end
 
-    # 
+    # NEW_RECORDS_FOR
+    # this helper is call by the AbymeBuilder #new_records instance method
+    # it generates the html markup for new associations fields
+    # it takes the association (Symbol) and the form object
+    # then a hash of options.
+
+    # Exemple
+    # <div data-target="abyme.associations" data-association="tasks" data-abyme-position="end">
+    #    <template class="abyme--task_template" data-target="abyme.template"> 
+    #       <div data-target="abyme.fields abyme.newFields" class="abyme--fields task-fields">
+    #         ... partial html goes here 
+    #       </div>
+    #    </template>
+    #    ... new rendered fields goes here
+    # </div>
 
     def new_records_for(association, form, options = {}, &block)
       options[:wrapper_html] ||= {}
