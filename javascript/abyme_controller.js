@@ -6,11 +6,11 @@ export default class extends Controller {
   connect() {
     console.log("Abyme Connected")
 
-    // If data-count is present,
-    // add n default fields on page load
-
     if (this.count) {
-      this.addDefaultAssociations();
+      // If data-count is present,
+      // add n default fields on page load
+
+      this.add_default_associations();
     }
   }
 
@@ -169,8 +169,11 @@ export default class extends Controller {
                 >= parseInt(this.element.dataset.limit)
   }
 
-  // Add default blank associations at page load
-  async addDefaultAssociations() {
+  // ADD_DEFAULT_ASSOCIATION
+
+  // Add n default blank associations at page load
+
+  async add_default_associations() {
     let i = 0
     while (i < this.count) {
       this.add_association()
