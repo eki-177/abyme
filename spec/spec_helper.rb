@@ -13,23 +13,6 @@
 # it.
 require 'capybara/rspec'
 require 'webdrivers'
-
-## set up client
-# client = Selenium::WebDriver.for :firefox # see also following link.
-
-# options = Selenium::WebDriver::Firefox::Options.new(args: ['-headless'])
-
-# # set up driver
-# Capybara.register_driver :firefox do |app|
-#   Capybara::Selenium::Driver.new(
-#     app,
-#     browser: :firefox,
-#     http_client: client,
-#     options: options)
-# end
-
-# Capybara.default_driver = :firefox
-# Capybara.javascript_driver = :firefox
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
