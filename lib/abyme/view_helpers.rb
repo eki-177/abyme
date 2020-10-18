@@ -3,6 +3,16 @@ require_relative "abyme_builder"
 module Abyme
   module ViewHelpers
 
+    # Abymize
+    # this helper will generate the top level wrapper markup
+    # with the bare minimum attributes html (data-controller="abyme")
+
+    # - Exemple
+
+    # <%= abymize(:tasks, f, limit: 3) do |abyme| %>
+    #   ....
+    # <% end %>
+
     def abymize(association, form, options = {}, &block)
       content_tag(:div, data: { controller: 'abyme', limit: options[:limit], min_count: options[:min_count] }, id: "abyme--#{association}") do
         if block_given?
@@ -51,7 +61,7 @@ module Abyme
       
       if options[:order].present?
         records = records.order(options[:order])
-        # Get invalid records
+        # 
         invalids = form.object.send(association).reject(&:persisted?)
         records = records.to_a.concat(invalids) if invalids.any?
       end 
@@ -114,6 +124,6 @@ module Abyme
       # MERGE THE DATA ATTRIBUTES TO THE HASH OF HTML ATTRIBUTES
       default.merge(attr.reject { |key, _| key == :data })
     end
-    
+
   end
 end
