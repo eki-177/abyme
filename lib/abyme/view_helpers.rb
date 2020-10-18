@@ -13,6 +13,14 @@ module Abyme
     # if a block is given it will instanciate a new AbymeBuilder and pass to it
     # the name of the association, the form object and the lookup_context
 
+    # == Options
+
+    # - limit
+    # you can set a limit for the new association fields to display
+
+    # - min_count
+    # set the default number of blank fields to display
+
     # - Exemple
 
     # <%= abymize(:tasks, f, limit: 3) do |abyme| %>
