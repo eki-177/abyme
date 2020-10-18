@@ -263,6 +263,6 @@ module Abyme
       # Merge data attributes to the hash ok html attributes
       default.merge(attr.reject { |key, _| key == :data })
     end
-
+    
   end
 end
