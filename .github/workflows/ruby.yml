@@ -43,10 +43,10 @@ jobs:
 
     - name: Run tests
       run: bundle exec rake
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: db/test.sqlite3
-          RAILS_ENV: test
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: db/test.sqlite3
+        RAILS_ENV: test
       
     - name: Create Coverage Artifact
       uses: actions/upload-artifact@v2
