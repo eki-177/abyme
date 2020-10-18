@@ -28,6 +28,7 @@ export default class extends Controller {
 
   // this function is call whenever a click occurs
   // on the element with the click->abyme#add_association
+  // <button> element by default
 
   add_association(event) {
 
@@ -59,7 +60,13 @@ export default class extends Controller {
     this.create_event('after-add');
   }
 
+  // this function is call whenever a click occurs
+  // on the element with the click->abyme#remove_association
+  // <button> element by default
+
   remove_association(event) {
+
+
     event.preventDefault();
     this.create_event('before-remove');
     this.mark_for_destroy(event);
