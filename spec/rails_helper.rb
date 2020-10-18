@@ -2,7 +2,6 @@
 require 'simplecov'
 SimpleCov.start
 
-
 require File.expand_path('dummy/config/environment.rb', __dir__)
 
 ENV['RAILS_ENV'] ||= 'test'

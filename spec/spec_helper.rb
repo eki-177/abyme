@@ -15,27 +15,21 @@ require 'capybara/rspec'
 require 'webdrivers'
 
 ## set up client
-client = Selenium::WebDriver.for :firefox # see also following link.
+# client = Selenium::WebDriver.for :firefox # see also following link.
 
-options = Selenium::WebDriver::Firefox::Options.new(args: ['-headless'])
+# options = Selenium::WebDriver::Firefox::Options.new(args: ['-headless'])
 
-# set up driver
-Capybara.register_driver :firefox do |app|
-  Capybara::Selenium::Driver.new(
-    app,
-    browser: :firefox,
-    http_client: client,
-    options: options)
-end
+# # set up driver
+# Capybara.register_driver :firefox do |app|
+#   Capybara::Selenium::Driver.new(
+#     app,
+#     browser: :firefox,
+#     http_client: client,
+#     options: options)
+# end
 
-# configure
-Capybara.configure do |config|
-  config.ignore_hidden_elements = true
-  config.default_max_wait_time = 3 #sec
-end
-
-Capybara.default_driver = :firefox
-Capybara.javascript_driver = :firefox
+# Capybara.default_driver = :firefox
+# Capybara.javascript_driver = :firefox
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

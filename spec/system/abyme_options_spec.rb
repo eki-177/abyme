@@ -2,6 +2,9 @@ require "rails_helper"
 require_relative "../support/helpers/add_nested_attributes"
 
 RSpec.describe "Helper options", type: :system do
+  before do
+    driven_by :selenium_chrome_headless
+  end
 
   context 'For new resources' do
     describe "Partials default & custom path" do
