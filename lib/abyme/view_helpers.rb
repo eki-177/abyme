@@ -6,12 +6,20 @@ module Abyme
     # Abymize
     # this helper will generate the top level wrapper markup
     # with the bare minimum attributes html (data-controller="abyme")
+    # it takes the Simbolized name of the association (plural) and the form object
+    # then you can pass a hash of options (see exemple below)
 
     # - Exemple
 
     # <%= abymize(:tasks, f, limit: 3) do |abyme| %>
     #   ....
     # <% end %>
+
+    # will output this html
+
+    # <div data-controller="abyme" data-limit="3" id="abyme--tasks">
+    #   ...
+    # </div>
 
     def abymize(association, form, options = {}, &block)
       content_tag(:div, data: { controller: 'abyme', limit: options[:limit], min_count: options[:min_count] }, id: "abyme--#{association}") do
