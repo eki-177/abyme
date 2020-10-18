@@ -230,6 +230,11 @@ module Abyme
       end
     end
 
+    # BASIC_FIELDS_MARKUP
+
+    # generates the default html classes for fields
+    # add optional classes if present
+
     def basic_fields_markup(html, association = nil)
       if html && html[:class]
         html[:class] = "abyme--fields #{association.to_s.singularize}-fields #{html[:class]}" 
@@ -239,6 +244,11 @@ module Abyme
       end
       html
     end
+
+    # BUILD_ATTRIBUTES
+
+    # add optionals html attributes without overwritting
+    # the default or already present ones
 
     def build_attributes(default, attr)
       # ADD NEW DATA ATTRIBUTES VALUES TO THE DEFAULT ONES (ONLY VALUES)
