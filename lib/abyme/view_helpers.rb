@@ -144,7 +144,7 @@ module Abyme
     # == Options
     # - collection (Active Record Collection)
     # allows you to pass an AR collection
-    # by default every associated records would be present
+    # by default every associated records will be present
 
     # - order (Hash)
     # allows you to order the collection
