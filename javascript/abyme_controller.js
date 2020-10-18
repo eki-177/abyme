@@ -172,13 +172,13 @@ export default class extends Controller {
   // ADD_DEFAULT_ASSOCIATION
 
   // Add n default blank associations at page load
+  // call sleep function to ensure uniqueness of timestamp
 
   async add_default_associations() {
     let i = 0
     while (i < this.count) {
       this.add_association()
       i++
-      // Sleep function to ensure uniqueness of timestamp
       await this.sleep(1);
     }
   }
