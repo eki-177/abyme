@@ -46,7 +46,6 @@ export default class extends Controller {
   // - dispatch an event after insert
 
   add_association(event) {
-
     if (event) {
       event.preventDefault();
     }
@@ -91,7 +90,6 @@ export default class extends Controller {
   // and dispatch at at the controller level
 
   create_event(stage, html = null) {
-    
     const event = new CustomEvent(`abyme:${stage}`, { detail: {controller: this, content: html} });
     this.element.dispatchEvent(event);
     // WIP
@@ -126,7 +124,7 @@ export default class extends Controller {
   // NEW_RECORD for a generated timestamp
   // then if there is a sub template in the html (multiple nested level)
   // set all the sub timestamps back as NEW_RECORD
-  // finally return the html  
+  // finally returns the html  
 
   build_html() {
     let html = this.templateTarget.innerHTML.replace(
@@ -144,8 +142,15 @@ export default class extends Controller {
 
     return html;
   }
-    
-  // mark association for destroy
+  
+  // MARK_FOR_DESTROY
+
+  // mark association for destruction
+  // get the closest abyme--fields from the remove_association button
+  // set the _destroy input value as 1
+  // hide the element
+  // add the class of abyme--marked-for-destroy to the element
+
   mark_for_destroy(event) {
     let item = event.target.closest('.abyme--fields');
     item.querySelector("input[name*='_destroy']").value = 1;
