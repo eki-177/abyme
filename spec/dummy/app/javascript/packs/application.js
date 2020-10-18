@@ -5,7 +5,7 @@
 
 require('@rails/ujs').start();
 require('turbolinks').start();
-require('stylesheets/application.scss');
+// require('stylesheets/application.scss');
 
 import 'controllers';
 
