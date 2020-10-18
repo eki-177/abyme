@@ -169,6 +169,9 @@ module Abyme
       if options[:order].present?
         records = records.order(options[:order])
         # Get the error records if an order is present
+        # by calling the order method on the AR collection
+        # we get rid of the records with errors
+        # so we have to get them back with the 2 lines below
         invalids = form.object.send(association).reject(&:persisted?)
         records = records.to_a.concat(invalids) if invalids.any?
       end 
@@ -263,6 +266,6 @@ module Abyme
       # Merge data attributes to the hash ok html attributes
       default.merge(attr.reject { |key, _| key == :data })
     end
-    
+
   end
 end
