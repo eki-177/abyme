@@ -168,6 +168,7 @@ module Abyme
       
       if options[:order].present?
         records = records.order(options[:order])
+        # Get the error records if an order is present
         invalids = form.object.send(association).reject(&:persisted?)
         records = records.to_a.concat(invalids) if invalids.any?
       end 
@@ -251,15 +252,15 @@ module Abyme
     # the default or already present ones
 
     def build_attributes(default, attr)
-      # ADD NEW DATA ATTRIBUTES VALUES TO THE DEFAULT ONES (ONLY VALUES)
+      # Add new data attributes values to the default ones (only values)
       if attr[:data]
         default[:data].each do |key, value|
           default[:data][key] = "#{value} #{attr[:data][key]}".strip
         end
-      # ADD NEW DATA ATTRIBUTES (KEYS & VALUES)
+        # Add new data attributes (keys & values)
         default[:data] = default[:data].merge(attr[:data].reject { |key, _| default[:data][key] })
       end
-      # MERGE THE DATA ATTRIBUTES TO THE HASH OF HTML ATTRIBUTES
+      # Merge data attributes to the hash ok html attributes
       default.merge(attr.reject { |key, _| key == :data })
     end
 
