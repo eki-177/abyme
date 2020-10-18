@@ -203,7 +203,7 @@ module Abyme
 
     # CREATE_BUTTON
 
-    # this help is call by either add_association or remove_association
+    # this helper is call by either add_association or remove_association
     # by default it will generate a button tag.
 
     # == Options
