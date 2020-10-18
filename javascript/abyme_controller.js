@@ -116,8 +116,6 @@ export default class extends Controller {
   abymeAfterRemove(event) {
   }
 
-  // UTILITIES
-
   // BUILD HTML
 
   // takes the html template and substitutes the sub-string
