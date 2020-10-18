@@ -5,8 +5,7 @@ module Abyme
     # If a block is given to the #abymize helper 
     # it will instanciate a new AbymeBuilder 
     # and pass to it the association name (Symbol)
-    # the form object, lookup_context
-    # optionaly a partial path
+    # the form object, lookup_context optionaly a partial path
     # then yield itself to the block 
 
     def initialize(association:, form:, lookup_context:, partial:, &block)
