@@ -168,7 +168,6 @@ module Abyme
       
       if options[:order].present?
         records = records.order(options[:order])
-        # Get the error records if an order is present
         # by calling the order method on the AR collection
         # we get rid of the records with errors
         # so we have to get them back with the 2 lines below
