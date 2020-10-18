@@ -12,20 +12,29 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 require 'capybara/rspec'
+require 'webdrivers'
 
+## set up client
+client = Selenium::WebDriver.for :chrome # see also following link.
+
+# set up driver
 Capybara.register_driver :headless_chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    chromeOptions: { args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage] }
-  )
-
-  Capybara::Selenium::Driver.new app,
-                                  browser: :chrome,
-                                  desired_capabilities: capabilities
-
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    http_client: client,
+    options: options)
+end
+## set up options
+options = Selenium::WebDriver::Chrome::Options.new.tap do |opts|
+  opts.args << '--headless'
 end
 
-Capybara.default_driver = :selenium_headless
-Capybara.javascript_driver = :selenium_headless
+# configure
+Capybara.configure do |config|
+  config.ignore_hidden_elements = true
+  config.default_max_wait_time = 3 #sec
+end
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
