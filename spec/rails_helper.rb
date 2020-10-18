@@ -31,15 +31,15 @@ Capybara.register_driver :headless_chrome do |app|
     chromeOptions: { args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage] }
   )
 
-Capybara::Selenium::Driver.new app,
-                                browser: :chrome,
-                                desired_capabilities: capabilities
+  Capybara::Selenium::Driver.new app,
+                                  browser: :chrome,
+                                  desired_capabilities: capabilities
 
-
-Capybara.default_driver = :headless_chrome
-Capybara.javascript_driver = :headless_chrome
-  
 end
+
+Capybara.default_driver = :selenium_headless
+Capybara.javascript_driver = :selenium_headless
+  
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 Dir['support', '*.rb'].each {|file| require file }
 
