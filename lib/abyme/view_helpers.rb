@@ -8,6 +8,10 @@ module Abyme
     # with the bare minimum html attributes (data-controller="abyme")
     # it takes the Simbolized name of the association (plural) and the form object
     # then you can pass a hash of options (see exemple below)
+    # if no block given it will generate a default markup for
+    # #persisted_records_for, #new_records_for & #add_association methods
+    # if a block is given it will instanciate a new AbymeBuilder and pass to it
+    # the name of the association, the form object and the lookup_context
 
     # - Exemple
 
@@ -59,6 +63,9 @@ module Abyme
     #    </template>
     #    ... new rendered fields goes here
     # </div>
+
+    # == Options
+    # 
 
     def new_records_for(association, form, options = {}, &block)
       options[:wrapper_html] ||= {}
