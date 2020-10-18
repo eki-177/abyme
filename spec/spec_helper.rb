@@ -31,8 +31,8 @@ RSpec.configure do |config|
   
   end
   
-  Capybara.default_driver = :headless_chrome
-  Capybara.javascript_driver = :headless_chrome
+  Capybara.default_driver = :selenium_headless
+  Capybara.javascript_driver = :selenium_headless
 
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
