@@ -60,20 +60,33 @@ export default class extends Controller {
     this.create_event('after-add');
   }
 
+  // REMOVE_ASSOCIATION
+
   // this function is call whenever a click occurs
   // on the element with the click->abyme#remove_association
   // <button> element by default
 
+  // - call the function mark_for_destroy that takes care
+  //   of marking the element for destruction and hiding it
+  // - dispatch an event before mark & hide
+  // - mark for descrution + hide the element
+  // - dispatch an event after mark and hide
+
   remove_association(event) {
-
-
     event.preventDefault();
+
     this.create_event('before-remove');
     this.mark_for_destroy(event);
     this.create_event('after-remove');
   }
 
   // LIFECYCLE EVENTS RELATED
+
+  // CREATE_EVENT
+
+  // take the stage (String)
+  // create a new custom event 
+  // and dispatch at at the controller level
 
   create_event(stage, html = null) {
     const event = new CustomEvent(`abyme:${stage}`, { detail: {controller: this, content: html} });
