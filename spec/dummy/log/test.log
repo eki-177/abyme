@@ -13903,3 +13903,1860 @@ Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.6ms | Allocations: 102
   [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 45]]
   [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" INNER JOIN "tasks" ON "comments"."task_id" = "tasks"."id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 45]]
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "test"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire"], ["created_at", "2020-10-18 09:52:10.683782"], ["updated_at", "2020-10-18 09:52:10.683782"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/projects/46/edit" for 127.0.0.1 at 2020-10-18 11:52:12 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"46"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 46]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.1ms | Allocations: 559)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 46]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 46]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.6ms | Allocations: 426)
+  Rendered projects/_task_fields.html.erb (Duration: 7.6ms | Allocations: 5485)
+  Rendered projects/_form.html.erb (Duration: 53.4ms | Allocations: 24629)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 54.5ms | Allocations: 25139)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 165)
+Completed 200 OK in 64ms (Views: 56.8ms | ActiveRecord: 2.1ms | Allocations: 28830)
+Started PATCH "/projects/46" for 127.0.0.1 at 2020-10-18 11:52:13 +0200
+Processing by ProjectsController#update as HTML
+  Parameters: {"project"=>{"title"=>"test", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire", "tasks_attributes"=>{"1603014732598"=>{"title"=>"Task 1", "description"=>"Small description for task number 1", "_destroy"=>"false", "comments_attributes"=>{"1603014732599"=>{"content"=>"Comment #0", "_destroy"=>"false"}, "1603014733086"=>{"content"=>"Comment #1", "_destroy"=>"false"}, "1603014733114"=>{"content"=>"Comment #2", "_destroy"=>"false"}}}, "1603014732626"=>{"title"=>"Task 2", "description"=>"Small description for task number 2", "_destroy"=>"false", "comments_attributes"=>{"1603014732626"=>{"content"=>"Comment #3", "_destroy"=>"false"}, "1603014733143"=>{"content"=>"Comment #4", "_destroy"=>"false"}, "1603014733158"=>{"content"=>"Comment #5", "_destroy"=>"false"}}}, "1603014732650"=>{"title"=>"Task 3", "description"=>"Small description for task number 3", "_destroy"=>"false", "comments_attributes"=>{"1603014732651"=>{"content"=>"Comment #6", "_destroy"=>"false"}, "1603014733188"=>{"content"=>"Comment #7", "_destroy"=>"false"}, "1603014733202"=>{"content"=>"Comment #8", "_destroy"=>"false"}}}}}, "commit"=>"Save", "id"=>"46"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 1"], ["description", "Small description for task number 1"], ["project_id", 46], ["created_at", "2020-10-18 09:52:13.683841"], ["updated_at", "2020-10-18 09:52:13.683841"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #0"], ["task_id", 79], ["created_at", "2020-10-18 09:52:13.685113"], ["updated_at", "2020-10-18 09:52:13.685113"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #1"], ["task_id", 79], ["created_at", "2020-10-18 09:52:13.685744"], ["updated_at", "2020-10-18 09:52:13.685744"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #2"], ["task_id", 79], ["created_at", "2020-10-18 09:52:13.686241"], ["updated_at", "2020-10-18 09:52:13.686241"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 2"], ["description", "Small description for task number 2"], ["project_id", 46], ["created_at", "2020-10-18 09:52:13.686770"], ["updated_at", "2020-10-18 09:52:13.686770"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #3"], ["task_id", 80], ["created_at", "2020-10-18 09:52:13.687355"], ["updated_at", "2020-10-18 09:52:13.687355"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #4"], ["task_id", 80], ["created_at", "2020-10-18 09:52:13.687970"], ["updated_at", "2020-10-18 09:52:13.687970"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #5"], ["task_id", 80], ["created_at", "2020-10-18 09:52:13.688537"], ["updated_at", "2020-10-18 09:52:13.688537"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 3"], ["description", "Small description for task number 3"], ["project_id", 46], ["created_at", "2020-10-18 09:52:13.689101"], ["updated_at", "2020-10-18 09:52:13.689101"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #6"], ["task_id", 81], ["created_at", "2020-10-18 09:52:13.689724"], ["updated_at", "2020-10-18 09:52:13.689724"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #7"], ["task_id", 81], ["created_at", "2020-10-18 09:52:13.690273"], ["updated_at", "2020-10-18 09:52:13.690273"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #8"], ["task_id", 81], ["created_at", "2020-10-18 09:52:13.690785"], ["updated_at", "2020-10-18 09:52:13.690785"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51611/projects/46/edit
+Completed 302 Found in 18ms (ActiveRecord: 2.1ms | Allocations: 9746)
+Started GET "/projects/46/edit" for 127.0.0.1 at 2020-10-18 11:52:13 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"46"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 46]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.2ms | Allocations: 181)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 46]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 46]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 79]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 168)
+  Rendered projects/_task_fields.html.erb (Duration: 3.2ms | Allocations: 2258)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 80]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 168)
+  Rendered projects/_task_fields.html.erb (Duration: 2.8ms | Allocations: 2073)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 81]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 168)
+  Rendered projects/_task_fields.html.erb (Duration: 2.8ms | Allocations: 2073)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 14.3ms | Allocations: 9988)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 14.4ms | Allocations: 10038)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.6ms | Allocations: 10476)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 46]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" INNER JOIN "tasks" ON "comments"."task_id" = "tasks"."id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 46]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "test"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire"], ["created_at", "2020-10-18 09:52:13.792464"], ["updated_at", "2020-10-18 09:52:13.792464"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 0"], ["description", "who cares"], ["project_id", 47], ["created_at", "2020-10-18 09:52:13.794994"], ["updated_at", "2020-10-18 09:52:13.794994"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 1"], ["description", "who cares"], ["project_id", 47], ["created_at", "2020-10-18 09:52:13.797273"], ["updated_at", "2020-10-18 09:52:13.797273"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 2"], ["description", "who cares"], ["project_id", 47], ["created_at", "2020-10-18 09:52:13.799008"], ["updated_at", "2020-10-18 09:52:13.799008"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/projects/47/edit" for 127.0.0.1 at 2020-10-18 11:52:13 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"47"}
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 47]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 47]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 47]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 82]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.8ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 83]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 84]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.1ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 11.9ms | Allocations: 6585)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 12.1ms | Allocations: 6634)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.7ms | Allocations: 7068)
+Started PATCH "/projects/47" for 127.0.0.1 at 2020-10-18 11:52:13 +0200
+Processing by ProjectsController#update as HTML
+  Parameters: {"project"=>{"title"=>"test", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire", "tasks_attributes"=>{"0"=>{"title"=>"task 0", "description"=>"who cares", "_destroy"=>"false", "comments_attributes"=>{"1603014733852"=>{"content"=>"", "_destroy"=>"false"}}, "id"=>"82"}, "1"=>{"title"=>"task 1", "description"=>"who cares", "_destroy"=>"false", "comments_attributes"=>{"1603014733853"=>{"content"=>"", "_destroy"=>"false"}}, "id"=>"83"}, "2"=>{"title"=>"task 2", "description"=>"who cares", "_destroy"=>"1", "comments_attributes"=>{"1603014733853"=>{"content"=>"", "_destroy"=>"false"}}, "id"=>"84"}}}, "commit"=>"Save", "id"=>"47"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? AND "tasks"."id" IN (?, ?, ?)[0m  [["project_id", 47], ["id", 82], ["id", 83], ["id", 84]]
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 84]]
+  [1m[36mTask Destroy (0.4ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 84]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51611/projects/47/edit
+Completed 302 Found in 6ms (ActiveRecord: 1.6ms | Allocations: 3017)
+Started GET "/projects/47/edit" for 127.0.0.1 at 2020-10-18 11:52:13 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"47"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 47]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 47]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 47]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 82]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 83]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 8.0ms | Allocations: 5317)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 8.1ms | Allocations: 5366)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.5ms | Allocations: 5800)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 47], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 47]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? AND "tasks"."title" = ? LIMIT ?[0m  [["project_id", 47], ["title", "task 3"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:14 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.6ms | Allocations: 2335)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2494)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 2961)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:52:14 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"A project with two tasks", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction).", "tasks_attributes"=>{"1603014734201"=>{"title"=>"Task 1", "description"=>"Small description for task number 1", "_destroy"=>"false", "comments_attributes"=>{"1603014734202"=>{"content"=>"", "_destroy"=>"false"}}}, "1603014734223"=>{"title"=>"Task 2", "description"=>"Small description for task number 2", "_destroy"=>"false", "comments_attributes"=>{"1603014734224"=>{"content"=>"", "_destroy"=>"false"}}}}}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "A project with two tasks"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:52:14.500870"], ["updated_at", "2020-10-18 09:52:14.500870"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 1"], ["description", "Small description for task number 1"], ["project_id", 48], ["created_at", "2020-10-18 09:52:14.502397"], ["updated_at", "2020-10-18 09:52:14.502397"]]
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 2"], ["description", "Small description for task number 2"], ["project_id", 48], ["created_at", "2020-10-18 09:52:14.503117"], ["updated_at", "2020-10-18 09:52:14.503117"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51611/projects
+Completed 302 Found in 7ms (ActiveRecord: 1.9ms | Allocations: 2626)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:52:14 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 1.0ms | Allocations: 357)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/index.html.erb within layouts/application (Duration: 14.8ms | Allocations: 9192)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 36)
+Completed 200 OK in 16ms (Views: 15.1ms | ActiveRecord: 0.3ms | Allocations: 9674)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 48]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:14 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.0ms | Allocations: 2329)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2378)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 2707)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:52:15 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"Another project with two tasks", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction).", "participants_attributes"=>{"1603014735017"=>{"email"=>"email_0@gmail.com", "_destroy"=>"false"}, "1603014735044"=>{"email"=>"email_1@gmail.com", "_destroy"=>"false"}}}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Another project with two tasks"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:52:15.206793"], ["updated_at", "2020-10-18 09:52:15.206793"]]
+  [1m[36mParticipant Create (0.1ms)[0m  [1m[32mINSERT INTO "participants" ("email", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "email_0@gmail.com"], ["project_id", 49], ["created_at", "2020-10-18 09:52:15.208093"], ["updated_at", "2020-10-18 09:52:15.208093"]]
+  [1m[36mParticipant Create (0.1ms)[0m  [1m[32mINSERT INTO "participants" ("email", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "email_1@gmail.com"], ["project_id", 49], ["created_at", "2020-10-18 09:52:15.208733"], ["updated_at", "2020-10-18 09:52:15.208733"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51611/projects
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms | Allocations: 1933)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:52:15 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/index.html.erb within layouts/application (Duration: 36.1ms | Allocations: 8790)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 37ms (Views: 36.2ms | ActiveRecord: 0.4ms | Allocations: 9133)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 49]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:15 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.4ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.4ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 8.6ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 8.8ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 2708)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:52:15 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"A project with no task", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "A project with no task"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:52:15.611913"], ["updated_at", "2020-10-18 09:52:15.611913"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51611/projects
+Completed 302 Found in 3ms (ActiveRecord: 1.3ms | Allocations: 630)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:52:15 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/index.html.erb within layouts/application (Duration: 15.7ms | Allocations: 8964)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.2ms | Allocations: 9305)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:15 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.4ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.8ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:52:16 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"Another project with two tasks", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction).", "tasks_attributes"=>{"1603014735916"=>{"title"=>"Task 1", "description"=>"Small description for task number 1", "_destroy"=>"false", "comments_attributes"=>{"1603014735917"=>{"content"=>"Comment #0", "_destroy"=>"false"}, "1603014736207"=>{"content"=>"Comment #1", "_destroy"=>"false"}, "1603014736242"=>{"content"=>"Comment #2", "_destroy"=>"false"}}}, "1603014735941"=>{"title"=>"Task 2", "description"=>"Small description for task number 2", "_destroy"=>"false", "comments_attributes"=>{"1603014735942"=>{"content"=>"Comment #3", "_destroy"=>"false"}, "1603014736270"=>{"content"=>"Comment #4", "_destroy"=>"false"}, "1603014736285"=>{"content"=>"Comment #5", "_destroy"=>"false"}}}}}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Another project with two tasks"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:52:16.609754"], ["updated_at", "2020-10-18 09:52:16.609754"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 1"], ["description", "Small description for task number 1"], ["project_id", 51], ["created_at", "2020-10-18 09:52:16.611068"], ["updated_at", "2020-10-18 09:52:16.611068"]]
+  [1m[36mComment Create (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #0"], ["task_id", 86], ["created_at", "2020-10-18 09:52:16.611813"], ["updated_at", "2020-10-18 09:52:16.611813"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #1"], ["task_id", 86], ["created_at", "2020-10-18 09:52:16.612589"], ["updated_at", "2020-10-18 09:52:16.612589"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #2"], ["task_id", 86], ["created_at", "2020-10-18 09:52:16.613498"], ["updated_at", "2020-10-18 09:52:16.613498"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 2"], ["description", "Small description for task number 2"], ["project_id", 51], ["created_at", "2020-10-18 09:52:16.614233"], ["updated_at", "2020-10-18 09:52:16.614233"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #3"], ["task_id", 87], ["created_at", "2020-10-18 09:52:16.615008"], ["updated_at", "2020-10-18 09:52:16.615008"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #4"], ["task_id", 87], ["created_at", "2020-10-18 09:52:16.615669"], ["updated_at", "2020-10-18 09:52:16.615669"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #5"], ["task_id", 87], ["created_at", "2020-10-18 09:52:16.616221"], ["updated_at", "2020-10-18 09:52:16.616221"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51611/projects
+Completed 302 Found in 12ms (ActiveRecord: 1.9ms | Allocations: 5979)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:52:16 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/index.html.erb within layouts/application (Duration: 14.4ms | Allocations: 9141)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 15ms (Views: 14.7ms | ActiveRecord: 0.2ms | Allocations: 9482)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" INNER JOIN "tasks" ON "comments"."task_id" = "tasks"."id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 51]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "test"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire"], ["created_at", "2020-10-18 09:52:16.905489"], ["updated_at", "2020-10-18 09:52:16.905489"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 0"], ["description", "who cares"], ["project_id", 52], ["created_at", "2020-10-18 09:52:16.908499"], ["updated_at", "2020-10-18 09:52:16.908499"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 1"], ["description", "who cares"], ["project_id", 52], ["created_at", "2020-10-18 09:52:16.910372"], ["updated_at", "2020-10-18 09:52:16.910372"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 2"], ["description", "who cares"], ["project_id", 52], ["created_at", "2020-10-18 09:52:16.912196"], ["updated_at", "2020-10-18 09:52:16.912196"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/projects/52/edit" for 127.0.0.1 at 2020-10-18 11:52:16 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"52"}
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 52]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 52]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 52]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 88]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.4ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 89]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 90]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 13.1ms | Allocations: 6585)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 13.2ms | Allocations: 6634)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.7ms | Allocations: 7068)
+Started GET "/projects/52/edit" for 127.0.0.1 at 2020-10-18 11:52:17 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"52"}
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 52]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.4ms | Allocations: 176)
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 52]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 52]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 88]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.8ms | Allocations: 1007)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 89]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.0ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 90]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.8ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.2ms | Allocations: 807)
+  Rendered projects/_form.html.erb (Duration: 35.6ms | Allocations: 6589)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 35.8ms | Allocations: 6638)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 38ms (Views: 35.7ms | ActiveRecord: 0.9ms | Allocations: 7074)
+Started GET "/projects/52/edit" for 127.0.0.1 at 2020-10-18 11:52:17 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"52"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.2ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 52]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 52]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 52]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 88]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.8ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 89]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 90]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 0.9ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 11.0ms | Allocations: 6585)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 11.1ms | Allocations: 6634)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.7ms | Allocations: 7068)
+Started GET "/projects/52/edit" for 127.0.0.1 at 2020-10-18 11:52:17 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"52"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 52]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 52]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 52]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 88]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 89]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 90]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.2ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 11.4ms | Allocations: 6585)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 11.6ms | Allocations: 6634)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.6ms | Allocations: 7068)
+Started GET "/projects/52/edit" for 127.0.0.1 at 2020-10-18 11:52:17 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"52"}
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 52], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 52]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 52]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 52]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 88]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.0ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 89]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.8ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 90]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.2ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 13.2ms | Allocations: 6585)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 13.3ms | Allocations: 6634)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 15ms (Views: 13.5ms | ActiveRecord: 0.8ms | Allocations: 7068)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:17 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.2ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.7ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:17 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.6ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.4ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.7ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:17 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:18 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.1ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 3.8ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:18 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.2ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.2ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:18 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.1ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 3.9ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:18 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.2ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.1ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:18 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.6ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:18 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 23.4ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 23.6ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 25ms (Views: 24.4ms | ActiveRecord: 0.0ms | Allocations: 2706)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:18 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.5ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 2.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 7.1ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 7.3ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 2708)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:19 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:52:19 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.2ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.0ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.1ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 2704)
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:55:53 +0200
+Processing by ProjectsController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.1ms | Allocations: 559)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.6ms | Allocations: 426)
+  Rendered projects/_task_fields.html.erb (Duration: 7.4ms | Allocations: 5484)
+  Rendered projects/_form.html.erb (Duration: 56.3ms | Allocations: 25895)
+  Rendered projects/new.html.erb within layouts/application (Duration: 57.5ms | Allocations: 26417)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 165)
+Completed 200 OK in 75ms (Views: 60.0ms | ActiveRecord: 2.0ms | Allocations: 36126)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:55:54 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"A project with no task", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "A project with no task"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:55:54.335957"], ["updated_at", "2020-10-18 09:55:54.335957"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51698/projects
+Completed 302 Found in 6ms (ActiveRecord: 1.1ms | Allocations: 1002)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:55:54 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 1.4ms | Allocations: 363)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.8ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.7ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.8ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.7ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 1.0ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.9ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 1.0ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.8ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.9ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.9ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.6ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.6ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 1.1ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 1.1ms | Allocations: 119)
+  Rendered projects/index.html.erb within layouts/application (Duration: 29.1ms | Allocations: 10131)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 36)
+Completed 200 OK in 31ms (Views: 29.5ms | ActiveRecord: 1.0ms | Allocations: 10620)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:55:54 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.5ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.6ms | Allocations: 2335)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2385)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.0ms | Allocations: 2723)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:55:55 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"Another project with two tasks", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction).", "tasks_attributes"=>{"1603014954959"=>{"title"=>"Task 1", "description"=>"Small description for task number 1", "_destroy"=>"false", "comments_attributes"=>{"1603014954961"=>{"content"=>"Comment #0", "_destroy"=>"false"}, "1603014955298"=>{"content"=>"Comment #1", "_destroy"=>"false"}, "1603014955315"=>{"content"=>"Comment #2", "_destroy"=>"false"}}}, "1603014954984"=>{"title"=>"Task 2", "description"=>"Small description for task number 2", "_destroy"=>"false", "comments_attributes"=>{"1603014954985"=>{"content"=>"Comment #3", "_destroy"=>"false"}, "1603014955348"=>{"content"=>"Comment #4", "_destroy"=>"false"}, "1603014955379"=>{"content"=>"Comment #5", "_destroy"=>"false"}}}}}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Another project with two tasks"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:55:55.693402"], ["updated_at", "2020-10-18 09:55:55.693402"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 1"], ["description", "Small description for task number 1"], ["project_id", 54], ["created_at", "2020-10-18 09:55:55.694773"], ["updated_at", "2020-10-18 09:55:55.694773"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #0"], ["task_id", 91], ["created_at", "2020-10-18 09:55:55.695506"], ["updated_at", "2020-10-18 09:55:55.695506"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #1"], ["task_id", 91], ["created_at", "2020-10-18 09:55:55.696100"], ["updated_at", "2020-10-18 09:55:55.696100"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #2"], ["task_id", 91], ["created_at", "2020-10-18 09:55:55.696597"], ["updated_at", "2020-10-18 09:55:55.696597"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 2"], ["description", "Small description for task number 2"], ["project_id", 54], ["created_at", "2020-10-18 09:55:55.697129"], ["updated_at", "2020-10-18 09:55:55.697129"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #3"], ["task_id", 92], ["created_at", "2020-10-18 09:55:55.697714"], ["updated_at", "2020-10-18 09:55:55.697714"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #4"], ["task_id", 92], ["created_at", "2020-10-18 09:55:55.698234"], ["updated_at", "2020-10-18 09:55:55.698234"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #5"], ["task_id", 92], ["created_at", "2020-10-18 09:55:55.698723"], ["updated_at", "2020-10-18 09:55:55.698723"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51698/projects
+Completed 302 Found in 21ms (ActiveRecord: 1.8ms | Allocations: 6862)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:55:55 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/index.html.erb within layouts/application (Duration: 15.6ms | Allocations: 9671)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 16ms (Views: 15.9ms | ActiveRecord: 0.2ms | Allocations: 10013)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" INNER JOIN "tasks" ON "comments"."task_id" = "tasks"."id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 54]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:55:55 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.5ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.7ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 7.9ms | ActiveRecord: 0.0ms | Allocations: 2708)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:55:56 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"A project with two tasks", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction).", "tasks_attributes"=>{"1603014956090"=>{"title"=>"Task 1", "description"=>"Small description for task number 1", "_destroy"=>"false", "comments_attributes"=>{"1603014956090"=>{"content"=>"", "_destroy"=>"false"}}}, "1603014956112"=>{"title"=>"Task 2", "description"=>"Small description for task number 2", "_destroy"=>"false", "comments_attributes"=>{"1603014956113"=>{"content"=>"", "_destroy"=>"false"}}}}}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "A project with two tasks"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:55:56.395198"], ["updated_at", "2020-10-18 09:55:56.395198"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 1"], ["description", "Small description for task number 1"], ["project_id", 55], ["created_at", "2020-10-18 09:55:56.396669"], ["updated_at", "2020-10-18 09:55:56.396669"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 2"], ["description", "Small description for task number 2"], ["project_id", 55], ["created_at", "2020-10-18 09:55:56.397482"], ["updated_at", "2020-10-18 09:55:56.397482"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51698/projects
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms | Allocations: 2632)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:55:56 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 9848)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 18ms (Views: 17.8ms | ActiveRecord: 0.3ms | Allocations: 10189)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 55]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:55:56 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.6ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.2ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:55:56 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"Another project with two tasks", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction).", "participants_attributes"=>{"1603014956763"=>{"email"=>"email_0@gmail.com", "_destroy"=>"false"}, "1603014956785"=>{"email"=>"email_1@gmail.com", "_destroy"=>"false"}}}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Another project with two tasks"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:55:56.942140"], ["updated_at", "2020-10-18 09:55:56.942140"]]
+  [1m[36mParticipant Create (0.1ms)[0m  [1m[32mINSERT INTO "participants" ("email", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "email_0@gmail.com"], ["project_id", 56], ["created_at", "2020-10-18 09:55:56.944165"], ["updated_at", "2020-10-18 09:55:56.944165"]]
+  [1m[36mParticipant Create (0.1ms)[0m  [1m[32mINSERT INTO "participants" ("email", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "email_1@gmail.com"], ["project_id", 56], ["created_at", "2020-10-18 09:55:56.945478"], ["updated_at", "2020-10-18 09:55:56.945478"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51698/projects
+Completed 302 Found in 8ms (ActiveRecord: 1.9ms | Allocations: 1937)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:55:56 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 0.6ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/index.html.erb within layouts/application (Duration: 18.1ms | Allocations: 10024)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.3ms | Allocations: 10365)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 56]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "test"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire"], ["created_at", "2020-10-18 09:55:57.139512"], ["updated_at", "2020-10-18 09:55:57.139512"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/projects/57/edit" for 127.0.0.1 at 2020-10-18 11:55:57 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"57"}
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 57], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 57]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 57]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 57]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.6ms | Allocations: 3166)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 6.0ms | Allocations: 3313)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 36)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.5ms | Allocations: 4010)
+Started PATCH "/projects/57" for 127.0.0.1 at 2020-10-18 11:55:58 +0200
+Processing by ProjectsController#update as HTML
+  Parameters: {"project"=>{"title"=>"test", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire", "tasks_attributes"=>{"1603014957256"=>{"title"=>"Task 1", "description"=>"Small description for task number 1", "_destroy"=>"false", "comments_attributes"=>{"1603014957257"=>{"content"=>"Comment #0", "_destroy"=>"false"}, "1603014957676"=>{"content"=>"Comment #1", "_destroy"=>"false"}, "1603014957704"=>{"content"=>"Comment #2", "_destroy"=>"false"}}}, "1603014957277"=>{"title"=>"Task 2", "description"=>"Small description for task number 2", "_destroy"=>"false", "comments_attributes"=>{"1603014957278"=>{"content"=>"Comment #3", "_destroy"=>"false"}, "1603014957733"=>{"content"=>"Comment #4", "_destroy"=>"false"}, "1603014957748"=>{"content"=>"Comment #5", "_destroy"=>"false"}}}, "1603014957298"=>{"title"=>"Task 3", "description"=>"Small description for task number 3", "_destroy"=>"false", "comments_attributes"=>{"1603014957299"=>{"content"=>"Comment #6", "_destroy"=>"false"}, "1603014957775"=>{"content"=>"Comment #7", "_destroy"=>"false"}, "1603014957790"=>{"content"=>"Comment #8", "_destroy"=>"false"}}}}}, "commit"=>"Save", "id"=>"57"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 57], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 1"], ["description", "Small description for task number 1"], ["project_id", 57], ["created_at", "2020-10-18 09:55:58.229052"], ["updated_at", "2020-10-18 09:55:58.229052"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #0"], ["task_id", 95], ["created_at", "2020-10-18 09:55:58.230346"], ["updated_at", "2020-10-18 09:55:58.230346"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #1"], ["task_id", 95], ["created_at", "2020-10-18 09:55:58.230936"], ["updated_at", "2020-10-18 09:55:58.230936"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #2"], ["task_id", 95], ["created_at", "2020-10-18 09:55:58.231443"], ["updated_at", "2020-10-18 09:55:58.231443"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 2"], ["description", "Small description for task number 2"], ["project_id", 57], ["created_at", "2020-10-18 09:55:58.231956"], ["updated_at", "2020-10-18 09:55:58.231956"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #3"], ["task_id", 96], ["created_at", "2020-10-18 09:55:58.232571"], ["updated_at", "2020-10-18 09:55:58.232571"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #4"], ["task_id", 96], ["created_at", "2020-10-18 09:55:58.233190"], ["updated_at", "2020-10-18 09:55:58.233190"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #5"], ["task_id", 96], ["created_at", "2020-10-18 09:55:58.233705"], ["updated_at", "2020-10-18 09:55:58.233705"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 3"], ["description", "Small description for task number 3"], ["project_id", 57], ["created_at", "2020-10-18 09:55:58.234310"], ["updated_at", "2020-10-18 09:55:58.234310"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #6"], ["task_id", 97], ["created_at", "2020-10-18 09:55:58.234891"], ["updated_at", "2020-10-18 09:55:58.234891"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #7"], ["task_id", 97], ["created_at", "2020-10-18 09:55:58.235397"], ["updated_at", "2020-10-18 09:55:58.235397"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #8"], ["task_id", 97], ["created_at", "2020-10-18 09:55:58.235850"], ["updated_at", "2020-10-18 09:55:58.235850"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51698/projects/57/edit
+Completed 302 Found in 16ms (ActiveRecord: 2.6ms | Allocations: 8589)
+Started GET "/projects/57/edit" for 127.0.0.1 at 2020-10-18 11:55:58 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"57"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 57], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 57]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.2ms | Allocations: 180)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 57]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 57]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 95]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 168)
+  Rendered projects/_task_fields.html.erb (Duration: 3.6ms | Allocations: 2258)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 96]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 168)
+  Rendered projects/_task_fields.html.erb (Duration: 3.2ms | Allocations: 2073)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 97]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 168)
+  Rendered projects/_task_fields.html.erb (Duration: 3.1ms | Allocations: 2073)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 16.3ms | Allocations: 9983)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 16.4ms | Allocations: 10032)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.7ms | Allocations: 10468)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 57], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 57]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" INNER JOIN "tasks" ON "comments"."task_id" = "tasks"."id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 57]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "test"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire"], ["created_at", "2020-10-18 09:55:58.376421"], ["updated_at", "2020-10-18 09:55:58.376421"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 0"], ["description", "who cares"], ["project_id", 58], ["created_at", "2020-10-18 09:55:58.379427"], ["updated_at", "2020-10-18 09:55:58.379427"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 1"], ["description", "who cares"], ["project_id", 58], ["created_at", "2020-10-18 09:55:58.381344"], ["updated_at", "2020-10-18 09:55:58.381344"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 2"], ["description", "who cares"], ["project_id", 58], ["created_at", "2020-10-18 09:55:58.383068"], ["updated_at", "2020-10-18 09:55:58.383068"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/projects/58/edit" for 127.0.0.1 at 2020-10-18 11:55:58 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"58"}
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 58], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 58]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.4ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 58]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 58]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 98]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 99]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 100]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.1ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 12.1ms | Allocations: 6585)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 12.2ms | Allocations: 6634)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 0.7ms | Allocations: 7068)
+Started PATCH "/projects/58" for 127.0.0.1 at 2020-10-18 11:55:58 +0200
+Processing by ProjectsController#update as HTML
+  Parameters: {"project"=>{"title"=>"test", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire", "tasks_attributes"=>{"0"=>{"title"=>"task 0", "description"=>"who cares", "_destroy"=>"false", "comments_attributes"=>{"1603014958459"=>{"content"=>"", "_destroy"=>"false"}}, "id"=>"98"}, "1"=>{"title"=>"task 1", "description"=>"who cares", "_destroy"=>"false", "comments_attributes"=>{"1603014958460"=>{"content"=>"", "_destroy"=>"false"}}, "id"=>"99"}, "2"=>{"title"=>"task 2", "description"=>"who cares", "_destroy"=>"1", "comments_attributes"=>{"1603014958460"=>{"content"=>"", "_destroy"=>"false"}}, "id"=>"100"}}}, "commit"=>"Save", "id"=>"58"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 58], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? AND "tasks"."id" IN (?, ?, ?)[0m  [["project_id", 58], ["id", 98], ["id", 99], ["id", 100]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 100]]
+  [1m[36mTask Destroy (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 100]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51698/projects/58/edit
+Completed 302 Found in 7ms (ActiveRecord: 1.3ms | Allocations: 3017)
+Started GET "/projects/58/edit" for 127.0.0.1 at 2020-10-18 11:55:58 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"58"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 58], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 58]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 58]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 58]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 98]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 99]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 8.4ms | Allocations: 5317)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 8.5ms | Allocations: 5366)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.5ms | Allocations: 5800)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 58], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 58]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? AND "tasks"."title" = ? LIMIT ?[0m  [["project_id", 58], ["title", "task 3"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "test"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire"], ["created_at", "2020-10-18 09:55:58.699052"], ["updated_at", "2020-10-18 09:55:58.699052"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 0"], ["description", "who cares"], ["project_id", 59], ["created_at", "2020-10-18 09:55:58.701586"], ["updated_at", "2020-10-18 09:55:58.701586"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 1"], ["description", "who cares"], ["project_id", 59], ["created_at", "2020-10-18 09:55:58.703671"], ["updated_at", "2020-10-18 09:55:58.703671"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 2"], ["description", "who cares"], ["project_id", 59], ["created_at", "2020-10-18 09:55:58.705671"], ["updated_at", "2020-10-18 09:55:58.705671"]]
+  [1m[35m (0.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/projects/59/edit" for 127.0.0.1 at 2020-10-18 11:55:58 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"59"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 59], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 59]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 59]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 59]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 100]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 1008)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 101]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 102]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 11.1ms | Allocations: 6586)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 11.2ms | Allocations: 6635)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.6ms | Allocations: 7069)
+Started GET "/projects/59/edit" for 127.0.0.1 at 2020-10-18 11:55:58 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"59"}
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 59], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 59]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 59]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 59]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 100]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 101]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 102]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.1ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 10.7ms | Allocations: 6585)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 10.9ms | Allocations: 6634)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.6ms | Allocations: 7068)
+Started GET "/projects/59/edit" for 127.0.0.1 at 2020-10-18 11:55:59 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"59"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 59], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 59]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 59]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 59]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 100]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 101]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 102]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 11.3ms | Allocations: 6585)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 11.5ms | Allocations: 6634)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.6ms | Allocations: 7068)
+Started GET "/projects/59/edit" for 127.0.0.1 at 2020-10-18 11:55:59 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"59"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 59], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 59]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.2ms | Allocations: 180)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 59]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 59]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 100]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 101]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 102]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 10.6ms | Allocations: 6589)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 10.7ms | Allocations: 6638)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.6ms | Allocations: 7075)
+Started GET "/projects/59/edit" for 127.0.0.1 at 2020-10-18 11:55:59 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"59"}
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 59], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 59]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 59]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 59]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 100]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 1007)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 101]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 1006)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 102]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.7ms | Allocations: 1006)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.1ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 12.4ms | Allocations: 6585)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 12.5ms | Allocations: 6634)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 15ms (Views: 12.8ms | ActiveRecord: 0.8ms | Allocations: 7068)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:55:59 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.2ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.3ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:55:59 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.4ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.7ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:55:59 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.1ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 3.9ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:55:59 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.4ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.8ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:00 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.5ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.6ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:00 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.1ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.0ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.1ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:00 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.3ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 4.5ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:00 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.4ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.1ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:00 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.4ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.9ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:01 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.6ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.3ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 2704)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:01 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 20.1ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.4ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 24.7ms | Allocations: 2333)
+  Rendered projects/new.html.erb within layouts/application (Duration: 24.9ms | Allocations: 2382)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 26ms (Views: 25.6ms | ActiveRecord: 0.0ms | Allocations: 2710)
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:01 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.4ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.4ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.8ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.0ms | Allocations: 2327)
+  Rendered projects/new.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2376)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 2704)
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "test"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire"], ["created_at", "2020-10-18 09:56:37.060338"], ["updated_at", "2020-10-18 09:56:37.060338"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/projects/60/edit" for 127.0.0.1 at 2020-10-18 11:56:38 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"60"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 60], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 60]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 1.3ms | Allocations: 553)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 60]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 60]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.6ms | Allocations: 426)
+  Rendered projects/_task_fields.html.erb (Duration: 7.8ms | Allocations: 5485)
+  Rendered projects/_form.html.erb (Duration: 44.0ms | Allocations: 24621)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 45.3ms | Allocations: 25131)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 165)
+Completed 200 OK in 56ms (Views: 47.6ms | ActiveRecord: 2.3ms | Allocations: 28824)
+Started PATCH "/projects/60" for 127.0.0.1 at 2020-10-18 11:56:39 +0200
+Processing by ProjectsController#update as HTML
+  Parameters: {"project"=>{"title"=>"test", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire", "tasks_attributes"=>{"1603014998977"=>{"title"=>"Task 1", "description"=>"Small description for task number 1", "_destroy"=>"false", "comments_attributes"=>{"1603014998978"=>{"content"=>"Comment #0", "_destroy"=>"false"}, "1603014999425"=>{"content"=>"Comment #1", "_destroy"=>"false"}, "1603014999454"=>{"content"=>"Comment #2", "_destroy"=>"false"}}}, "1603014999003"=>{"title"=>"Task 2", "description"=>"Small description for task number 2", "_destroy"=>"false", "comments_attributes"=>{"1603014999003"=>{"content"=>"Comment #3", "_destroy"=>"false"}, "1603014999483"=>{"content"=>"Comment #4", "_destroy"=>"false"}, "1603014999497"=>{"content"=>"Comment #5", "_destroy"=>"false"}}}, "1603014999025"=>{"title"=>"Task 3", "description"=>"Small description for task number 3", "_destroy"=>"false", "comments_attributes"=>{"1603014999025"=>{"content"=>"Comment #6", "_destroy"=>"false"}, "1603014999522"=>{"content"=>"Comment #7", "_destroy"=>"false"}, "1603014999537"=>{"content"=>"Comment #8", "_destroy"=>"false"}}}}}, "commit"=>"Save", "id"=>"60"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 60], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 1"], ["description", "Small description for task number 1"], ["project_id", 60], ["created_at", "2020-10-18 09:56:39.996979"], ["updated_at", "2020-10-18 09:56:39.996979"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #0"], ["task_id", 103], ["created_at", "2020-10-18 09:56:39.998226"], ["updated_at", "2020-10-18 09:56:39.998226"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #1"], ["task_id", 103], ["created_at", "2020-10-18 09:56:39.998861"], ["updated_at", "2020-10-18 09:56:39.998861"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #2"], ["task_id", 103], ["created_at", "2020-10-18 09:56:39.999371"], ["updated_at", "2020-10-18 09:56:39.999371"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 2"], ["description", "Small description for task number 2"], ["project_id", 60], ["created_at", "2020-10-18 09:56:39.999907"], ["updated_at", "2020-10-18 09:56:39.999907"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #3"], ["task_id", 104], ["created_at", "2020-10-18 09:56:40.000496"], ["updated_at", "2020-10-18 09:56:40.000496"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #4"], ["task_id", 104], ["created_at", "2020-10-18 09:56:40.001015"], ["updated_at", "2020-10-18 09:56:40.001015"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #5"], ["task_id", 104], ["created_at", "2020-10-18 09:56:40.001506"], ["updated_at", "2020-10-18 09:56:40.001506"]]
+  [1m[36mTask Create (0.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 3"], ["description", "Small description for task number 3"], ["project_id", 60], ["created_at", "2020-10-18 09:56:40.002038"], ["updated_at", "2020-10-18 09:56:40.002038"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #6"], ["task_id", 105], ["created_at", "2020-10-18 09:56:40.002633"], ["updated_at", "2020-10-18 09:56:40.002633"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #7"], ["task_id", 105], ["created_at", "2020-10-18 09:56:40.003164"], ["updated_at", "2020-10-18 09:56:40.003164"]]
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("content", "task_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Comment #8"], ["task_id", 105], ["created_at", "2020-10-18 09:56:40.003772"], ["updated_at", "2020-10-18 09:56:40.003772"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51766/projects/60/edit
+Completed 302 Found in 18ms (ActiveRecord: 2.2ms | Allocations: 9745)
+Started GET "/projects/60/edit" for 127.0.0.1 at 2020-10-18 11:56:40 +0200
+Processing by ProjectsController#edit as HTML
+  Parameters: {"id"=>"60"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 60], ["LIMIT", 1]]
+  Rendering projects/edit.html.erb within layouts/application
+  [1m[36mParticipant Load (0.1ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 60]]
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 60]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ? ORDER BY "tasks"."created_at" ASC[0m  [["project_id", 60]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 103]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 168)
+  Rendered projects/_task_fields.html.erb (Duration: 3.4ms | Allocations: 2258)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 104]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 168)
+  Rendered projects/_task_fields.html.erb (Duration: 2.9ms | Allocations: 2073)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."task_id" = ?[0m  [["task_id", 105]]
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 175)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 168)
+  Rendered projects/_task_fields.html.erb (Duration: 2.9ms | Allocations: 2073)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.0ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 15.1ms | Allocations: 9987)
+  Rendered projects/edit.html.erb within layouts/application (Duration: 15.2ms | Allocations: 10037)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.6ms | Allocations: 10475)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 60], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 60]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" INNER JOIN "tasks" ON "comments"."task_id" = "tasks"."id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 60]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:40 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.4ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.4ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.9ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 6.6ms | Allocations: 2335)
+  Rendered projects/new.html.erb within layouts/application (Duration: 7.3ms | Allocations: 2492)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 2959)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:56:40 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"A project with two tasks", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction).", "tasks_attributes"=>{"1603015000465"=>{"title"=>"Task 1", "description"=>"Small description for task number 1", "_destroy"=>"false", "comments_attributes"=>{"1603015000465"=>{"content"=>"", "_destroy"=>"false"}}}, "1603015000487"=>{"title"=>"Task 2", "description"=>"Small description for task number 2", "_destroy"=>"false", "comments_attributes"=>{"1603015000487"=>{"content"=>"", "_destroy"=>"false"}}}}}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.6ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "A project with two tasks"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:56:40.826143"], ["updated_at", "2020-10-18 09:56:40.826143"]]
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 1"], ["description", "Small description for task number 1"], ["project_id", 61], ["created_at", "2020-10-18 09:56:40.829226"], ["updated_at", "2020-10-18 09:56:40.829226"]]
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Task 2"], ["description", "Small description for task number 2"], ["project_id", 61], ["created_at", "2020-10-18 09:56:40.830917"], ["updated_at", "2020-10-18 09:56:40.830917"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51766/projects
+Completed 302 Found in 11ms (ActiveRecord: 2.3ms | Allocations: 2626)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:56:40 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 2.2ms | Allocations: 357)
+  Rendered projects/_project_card.html.erb (Duration: 0.6ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/index.html.erb within layouts/application (Duration: 28.7ms | Allocations: 11486)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 36)
+Completed 200 OK in 32ms (Views: 29.3ms | ActiveRecord: 0.6ms | Allocations: 11968)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 61]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:41 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 176)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.8ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.7ms | Allocations: 2329)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2378)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 2707)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:56:41 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"A project with no task", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "A project with no task"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:56:41.502180"], ["updated_at", "2020-10-18 09:56:41.502180"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51766/projects
+Completed 302 Found in 3ms (ActiveRecord: 1.3ms | Allocations: 630)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:56:41 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 0.4ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/index.html.erb within layouts/application (Duration: 19.6ms | Allocations: 11082)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 21ms (Views: 19.9ms | ActiveRecord: 0.3ms | Allocations: 11423)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/projects/new" for 127.0.0.1 at 2020-10-18 11:56:41 +0200
+Processing by ProjectsController#new as HTML
+  Rendering projects/new.html.erb within layouts/application
+  Rendered abyme/_participant_fields.html.erb (Duration: 0.3ms | Allocations: 180)
+  Rendered abyme/_comment_fields.html.erb (Duration: 0.3ms | Allocations: 169)
+  Rendered projects/_task_fields.html.erb (Duration: 1.5ms | Allocations: 803)
+  Rendered projects/_form.html.erb (Duration: 5.0ms | Allocations: 2331)
+  Rendered projects/new.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2380)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 2709)
+Started POST "/projects" for 127.0.0.1 at 2020-10-18 11:56:42 +0200
+Processing by ProjectsController#create as HTML
+  Parameters: {"project"=>{"title"=>"Another project with two tasks", "description"=>"La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction).", "participants_attributes"=>{"1603015002035"=>{"email"=>"email_0@gmail.com", "_destroy"=>"false"}, "1603015002058"=>{"email"=>"email_1@gmail.com", "_destroy"=>"false"}}}, "commit"=>"Save"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Another project with two tasks"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)."], ["created_at", "2020-10-18 09:56:42.218423"], ["updated_at", "2020-10-18 09:56:42.218423"]]
+  [1m[36mParticipant Create (0.1ms)[0m  [1m[32mINSERT INTO "participants" ("email", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "email_0@gmail.com"], ["project_id", 63], ["created_at", "2020-10-18 09:56:42.219820"], ["updated_at", "2020-10-18 09:56:42.219820"]]
+  [1m[36mParticipant Create (0.1ms)[0m  [1m[32mINSERT INTO "participants" ("email", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "email_1@gmail.com"], ["project_id", 63], ["created_at", "2020-10-18 09:56:42.220424"], ["updated_at", "2020-10-18 09:56:42.220424"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://127.0.0.1:51766/projects
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms | Allocations: 1934)
+Started GET "/projects" for 127.0.0.1 at 2020-10-18 11:56:42 +0200
+Processing by ProjectsController#index as HTML
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.3ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 119)
+  Rendered projects/_project_card.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered projects/index.html.erb within layouts/application (Duration: 18.2ms | Allocations: 11258)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 35)
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.3ms | Allocations: 11599)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "participants" WHERE "participants"."project_id" = ?[0m  [["project_id", 63]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.6ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "test"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire"], ["created_at", "2020-10-18 09:56:42.282038"], ["updated_at", "2020-10-18 09:56:42.282038"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 0"], ["description", "who cares"], ["project_id", 64], ["created_at", "2020-10-18 09:56:42.287453"], ["updated_at", "2020-10-18 09:56:42.287453"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 1"], ["description", "who cares"], ["project_id", 64], ["created_at", "2020-10-18 09:56:42.290761"], ["updated_at", "2020-10-18 09:56:42.290761"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 2"], ["description", "who cares"], ["project_id", 64], ["created_at", "2020-10-18 09:56:42.292992"], ["updated_at", "2020-10-18 09:56:42.292992"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "test"], ["description", "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire"], ["created_at", "2020-10-18 09:56:42.315974"], ["updated_at", "2020-10-18 09:56:42.315974"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.3ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 0"], ["description", "who cares"], ["project_id", 65], ["created_at", "2020-10-18 09:56:42.319481"], ["updated_at", "2020-10-18 09:56:42.319481"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 1"], ["description", "who cares"], ["project_id", 65], ["created_at", "2020-10-18 09:56:42.321695"], ["updated_at", "2020-10-18 09:56:42.321695"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "description", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "task 2"], ["description", "who cares"], ["project_id", 65], ["created_at", "2020-10-18 09:56:42.323566"], ["updated_at", "2020-10-18 09:56:42.323566"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m

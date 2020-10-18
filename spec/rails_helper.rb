@@ -2,16 +2,18 @@
 require 'simplecov'
 SimpleCov.start
 
-require 'spec_helper'
-require 'database_cleaner'
-require "capybara"
+
+require File.expand_path('dummy/config/environment.rb', __dir__)
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('dummy/config/environment.rb', __dir__)
+require 'database_cleaner'
+
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
+
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'spec_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
