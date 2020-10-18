@@ -6,7 +6,7 @@ module Abyme
     # ABYMIZE
     # this helper will generate the top level wrapper markup
     # with the bare minimum html attributes (data-controller="abyme")
-    # it takes the Simbolized name of the association (plural) and the form object
+    # it takes the Symbolized name of the association (plural) and the form object
     # then you can pass a hash of options (see exemple below)
     # if no block given it will generate a default markup for
     # #persisted_records_for, #new_records_for & #add_association methods
@@ -20,6 +20,10 @@ module Abyme
 
     # - min_count
     # set the default number of blank fields to display
+
+    # - partial
+    # to customize the partial path by default #abymize will expect 
+    # a partial to bbe present in views/abyme
 
     # - Exemple
 
