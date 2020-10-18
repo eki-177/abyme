@@ -1,7 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
-require 'coveralls'
 require 'simplecov-lcov'
+
+SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
 
 SimpleCov::Formatter::LcovFormatter.config do |c|
   c.report_with_single_file = true
@@ -16,7 +17,6 @@ SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
 )
 
 SimpleCov.start('rails')
-Coveralls.wear!('rails')
 
 require File.expand_path('dummy/config/environment.rb', __dir__)
 
