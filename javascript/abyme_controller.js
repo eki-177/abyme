@@ -156,7 +156,13 @@ export default class extends Controller {
     item.classList.add('abyme--marked-for-destroy')
   }
 
-  // check if associations limit is reached
+
+  // LIMIT_CHECK
+
+  // Check if associations limit is reached
+  // based on newFieldsTargets only
+  // persisted fields are ignored
+
   limit_check() {
     return (this.newFieldsTargets
                 .filter(item => !item.classList.contains('abyme--marked-for-destroy'))).length 
