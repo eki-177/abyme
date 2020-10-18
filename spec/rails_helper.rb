@@ -1,6 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
+require 'coveralls'
+
 SimpleCov.start
+Coveralls.wear!('rails')
 
 require File.expand_path('dummy/config/environment.rb', __dir__)
 
