@@ -4,6 +4,7 @@ module Abyme
   module ViewHelpers
 
     # ABYMIZE
+
     # this helper will generate the top level wrapper markup
     # with the bare minimum html attributes (data-controller="abyme")
     # it takes the Symbolized name of the association (plural) and the form object
@@ -54,6 +55,7 @@ module Abyme
     end
 
     # NEW_RECORDS_FOR
+
     # this helper is call by the AbymeBuilder #new_records instance method
     # it generates the html markup for new associations fields
     # it takes the association (Symbol) and the form object
@@ -117,6 +119,47 @@ module Abyme
         end
       end
     end
+
+    # PERSISTED_RECORDS_FOR
+
+    # this helper is call by the AbymeBuilder #records instance method
+    # it generates the html markup for persisted associations fields
+    # it takes the association (Symbol) and the form object
+    # then a hash of options.
+
+    # - Exemple
+    # <%= abymize(:tasks, f) do |abyme| %>
+    #   <%= abyme.records %>
+    #   ...
+    # <% end %>
+
+    # will output this html
+
+    # <div>
+    #   <div data-target="abyme.fields" class="abyme--fields task-fields">
+    #     ... partial html goes here
+    #   </div>
+    # </div>
+
+    # == Options
+    # - collection (Active Record Collection)
+    # allows you to pass an AR collection
+    # by default every associated records would be present
+
+    # - order (Hash)
+    # allows you to order the collection
+    # ex: order: { created_at: :desc }
+
+    # - partial (String)
+    # to customize the partial path by default #abymize will expect 
+    # a partial to bbe present in views/abyme
+
+    # - fields_html (Hash)
+    # allows you to pass any html attributes to each fields wrapper
+
+    # - wrapper_html (Hash)
+    # allows you to pass any html attributes to the the html element 
+    # wrapping all the fields
   
     def persisted_records_for(association, form, options = {})
       records = options[:collection] || form.object.send(association)
@@ -125,7 +168,6 @@ module Abyme
       
       if options[:order].present?
         records = records.order(options[:order])
-        # 
         invalids = form.object.send(association).reject(&:persisted?)
         records = records.to_a.concat(invalids) if invalids.any?
       end 
@@ -138,6 +180,12 @@ module Abyme
         end
       end
     end
+
+    # ADD & REMOVE ASSOCIATION
+
+    # these helpers will call the #create_button method 
+    # to generate the buttons for add and remove associations
+    # with the right action and a default content text for each button
   
     def add_association(options = {}, &block)
       action = 'click->abyme#add_association'
@@ -152,6 +200,11 @@ module Abyme
     end
 
     private
+
+    # CREATE_BUTTON
+
+    # this help is call by either add_association or remove_association
+    # by default it will generate a button tag.
   
     def create_button(action, options, &block)
       options[:html] ||= {}
