@@ -15,7 +15,6 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -28,21 +27,26 @@ jobs:
       with:
         ruby-version: 2.6
     - name: Install sqlite headers
-        run: |
-          sudo apt-get update
-          sudo apt-get install libsqlite3-dev
+      run: |
+        sudo apt-get update
+        sudo apt-get install libsqlite3-dev
+
     - name: Install dependencies
       run: bundle install
       
     - name: Prepare Database
-      run: |
-        cp config/database.yml.github-actions config/database.yml
-        bundle exec rails db:create db:migrate
+      run: bundle exec rails db:create db:migrate
       env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: db/test.sqlite3
         RAILS_ENV: test
-          
+
     - name: Run tests
       run: bundle exec rake
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: db/test.sqlite3
+        RAILS_ENV: test
       
     - name: Create Coverage Artifact
       uses: actions/upload-artifact@v2

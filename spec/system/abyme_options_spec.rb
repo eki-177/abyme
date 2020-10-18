@@ -1,9 +1,13 @@
 require "rails_helper"
 require_relative "../support/helpers/add_nested_attributes"
 
-RSpec.describe "Helper options" do
+RSpec.describe "Helper options", type: :system do
+  before do
+    driven_by :selenium_chrome_headless
+  end
+
   context 'For new resources' do
-    describe "Partials default & custom path", type: :system do
+    describe "Partials default & custom path" do
       it 'should set the correct partial when path specified' do
         visit new_project_path
         add_tasks(1)
@@ -43,7 +47,7 @@ RSpec.describe "Helper options" do
     #   end
     # end
   
-    describe "HTML attributes for 'abyme-fields' & add/remove association", type: :system do
+    describe "HTML attributes for 'abyme-fields' & add/remove association" do
       it 'should create the correct id' do
         visit new_project_path
         element = find('#add-task')

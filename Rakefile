@@ -1,9 +1,9 @@
 # require "bundler/gem_tasks"
-# require "rspec/core/rake_task"
+require "rspec/core/rake_task"
 # require 'rails/dummy/tasks'
 
-# RSpec::Core::RakeTask.new(:spec)
-# task :default => :spec
+RSpec::Core::RakeTask.new(:spec)
+task :default => :spec
 
 # APP_RAKEFILE = File.expand_path("spec/dummy/Rakefile", __dir__)
 # load 'rails/tasks/engine.rake'

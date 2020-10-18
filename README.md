@@ -1,3 +1,12 @@
+
+<!-- [![Build Status](https://travis-ci.org/Integralist/Sinderella.png?branch=master)](https://travis-ci.org/bear-in-mind/abyme)  -->
+
+[![Gem Version](https://badge.fury.io/rb/abyme.svg)](https://badge.fury.io/rb/abyme)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f591a9e00f7cf5188ad5/maintainability)](https://codeclimate.com/github/bear-in-mind/abyme/maintainability)
+
+<!-- [![Coverage Status](https://coveralls.io/repos/Integralist/Sinderella/badge.png)](https://coveralls.io/r/Integralist/Sinderella) -->
+
+
 # Abyme 🕳
 
 abyme is a modern take on handling dynamic nested forms in Rails 6+ using StimulusJS.
