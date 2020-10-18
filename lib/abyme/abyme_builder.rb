@@ -2,6 +2,12 @@ module Abyme
   class AbymeBuilder < ActionView::Base
     include ActionView
 
+    # If a block is given to the #abymize helper 
+    # it will instanciate a new AbymeBuilder 
+    # and pass to it the association name (Symbol)
+    # the form object, lookup_context
+    # optionaly a partial path 
+
     def initialize(association:, form:, lookup_context:, partial:, &block)
       @association = association
       @form = form
