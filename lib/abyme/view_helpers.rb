@@ -43,7 +43,14 @@ module Abyme
     # it takes the association (Symbol) and the form object
     # then a hash of options.
 
-    # Exemple
+    # - Exemple
+    # <%= abymize(:tasks, f, limit: 3) do |abyme| %>
+    #   <%= abyme.new_records %>
+    #   ...
+    # <% end %>
+
+    # will output this html
+
     # <div data-target="abyme.associations" data-association="tasks" data-abyme-position="end">
     #    <template class="abyme--task_template" data-target="abyme.template"> 
     #       <div data-target="abyme.fields abyme.newFields" class="abyme--fields task-fields">
