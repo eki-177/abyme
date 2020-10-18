@@ -8,14 +8,17 @@ abyme is a modern take on handling dynamic nested forms in Rails 6+ using Stimul
 [![Coverage Status](https://coveralls.io/repos/github/bear-in-mind/abyme/badge.svg)](https://coveralls.io/github/bear-in-mind/abyme?branch=master)
 
 ## Disclaimer
-This project is still a work in progress and subject to change. We encourage not to use it in production code just yet.
+This project is still a work in progress and subject to change. We would advise not to use it in production code just yet.
 
 Any enhancement proposition or bug report welcome !
 
-General remarks : 
-* A demo app will soon be online.
-* For now, the gem is tested through our demo app. Specific autonomous tests will be transfered/written in the following days.
-* Help is very much wanted on the Events part of the gem (see bottom of this documentation)
+## Demo app
+
+![Demo preview](https://res.cloudinary.com/aux-belles-autos/image/upload/v1603040053/abyme-preview.gif)
+
+Check out our demo app here : https://abyme-demo.herokuapp.com/
+
+Source code is right here : https://github.com/bear-in-mind/abyme_demo
 
 ## Installation
 
