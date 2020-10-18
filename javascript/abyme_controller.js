@@ -21,6 +21,7 @@ export default class extends Controller {
   }
   
   // return the value of the data-position attribute
+  // if there is no position specified set end as default
 
   get position() {
     return this.associationsTarget.dataset.abymePosition === 'end' ? 'beforeend' : 'afterbegin';
