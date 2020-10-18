@@ -5,11 +5,15 @@ export default class extends Controller {
 
   connect() {
     console.log("Abyme connected")
+
+    // If data-count is present,
+    // add n default fields on page load
     if (this.count) {
       this.addDefaultAssociations();
     }
   }
 
+  // return the value of the data-count attribute
   get count() {
     return this.element.dataset.minCount || 0;
   }
