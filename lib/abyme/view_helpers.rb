@@ -15,13 +15,13 @@ module Abyme
 
     # == Options
 
-    # - limit
+    # - limit (Integer)
     # you can set a limit for the new association fields to display
 
-    # - min_count
+    # - min_count (Integer)
     # set the default number of blank fields to display
 
-    # - partial
+    # - partial (String)
     # to customize the partial path by default #abymize will expect 
     # a partial to bbe present in views/abyme
 
@@ -60,7 +60,7 @@ module Abyme
     # then a hash of options.
 
     # - Exemple
-    # <%= abymize(:tasks, f, limit: 3) do |abyme| %>
+    # <%= abymize(:tasks, f) do |abyme| %>
     #   <%= abyme.new_records %>
     #   ...
     # <% end %>
@@ -77,7 +77,21 @@ module Abyme
     # </div>
 
     # == Options
-    # 
+    # - position (:start, :end)
+    # allows you to specify whether new fields added dynamically 
+    # should go at the top or at the bottom 
+    # :end is the default value
+
+    # - partial (String)
+    # to customize the partial path by default #abymize will expect 
+    # a partial to bbe present in views/abyme
+
+    # - fields_html (Hash)
+    # allows you to pass any html attributes to each fields wrapper
+
+    # - wrapper_html (Hash)
+    # allows you to pass any html attributes to the the html element 
+    # wrapping all the fields
 
     def new_records_for(association, form, options = {}, &block)
       options[:wrapper_html] ||= {}
