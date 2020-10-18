@@ -47,6 +47,11 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: db/test.sqlite3
         RAILS_ENV: test
+    
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Create Coverage Artifact
       uses: actions/upload-artifact@v2
