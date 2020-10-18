@@ -1,15 +1,11 @@
-
-
-[![Gem Version](https://badge.fury.io/rb/abyme.svg)](https://badge.fury.io/rb/abyme)
-![build](https://github.com/bear-in-mind/abyme/workflows/build/badge.svg)
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/f591a9e00f7cf5188ad5/maintainability)](https://codeclimate.com/github/bear-in-mind/abyme/maintainability)
-
-[![Coverage Status](https://coveralls.io/repos/github/bear-in-mind/abyme/badge.svg?branch=master)](https://coveralls.io/github/bear-in-mind/abyme?branch=master)
-
 # Abyme 🕳
 
 abyme is a modern take on handling dynamic nested forms in Rails 6+ using StimulusJS.
+
+[![Gem Version](https://badge.fury.io/rb/abyme.svg)](https://badge.fury.io/rb/abyme)
+![build](https://github.com/bear-in-mind/abyme/workflows/build/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f591a9e00f7cf5188ad5/maintainability)](https://codeclimate.com/github/bear-in-mind/abyme/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/bear-in-mind/abyme/badge.svg?branch=master)](https://coveralls.io/github/bear-in-mind/abyme?branch=master)
 
 ## Disclaimer
 This project is still a work in progress and subject to change. We encourage not to use it in production code just yet.

@@ -16,7 +16,9 @@ SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
   ]
 )
 
-SimpleCov.start('rails')
+SimpleCov.start('rails') do
+  add_filter "/version/"
+end
 
 require File.expand_path('dummy/config/environment.rb', __dir__)
 
