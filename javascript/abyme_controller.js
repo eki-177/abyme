@@ -26,6 +26,8 @@ export default class extends Controller {
     return this.associationsTarget.dataset.abymePosition === 'end' ? 'beforeend' : 'afterbegin';
   }
 
+  // ADD_ASSOCIATION
+
   // this function is call whenever a click occurs
   // on the element with the click->abyme#add_association
   // <button> element by default
@@ -60,20 +62,20 @@ export default class extends Controller {
     this.create_event('after-add');
   }
 
-  // REMOVE_ASSOCIATION
+  // REMOVE_ASSOCIATIONg
 
   // this function is call whenever a click occurs
   // on the element with the click->abyme#remove_association
   // <button> element by default
 
-  // - call the function mark_for_destroy that takes care
-  //   of marking the element for destruction and hiding it
-  // - dispatch an event before mark & hide
-  // - mark for descrution + hide the element
-  // - dispatch an event after mark and hide
-
   remove_association(event) {
     event.preventDefault();
+
+    // - call the function mark_for_destroy that takes care
+    //   of marking the element for destruction and hiding it
+    // - dispatch an event before mark & hide
+    // - mark for descrution + hide the element
+    // - dispatch an event after mark and hide
 
     this.create_event('before-remove');
     this.mark_for_destroy(event);
@@ -84,11 +86,12 @@ export default class extends Controller {
 
   // CREATE_EVENT
 
-  // take the stage (String)
-  // create a new custom event 
-  // and dispatch at at the controller level
-
   create_event(stage, html = null) {
+
+    // take a stage (String) => before-add, after-add...
+    // create a new custom event 
+    // and dispatch at at the controller lev
+    
     const event = new CustomEvent(`abyme:${stage}`, { detail: {controller: this, content: html} });
     this.element.dispatchEvent(event);
     // WIP
