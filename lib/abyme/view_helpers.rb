@@ -3,16 +3,16 @@ require_relative "abyme_builder"
 module Abyme
   module ViewHelpers
 
-    # Abymize
+    # ABYMIZE
     # this helper will generate the top level wrapper markup
-    # with the bare minimum attributes html (data-controller="abyme")
+    # with the bare minimum html attributes (data-controller="abyme")
     # it takes the Simbolized name of the association (plural) and the form object
     # then you can pass a hash of options (see exemple below)
 
     # - Exemple
 
     # <%= abymize(:tasks, f, limit: 3) do |abyme| %>
-    #   ....
+    #   ...
     # <% end %>
 
     # will output this html
@@ -36,6 +36,8 @@ module Abyme
         end
       end
     end
+
+    # 
 
     def new_records_for(association, form, options = {}, &block)
       options[:wrapper_html] ||= {}
