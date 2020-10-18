@@ -15,10 +15,6 @@ module Abyme
       @partial = partial
       yield(self) if block_given?
     end
-
-    # RECORDS
-
-    
   
     def records(options = {})
       persisted_records_for(@association, @form, options) do |fields_for_association|
