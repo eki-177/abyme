@@ -30,14 +30,28 @@ export default class extends Controller {
   // on the element with the click->abyme#add_association
 
   add_association(event) {
+
+    // if a data-count is present the add_association
+    // will be call without an event so we have to check
+    // this case
+
     if (event) {
       event.preventDefault();
     }
-    // check for limit reached
+
+    // check for limit reached 
+    // dispatch an event if the limit is reached
+
     if (this.element.dataset.limit && this.limit_check()) {
       this.create_event('limit-reached')
       return false
     }
+
+    // - call the function build_html that take care
+    //   for building the correct html to be inserted in the DOM
+    // - dispatch an event before insert
+    // - insert html into the dom
+    // - dispatch an event after insert
 
     const html = this.build_html();
     this.create_event('before-add');
