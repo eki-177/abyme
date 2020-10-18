@@ -13,6 +13,19 @@
 # it.
 require 'capybara/rspec'
 
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage] }
+  )
+
+  Capybara::Selenium::Driver.new app,
+                                  browser: :chrome,
+                                  desired_capabilities: capabilities
+
+end
+
+Capybara.default_driver = :selenium_headless
+Capybara.javascript_driver = :selenium_headless
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
@@ -20,19 +33,6 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
 
-  Capybara.register_driver :headless_chrome do |app|
-    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-      chromeOptions: { args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage] }
-    )
-  
-    Capybara::Selenium::Driver.new app,
-                                    browser: :chrome,
-                                    desired_capabilities: capabilities
-  
-  end
-  
-  Capybara.default_driver = :selenium_headless
-  Capybara.javascript_driver = :selenium_headless
 
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
