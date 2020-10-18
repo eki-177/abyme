@@ -205,6 +205,17 @@ module Abyme
 
     # this help is call by either add_association or remove_association
     # by default it will generate a button tag.
+
+    # == Options
+    # - content (String)
+    # allows you to set the button text
+
+    # - tag (Symbol)
+    # allows you to set the html tag of your choosing
+    # default if :button
+
+    # - html (Hash)
+    # to pass any html attributes you want.
   
     def create_button(action, options, &block)
       options[:html] ||= {}
