@@ -86,11 +86,11 @@ export default class extends Controller {
 
   // CREATE_EVENT
 
-  create_event(stage, html = null) {
+  // take a stage (String) => before-add, after-add...
+  // create a new custom event 
+  // and dispatch at at the controller level
 
-    // take a stage (String) => before-add, after-add...
-    // create a new custom event 
-    // and dispatch at at the controller lev
+  create_event(stage, html = null) {
     
     const event = new CustomEvent(`abyme:${stage}`, { detail: {controller: this, content: html} });
     this.element.dispatchEvent(event);
@@ -120,7 +120,14 @@ export default class extends Controller {
 
   // UTILITIES
 
-  // build html
+  // BUILD HTML
+
+  // takes the html template and substitutes the sub-string
+  // NEW_RECORD for a generated timestamp
+  // then if there is a sub template in the html (multiple nested level)
+  // set all the sub timestamps back as NEW_RECORD
+  // finally return the html  
+
   build_html() {
     let html = this.templateTarget.innerHTML.replace(
       /NEW_RECORD/g,
