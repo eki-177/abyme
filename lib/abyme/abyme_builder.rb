@@ -17,7 +17,7 @@ module Abyme
     end
 
     # RECORDS
-    
+
     # calls the #persisted_records_for helper method
     # passing association, form and options to it
   
@@ -26,6 +26,11 @@ module Abyme
         render_association_partial(fields_for_association, options)
       end
     end
+
+    # NEW_RECORDS
+
+    # calls the #new_records_for helper method
+    # passing association, form and options to it
     
     def new_records(options = {}, &block)
       new_records_for(@association, @form, options) do |fields_for_association|
