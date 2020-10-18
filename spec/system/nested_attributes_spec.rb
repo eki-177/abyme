@@ -2,9 +2,6 @@ require "rails_helper"
 require_relative "../support/helpers/add_nested_attributes"
 
 RSpec.describe "Nested attributes behaviour", type: :system do
-  before(:each) do
-    Capybara.current_driver = :selenium_headless
-  end
 
   let(:description) { "La mise en abyme — également orthographiée mise en abysme ou plus rarement mise en abîme1 — est un procédé consistant à représenter une œuvre dans une œuvre similaire, par exemple dans les phénomènes de « film dans un film », ou encore en incrustant dans une image cette image elle-même (en réduction)." }
   context "Creating a brand new project" do

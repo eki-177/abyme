@@ -38,7 +38,12 @@ jobs:
       run: bundle exec rails db:create db:migrate
       env:
         RAILS_ENV: test
-
+        
+    - name: setup-chromedriver
+      # You may pin to the exact commit or the version.
+      # uses: nanasess/setup-chromedriver@835cae695490330a7e390033b2b5bd67e6f8055e
+      uses: nanasess/setup-chromedriver@v1.0.1
+      
     - name: Run tests
       run: bundle exec rake
       
