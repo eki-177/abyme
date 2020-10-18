@@ -35,6 +35,9 @@ Capybara.configure do |config|
   config.ignore_hidden_elements = true
   config.default_max_wait_time = 3 #sec
 end
+
+Capybara.default_driver :headless_chrome
+Capybara.javascript_driver :headless_chrome
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
