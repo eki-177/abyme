@@ -15,6 +15,11 @@ module Abyme
       @partial = partial
       yield(self) if block_given?
     end
+
+    # RECORDS
+    
+    # calls the #persisted_records_for helper method
+    # passing association, form and options to it
   
     def records(options = {})
       persisted_records_for(@association, @form, options) do |fields_for_association|
