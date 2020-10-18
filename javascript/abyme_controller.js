@@ -8,19 +8,26 @@ export default class extends Controller {
 
     // If data-count is present,
     // add n default fields on page load
+
     if (this.count) {
       this.addDefaultAssociations();
     }
   }
 
   // return the value of the data-count attribute
+
   get count() {
     return this.element.dataset.minCount || 0;
   }
   
+  // return the value of the data-position attribute
+
   get position() {
     return this.associationsTarget.dataset.abymePosition === 'end' ? 'beforeend' : 'afterbegin';
   }
+
+  // this function is call whenever a click occurs
+  // on the element with the click->abyme#add_association
 
   add_association(event) {
     if (event) {
