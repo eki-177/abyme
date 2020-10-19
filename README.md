@@ -175,7 +175,7 @@ What about it ? Well, not much. That's the actual magical thing about `nested_at
 
 ### Auto mode
 
-Let's now take care of our comments fields. We'll add these using our neat *automatic mode*: just stick this line at the end of the partial:
+Let's now take care of our comments fields. We'll add these using our neat *automatic mode*: just stick this line at the end of the partial :
 ```ruby
 # views/abyme/_task_fields.html.erb
 # ... rest of the partial above
