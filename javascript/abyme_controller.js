@@ -5,7 +5,7 @@ export default class extends Controller {
   // Some applications don't compile correctly with the usual static syntax. 
   // Thus implementing targets with standard getters below
 
-  get targets() {
+  static get targets() {
     return ['template', 'associations', 'fields', 'newFields'];
   } 
 

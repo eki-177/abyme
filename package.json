@@ -1,6 +1,6 @@
 {
   "name": "abyme",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "JS companion to abyme gem",
   "main": "javascript/index.js",
   "files": [
