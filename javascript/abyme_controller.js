@@ -1,7 +1,13 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
-  static targets = ['template', 'associations', 'fields', 'newFields'];
+  // static targets = ['template', 'associations', 'fields', 'newFields'];
+  // Some applications don't compile correctly with the usual static syntax. 
+  // Thus implementing targets with standard getters below
+
+  get targets() {
+    return ['template', 'associations', 'fields', 'newFields'];
+  } 
 
   connect() {
     console.log("Abyme Connected")
