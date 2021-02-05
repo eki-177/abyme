@@ -38,7 +38,7 @@ module Abyme
     #   ...
     # </div>
 
-    def abymize(association, form, options = {}, &block)
+    def abyme_for(association, form, options = {}, &block)
       content_tag(:div, data: { controller: 'abyme', limit: options[:limit], min_count: options[:min_count] }, id: "abyme--#{association}") do
         if block_given?
           yield(Abyme::AbymeBuilder.new(

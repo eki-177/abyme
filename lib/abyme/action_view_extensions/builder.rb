@@ -1,10 +1,8 @@
-# require_relative '../view_helpers'
-
 module Abyme
   module ActionViewExtensions
     module Builder
       def abyme_for(association, options = {}, &block)
-        @template.abymize(association, self, options, &block)
+        @template.abyme_for(association, self, options, &block)
       end
     end
   end

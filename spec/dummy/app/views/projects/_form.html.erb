@@ -15,7 +15,7 @@
 			<%= f.submit 'Save', class: 'main-btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full cursor-pointer' %>
 
 			<div class="w-full py-6">
-				<%= f.abyme_for(:participants, button_text: 'add participant', fields_html: { class: 'participant-fields' }) %>
+				<%= abyme_for(:participants, f, button_text: 'add participant', fields_html: { class: 'participant-fields' }) %>
 			</div>
 		</div>
 		<div class="container bg-white p-8 w-2/3 overflow-scroll">
