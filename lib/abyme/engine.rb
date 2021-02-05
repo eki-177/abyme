@@ -4,7 +4,6 @@ module Abyme
     
     config.after_initialize do
       ActiveSupport.on_load :action_view do
-        # ActionView::Base.send :include, Abyme::ViewHelpers
         include Abyme::ViewHelpers
       end
     end
