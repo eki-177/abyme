@@ -5,8 +5,8 @@ class Project < ApplicationRecord
   has_many :comments, through: :tasks
   has_many :participants
   
-  abymize :tasks
-  abymize :participants
+  abymize :tasks, allow: [:description, :title]
+  abymize :participants, allow: [:email, :name]
 
   validates :title, presence: true
   validates :description, presence: true
