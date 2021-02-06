@@ -1,6 +1,22 @@
 # Abyme 🕳
 
-abyme is a modern take on handling dynamic nested forms in Rails 6+ using StimulusJS.
+abyme makes it easy to handle nested attributes in Rails, using [stimulus](https://stimulusjs.org/handbook/introduction) under the hood. Here's an example :
+```ruby
+# views/projects/_form.html.erb
+<%= simple_form_for @project do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit 'Save' %>
+
+  <%= f.abyme_for(:tasks) %>
+<% end %>
+```
+Supposing you have a partial located in `views/abyme/_task_fields` containing your fields for `tasks`, this command will generate and display 3 elements in this order :
+- A div containing all task fields for `@project.tasks` (either persisted or already built instances of `tasks`)
+- A div which will contain all additional tasks about to be created (added through the `Add task` button below)
+- A button to generate fields for new instances of tasks
+
+Have a look below to learn more about the different options and needed configuration.
 
 [![Gem Version](https://badge.fury.io/rb/abyme.svg)](https://badge.fury.io/rb/abyme)
 ![build](https://github.com/bear-in-mind/abyme/workflows/build/badge.svg)
@@ -89,7 +105,7 @@ class Project < ApplicationRecord
   include Abyme::Model
   has_many :tasks, inverse_of: :project
   # ...
-  abyme_for :tasks
+  abymize :tasks
 end
 
 # models/task.rb
@@ -97,7 +113,7 @@ class Task < ApplicationRecord
   include Abyme::Model
   has_many :comments, inverse_of: :task
   # ...
-  abyme_for :comments
+  abymize :comments
 end
 ```
 Note the use of the `inverse_of` option. It is needed for Rails to effectively associate children to their yet unsaved parent. Have a peek to the bottom of [this page](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for) for more info.
@@ -142,7 +158,7 @@ abyme provides helper methods for all these. Here's how our form for `Project` l
   <%= f.input :description %>
   <%= f.submit 'Save' %>
 
-  <%= abymize(:tasks, f) do |abyme| %>
+  <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records %>
     <%= abyme.new_records %>
     <%= add_association %>
@@ -150,7 +166,7 @@ abyme provides helper methods for all these. Here's how our form for `Project` l
 <% end %>
 ```
 
-`abyme.records` will contain the persisted associations fields, while `abyme.new_records` will contain fields for the new associations. `add_association` will by default generate a button with a text of type "Add `resource_name`". To work properly, this method **has** to be called **inside the block** passed to the `abymize` method.
+`abyme.records` will contain the persisted associations fields, while `abyme.new_records` will contain fields for the new associations. `add_association` will by default generate a button with a text of type "Add `resource_name`". To work properly, this method **has** to be called **inside the block** passed to the `abyme_for` method.
 
 Now where's the code for these fields ? abyme will assume a **partial** to be present in the directory `/views/abyme` with a *name respecting this naming convention* (just like with [cocoon](https://github.com/nathanvda/cocoon#basic-usage)): `_singular_association_name_fields.html.erb`. 
 
@@ -179,7 +195,7 @@ Let's now take care of our comments fields. We'll add these using our neat *auto
 ```ruby
 # views/abyme/_task_fields.html.erb
 # ... rest of the partial above
-<%= abymize(:comments, f) %>
+<%= f.abyme_for(:comments) %>
 ```
 Where's the rest of the code ? Well, if the default configuration you saw above in the `_form.html.erb` suits you, and the order in which the different resources appear feels right (persisted first, new fields second, and the 'Add' button last), then you can just spare the block, and it will be taken care of for you. We'll just write our `_comment_fields.html.erb` partial in the `views/abyme` directory and we'll be all set.
 
@@ -202,7 +218,7 @@ Which is the way you would configure `nested_attributes` 90% of the time. Should
 A few options can be passed to `abyme.records`:
 * `collection:` : allows you to pass a collection of your choice to only display specific objects.
 ```ruby
-  <%= abymize(:tasks, f) do |abyme| %>
+  <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records(collection: @project.tasks.where(done: false)) %>
     <%= abyme.new_records %>
     <%= add_association %>
@@ -210,15 +226,15 @@ A few options can be passed to `abyme.records`:
 ```
 * `order:` : allows you to pass an ActiveRecord `order` method to sort your instances the way you want.
 ```ruby
-  <%= abymize(:tasks, f) do |abyme| %>
+  <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records(order: { created_at: :asc }) %>
     <%= abyme.new_records %>
     <%= add_association %>
   <% end %>
 ```
-* `partial:` : allows you to indicate a custom partial, if one has not already been passed to `abymize`.
+* `partial:` : allows you to indicate a custom partial, if one has not already been passed to `abyme_for`.
 ```ruby
-  <%= abymize(:tasks, f) do |abyme| %>
+  <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records %>
     <%= abyme.new_records(partial: 'projects/task_fields') %>
     <%= add_association %>
@@ -226,7 +242,7 @@ A few options can be passed to `abyme.records`:
 ```
 * `fields_html:` : gives you the possibility to add any HTML attribute you may want to each set of fields. By default, an `abyme--fields` and an `singular_association-fields` class are already present.
 ```ruby
-  <%= abymize(:tasks, f) do |abyme| %>
+  <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records(fields_html: { class: "some-class" }) %>
     # Every set of persisted fields will have these 3 classes : 'abyme--fields', 'task-fields', and 'some-class'
     <%= abyme.new_records %>
@@ -235,7 +251,7 @@ A few options can be passed to `abyme.records`:
 ```
 * `wrapper_html:` : gives you the possibility to add any HTML attribute you may want to the wrapper containing all fields.
 ```ruby
-  <%= abymize(:tasks, f) do |abyme| %>
+  <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records(wrapper_html: { class: "persisted-records" }) %>
     # The wrapper containing all persisted task fields will have an id "abyme-tasks-wrapper" and a class "persisted-records"
     <%= abyme.new_records %>
@@ -246,7 +262,7 @@ A few options can be passed to `abyme.records`:
 Here are the options that can be passed to `abyme.new_records`:
 * `position:` : allows you to specify whether new fields added dynamically should go at the top or at the bottom. `:end` is the default value.
 ```ruby
-  <%= abymize(:tasks, f) do |abyme| %>
+  <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records %>
     <%= abyme.new_records(position: :start) %>
     <%= add_association %>
@@ -262,7 +278,7 @@ These 2 methods behave the same. Here are their options :
 * `content:` : the text to display inside the element. Default is `Add association_name`
 * `html:` : gives you the possibility to add any HTML attribute you may want to the element.
 ```ruby
-  <%= abymize(:tasks, f) do |abyme| %>
+  <%= f.abyme_for(:tasks) do |abyme| %>
     # ...
     <%= add_association(tag: :a, content: "Add a super task", html: {id: "add-super-task"}) %>
   <% end %>
@@ -270,7 +286,7 @@ These 2 methods behave the same. Here are their options :
 
 As you may have seen above, you can also pass a block to the method to give it whatever HTML content you want :
 ```ruby
-  <%= abymize(:tasks, f) do |abyme| %>
+  <%= f.abyme_for(:tasks) do |abyme| %>
     # ...
     <%= add_association(tag: :div, html: {id: "add-super-task", class: "flex"}) do %>
       <i class="fas fa-plus"></i>
@@ -279,11 +295,11 @@ As you may have seen above, you can also pass a block to the method to give it w
   <% end %>
 ```
 
-#### #abymize(:association, form_object)
+#### #abyme_for(:association, form_object)
 This is the container for all your nested fields. It takes two parameters (the symbolized association and the `form_builder`), and some optional ones. Please note an id is automatically added to this element, which value is : `abyme--association`. 
 * `partial:` : allows you to indicate a custom partial path for both `records` and `new_records`
 ```ruby
-  <%= abymize(:tasks, f, partial: 'projects/task_fields') do |abyme| %>
+  <%= f.abyme_for(:tasks, partial: 'projects/task_fields') do |abyme| %>
     <%= abyme.records %>
     <%= abyme.new_records %>
     <%= add_association %>
@@ -291,7 +307,7 @@ This is the container for all your nested fields. It takes two parameters (the s
 ```
 * `limit:` : allows you to limit the number of new fields that can be created through JS. If you need to limit the number of associations in database, you will need to add validations. You can also pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for).
 ```ruby
-  <%= abymize(:tasks, f, limit: 5) do |abyme| %>
+  <%= f.abyme_for(:tasks, limit: 5) do |abyme| %>
     # Beyond 5 tasks, the add button won't add any more fields. See events section below to see how to handle the 'abyme:limit-reached' event
     <%= abyme.records %>
     <%= abyme.new_records %>
@@ -300,7 +316,7 @@ This is the container for all your nested fields. It takes two parameters (the s
 ```
 * `min_count` : by default, there won't be any blank fields added on page load. By passing a `min_count` option, you can set how many empty fields should appear in the form.
 ```ruby
-  <%= abymize(:tasks, f, min_count: 1) do |abyme| %>
+  <%= f.abyme_for(:tasks, min_count: 1) do |abyme| %>
     # 1 blank task will automatically be added to the form.
     <%= abyme.records %>
     <%= abyme.new_records %>
@@ -308,12 +324,12 @@ This is the container for all your nested fields. It takes two parameters (the s
   <% end %>
 ```
 
-*When in auto mode*, the abymize method can take a few options:
+*When in auto mode*, the abyme_for method can take a few options:
 * `button_text:` : this will set the `add_association` button text to the string of your choice.
 * All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
 
 ## Events
-This part is still a work in progress and subject to change. We're providing some basic self-explanatory events to attach to. These are emitted by the main container (created by the `abymize` method).
+This part is still a work in progress and subject to change. We're providing some basic self-explanatory events to attach to. These are emitted by the main container (created by the `abyme_for` method).
 
 We're currently thinking about a way to attach to these via Stimulus. Coming soon !
 
