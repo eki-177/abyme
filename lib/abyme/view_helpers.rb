@@ -100,7 +100,7 @@ module Abyme
 
       wrapper_default = { 
         data: { 
-          target: 'abyme.associations', 
+          abyme_target: 'associations', 
           association: association, 
           abyme_position: options[:position] || :end 
         } 
@@ -109,7 +109,7 @@ module Abyme
       fields_default = { data: { target: 'abyme.fields abyme.newFields' } }
 
       content_tag(:div, build_attributes(wrapper_default, options[:wrapper_html])) do
-        content_tag(:template, class: "abyme--#{association.to_s.singularize}_template", data: { target: 'abyme.template' }) do
+        content_tag(:template, class: "abyme--#{association.to_s.singularize}_template", data: { abyme_target: 'template' }) do
           form.fields_for association, association.to_s.classify.constantize.new, child_index: 'NEW_RECORD' do |f|
             content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
               # Here, if a block is passed, we're passing the association fields to it, rather than the form itself
@@ -164,7 +164,7 @@ module Abyme
     def persisted_records_for(association, form, options = {})
       records = options[:collection] || form.object.send(association)
       options[:wrapper_html] ||= {}
-      fields_default = { data: { target: 'abyme.fields' } }
+      fields_default = { data: { abyme_target: 'fields' } }
       
       if options[:order].present?
         records = records.order(options[:order])
