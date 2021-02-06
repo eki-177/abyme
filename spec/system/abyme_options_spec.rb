@@ -144,7 +144,7 @@ RSpec.describe "Helper options", type: :system do
 
     it 'should allow data-attributes to be passed to the fields without overwriting the defaults' do
       visit edit_project_path(@project)
-      expect(find('.persisted-fields[data-target="abyme.fields tasks-wrapper.test"]')).not_to be_nil
+      expect(find('.persisted-fields[data-abyme-target="fields"][data-target="tasks-wrapper.test"]')).not_to be_nil
     end
   end
 end
