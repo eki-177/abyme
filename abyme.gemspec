@@ -38,6 +38,9 @@ Gem::Specification.new do |spec|
   # Dummy app
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency 'rails'
+  spec.add_development_dependency 'pry-rails'
+  spec.add_development_dependency 'web-console'
+
   spec.add_development_dependency 'puma'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'simplecov-lcov'

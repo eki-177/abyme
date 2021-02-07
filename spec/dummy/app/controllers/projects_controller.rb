@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    raise
     @project = Project.new(project_params)
   	@project.save ? redirect_to(projects_path) : render(:new)
   end
@@ -25,21 +26,27 @@ class ProjectsController < ApplicationController
 
   private
 
+  # def project_params
+  # 	params.require(:project).permit(
+  #     :title, :description,
+  #     tasks_attributes: [
+  #       :id, 
+  #       :title, 
+  #       :description, 
+  #       :_destroy, 
+  #       comments_attributes: [
+  #         :id, 
+  #         :content, 
+  #         :_destroy
+  #       ]
+  #     ],
+  #     participants_attributes: [:id, :email, :_destroy]
+  #   )
+  # end
+
   def project_params
-  	params.require(:project).permit(
-      :title, :description,
-      tasks_attributes: [
-        :id, 
-        :title, 
-        :description, 
-        :_destroy, 
-        comments_attributes: [
-          :id, 
-          :content, 
-          :_destroy
-        ]
-      ],
-      participants_attributes: [:id, :email, :_destroy]
+    params.require(:project).permit(
+      :title, :description, Project.abyme_params
     )
   end
 end

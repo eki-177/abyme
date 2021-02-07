@@ -4,7 +4,7 @@ class Task < ApplicationRecord
   belongs_to :project
   has_many :comments, inverse_of: :task, dependent: :destroy
 
-  abymize :comments
+  abymize :comments, permit: :all_attributes
 
   validates :title, presence: true
   validates :description, presence: true
