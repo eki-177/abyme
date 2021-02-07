@@ -7,7 +7,7 @@ RSpec.describe Project, type: :model do
       comments_attributes = [:content, :id, :_destroy, :task_id]
       participants_attributes = [:email, :name, :id, :_destroy]
       # p "Task abyme params: #{Task.abyme_params}"
-      project_attributes = Project.abyme_params
+      project_attributes = Project.abyme_attributes
       expect(project_attributes).to include(:tasks_attributes, :participants_attributes)
       expect(project_attributes).not_to include(:comments_attributes)
       expect(project_attributes[:tasks_attributes]).to include(:description, :title, :id, :_destroy)
