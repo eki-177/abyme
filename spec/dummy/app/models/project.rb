@@ -6,7 +6,8 @@ class Project < ApplicationRecord
   has_many :participants
   
   abymize :tasks, permit: [:description, :title]
-  abymize :participants, permit: [:email, :name]
+  # abymize :participants, permit: [:email, :name]
+  abymize :participants
 
   validates :title, presence: true
   validates :description, presence: true

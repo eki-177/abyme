@@ -15,7 +15,7 @@ module Abyme
       def abymize(association, attributes = {}, options = {})
         default_options = {reject_if: :all_blank, allow_destroy: true}
         accepts_nested_attributes_for association, default_options.merge(options)
-        Abyme::Model.add(self.name, association, attributes)
+        Abyme::Model.add(self.name, association, attributes) if attributes[:permit]
       end
 
       def abyme_params
@@ -25,6 +25,7 @@ module Abyme
 
     private
 
+    # TODO: Remove _destroy from default attributes if allow_destroy is false
     def self.build_attributes_list(association, attributes)
       model = association.to_s.classify.constantize
       nested_params = model.abyme_params if model.respond_to? :abyme_params # If nested model is abymized
