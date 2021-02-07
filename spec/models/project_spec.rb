@@ -3,18 +3,17 @@ require 'rails_helper'
 RSpec.describe Project, type: :model do
   describe '::abyme_params' do
     it 'correctly builds a hash of authorized attributes for several levels of nesting' do
-      tasks_attributes = [
-        :description, :title, :id, :_destroy, comments_attributes: [
-          :content, :id, :_destroy, :task_id
-        ]
-      ]
+      tasks_attributes = [:description, :title, :id, :_destroy]
+      comments_attributes = [:content, :id, :_destroy, :task_id]
       participants_attributes = [:email, :name, :id, :_destroy]
       # p "Task abyme params: #{Task.abyme_params}"
-      p "Project abyme params: #{Project.abyme_params}"
-      expect(Project.abyme_params).to include(:tasks_attributes, :participants_attributes)
-      expect(Project.abyme_params).not_to include(:comments_attributes)
-      expect(Project.abyme_params[:tasks_attributes]).to match_array(tasks_attributes)
-      expect(Project.abyme_params[:participants_attributes]).to match_array(particpants_attributes)
+      project_attributes = Project.abyme_params
+      expect(project_attributes).to include(:tasks_attributes, :participants_attributes)
+      expect(project_attributes).not_to include(:comments_attributes)
+      expect(project_attributes[:tasks_attributes]).to include(:description, :title, :id, :_destroy)
+      expect(project_attributes[:tasks_attributes]).to include(a_kind_of(Hash))
+      expect(project_attributes[:tasks_attributes].last[:comments_attributes]).to match_array(comments_attributes)
+      expect(project_attributes[:participants_attributes]).to match_array(participants_attributes)
     end
   end
 end

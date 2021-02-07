@@ -1,41 +1,46 @@
 module Abyme
   module Model
-    extend ActiveSupport::Concern
+    @permitted_attributes ||= {}
 
-    included do
-      cattr_reader :abyme_params
-      @@abyme_params = {}
+    def self.add(class_name, association, attributes)
+      @permitted_attributes[class_name]["#{association}_attributes".to_sym] = build_attributes_list(association, attributes)
     end
 
-    class_methods do
+    def self.included(klass)
+      @permitted_attributes[klass.name] ||= {}
+      klass.extend ClassMethods
+    end
+
+    module ClassMethods
       def abymize(association, attributes = {}, options = {})
         default_options = {reject_if: :all_blank, allow_destroy: true}
         accepts_nested_attributes_for association, default_options.merge(options)
-        permitted_attributes = nested_attributes(association, attributes)
-        @@abyme_params["#{association}_attributes".to_sym] = permitted_attributes
-        # p "On #{self}, abymized params for #{association}: #{@@abyme_params["#{association}_attributes".to_sym]}"
+        Abyme::Model.add(self.name, association, attributes)
       end
 
-      private
-
-      def nested_attributes(association, attributes)
-        model = association.to_s.classify.constantize
-        nested_params = model.abyme_params if model.respond_to? :abyme_params # If nested model is abymized
-        authorized_attributes = [:_destroy, :id] # Default
-        if attributes[:permit] == :all_attributes
-          authorized_attributes += add_all_attributes(model)
-          # p authorized_attributes << nested_params unless (nested_params.blank? || authorized_attributes.include?(nested_params))
-        else
-          # p attributes[:permit] << nested_params unless (nested_params.blank? || nested_params.key?("#{association}_attributes".to_sym))
-          authorized_attributes += attributes[:permit]
-        end
-        authorized_attributes
-      end
-
-      def add_all_attributes(model)
-        model.column_names.map(&:to_sym).reject { |attr| [:id, :created_at, :updated_at].include?(attr) }
+      def abyme_params
+        Abyme::Model.instance_variable_get(:@permitted_attributes)[self.name]
       end
     end
 
+    private
+
+    def self.build_attributes_list(association, attributes)
+      model = association.to_s.classify.constantize
+      nested_params = model.abyme_params if model.respond_to? :abyme_params # If nested model is abymized
+      authorized_attributes = [:_destroy, :id] # Default
+      if attributes[:permit] == :all_attributes
+        authorized_attributes += add_all_attributes(model)
+        authorized_attributes << nested_params unless (nested_params.blank? || authorized_attributes.include?(nested_params))
+      else
+        attributes[:permit] << nested_params unless (nested_params.blank? || nested_params.key?("#{association}_attributes".to_sym))
+        authorized_attributes += attributes[:permit]
+      end
+      authorized_attributes
+    end
+
+    def self.add_all_attributes(model)
+      model.column_names.map(&:to_sym).reject { |attr| [:id, :created_at, :updated_at].include?(attr) }
+    end
   end
 end
