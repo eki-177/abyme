@@ -4,9 +4,10 @@ RSpec.describe Task, type: :model do
   describe '::abyme_params' do
     it 'correctly builds a hash of authorized attributes for a single level of nesting' do
       comments_attributes = [:content, :id, :_destroy, :task_id]
-      expect(Task.abyme_params).to include(:comments_attributes)
-      expect(Task.abyme_params).not_to include(:tasks_attributes, :participants_attributes)
-      expect(Task.abyme_params[:comments_attributes]).to match_array(comments_attributes)
+      task_attributes = Task.abyme_attributes
+      expect(task_attributes).to include(:comments_attributes)
+      expect(task_attributes).not_to include(:tasks_attributes, :participants_attributes)
+      expect(task_attributes[:comments_attributes]).to match_array(comments_attributes)
     end
   end
 end
