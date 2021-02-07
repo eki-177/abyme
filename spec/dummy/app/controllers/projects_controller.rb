@@ -9,7 +9,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    raise
     @project = Project.new(project_params)
   	@project.save ? redirect_to(projects_path) : render(:new)
   end
