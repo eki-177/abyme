@@ -43,9 +43,10 @@ class ProjectsController < ApplicationController
   #   )
   # end
 
+  # TODO: abstract the call to Klass.abyme_attributes inside a controller method
   def project_params
     params.require(:project).permit(
-      :title, :description, Project.abyme_params
+      :title, :description, Project.abyme_attributes
     )
   end
 end

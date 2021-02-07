@@ -18,7 +18,7 @@ module Abyme
         Abyme::Model.add(self.name, association, attributes) if attributes[:permit]
       end
 
-      def abyme_params
+      def abyme_attributes
         Abyme::Model.instance_variable_get(:@permitted_attributes)[self.name]
       end
     end
@@ -28,13 +28,13 @@ module Abyme
     # TODO: Remove _destroy from default attributes if allow_destroy is false
     def self.build_attributes_list(association, attributes)
       model = association.to_s.classify.constantize
-      nested_params = model.abyme_params if model.respond_to? :abyme_params # If nested model is abymized
+      nested_attributes = model.abyme_attributes if model.respond_to? :abyme_attributes # If nested model is abymized
       authorized_attributes = [:_destroy, :id] # Default
       if attributes[:permit] == :all_attributes
         authorized_attributes += add_all_attributes(model)
-        authorized_attributes << nested_params unless (nested_params.blank? || authorized_attributes.include?(nested_params))
+        authorized_attributes << nested_attributes unless (nested_attributes.blank? || authorized_attributes.include?(nested_attributes))
       else
-        attributes[:permit] << nested_params unless (nested_params.blank? || nested_params.key?("#{association}_attributes".to_sym))
+        attributes[:permit] << nested_attributes unless (nested_attributes.blank? || nested_attributes.key?("#{association}_attributes".to_sym))
         authorized_attributes += attributes[:permit]
       end
       authorized_attributes
