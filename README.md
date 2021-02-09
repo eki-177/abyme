@@ -16,7 +16,7 @@ abyme makes it easy to handle nested attributes in Rails, using [stimulus](https
   <%= f.abyme_for(:tasks) %>
 <% end %>
 ```
-Supposing you have a partial located in `views/abyme/_task_fields` containing your fields for `tasks`, this command will generate and display 3 elements in this order :
+Supposing you have a partial located in `views/abyme/_task_fields` containing your fields for `tasks`, the `abyme_for` command will generate and display 3 elements in this order :
 - A div containing all task fields for `@project.tasks` (either persisted or already built instances of `tasks`)
 - A div which will contain all additional tasks about to be created (added through the `Add task` button below)
 - A button to generate fields for new instances of tasks
