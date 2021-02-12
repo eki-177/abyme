@@ -2,7 +2,6 @@ require 'rails/generators'
 
 module Abyme
   module Generators
-    # class ControllerGenerator < Rails::Generators::Base
     class ControllerGenerator < Rails::Generators::NamedBase
       source_root File.expand_path('templates', __dir__)
 
@@ -10,7 +9,7 @@ module Abyme
         insert_into_file(
           controller_file_path,
           "abyme_attributes, ",
-          after: /_params\s*(.*)permit\(\s*/
+          after: /^(\w|\s)*params\s*(.*)permit\(\s*/
         )
       end
 
