@@ -5,8 +5,8 @@ class Project < ApplicationRecord
   has_many :comments, through: :tasks
   has_many :participants
   
-  abyme_for :tasks
-  abyme_for :participants
+  abymize :tasks
+  abymize :participants
 
   validates :title, presence: true
   validates :description, presence: true

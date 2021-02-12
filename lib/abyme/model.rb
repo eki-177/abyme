@@ -3,7 +3,7 @@ module Abyme
     extend ActiveSupport::Concern
 
     class_methods do
-      def abyme_for(association, options = {})
+      def abymize(association, options = {})
         default_options = {reject_if: :all_blank, allow_destroy: true}
         accepts_nested_attributes_for association, default_options.merge(options)
       end

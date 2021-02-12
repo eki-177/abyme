@@ -10,7 +10,7 @@ module Abyme
     # it takes the Symbolized name of the association (plural) and the form object
     # then you can pass a hash of options (see exemple below)
     # if no block given it will generate a default markup for
-    # #persisted_records_for, #new_records_for & #add_association methods
+    # #persisted_records_for, #new_records_for & #add_associated_record methods
     # if a block is given it will instanciate a new AbymeBuilder and pass to it
     # the name of the association, the form object and the lookup_context
 
@@ -38,7 +38,7 @@ module Abyme
     #   ...
     # </div>
 
-    def abymize(association, form, options = {}, &block)
+    def abyme_for(association, form, options = {}, &block)
       content_tag(:div, data: { controller: 'abyme', limit: options[:limit], min_count: options[:min_count] }, id: "abyme--#{association}") do
         if block_given?
           yield(Abyme::AbymeBuilder.new(
@@ -49,7 +49,7 @@ module Abyme
           model = association.to_s.singularize.classify.constantize
           concat(persisted_records_for(association, form, options))
           concat(new_records_for(association, form, options)) 
-          concat(add_association(content: options[:button_text] || "Add #{model}"))
+          concat(add_associated_record(content: options[:button_text] || "Add #{model}"))
         end
       end
     end
@@ -100,7 +100,7 @@ module Abyme
 
       wrapper_default = { 
         data: { 
-          target: 'abyme.associations', 
+          abyme_target: 'associations', 
           association: association, 
           abyme_position: options[:position] || :end 
         } 
@@ -109,7 +109,7 @@ module Abyme
       fields_default = { data: { target: 'abyme.fields abyme.newFields' } }
 
       content_tag(:div, build_attributes(wrapper_default, options[:wrapper_html])) do
-        content_tag(:template, class: "abyme--#{association.to_s.singularize}_template", data: { target: 'abyme.template' }) do
+        content_tag(:template, class: "abyme--#{association.to_s.singularize}_template", data: { abyme_target: 'template' }) do
           form.fields_for association, association.to_s.classify.constantize.new, child_index: 'NEW_RECORD' do |f|
             content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
               # Here, if a block is passed, we're passing the association fields to it, rather than the form itself
@@ -164,7 +164,7 @@ module Abyme
     def persisted_records_for(association, form, options = {})
       records = options[:collection] || form.object.send(association)
       options[:wrapper_html] ||= {}
-      fields_default = { data: { target: 'abyme.fields' } }
+      fields_default = { data: { abyme_target: 'fields' } }
       
       if options[:order].present?
         records = records.order(options[:order])
@@ -190,13 +190,13 @@ module Abyme
     # to generate the buttons for add and remove associations
     # with the right action and a default content text for each button
   
-    def add_association(options = {}, &block)
+    def add_associated_record(options = {}, &block)
       action = 'click->abyme#add_association'
       options[:content] ||= 'Add Association'
       create_button(action, options, &block)
     end
   
-    def remove_association(options = {}, &block)
+    def remove_associated_record(options = {}, &block)
       action = 'click->abyme#remove_association'
       options[:content] ||= 'Remove Association'
       create_button(action, options, &block)
@@ -206,7 +206,7 @@ module Abyme
 
     # CREATE_BUTTON
 
-    # this helper is call by either add_association or remove_association
+    # this helper is call by either add_associated_record or remove_associated_record
     # by default it will generate a button tag.
 
     # == Options

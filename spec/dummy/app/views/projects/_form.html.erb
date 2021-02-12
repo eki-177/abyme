@@ -15,11 +15,11 @@
 			<%= f.submit 'Save', class: 'main-btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full cursor-pointer' %>
 
 			<div class="w-full py-6">
-				<%= abymize(:participants, f, button_text: 'add participant', fields_html: { class: 'participant-fields' }) %>
+				<%= abyme_for(:participants, f, button_text: 'add participant', fields_html: { class: 'participant-fields' }) %>
 			</div>
 		</div>
 		<div class="container bg-white p-8 w-2/3 overflow-scroll">
-			<%= abymize(:tasks, f, limit: 3, partial: 'projects/task_fields') do |abyme| %>
+			<%= f.abyme_for(:tasks, limit: 3, partial: 'projects/task_fields') do |abyme| %>
 				<%= abyme.records(order: {created_at: :asc},
 					wrapper_html: { class: "persisted-tasks", data: { controller: "tasks-wrapper" } },
 					fields_html: { class: "persisted-fields", data: { target: "tasks-wrapper.test" } }
@@ -28,7 +28,7 @@
 					wrapper_html: { class: "new-tasks", data: { target: 'wrapper-target', controller: 'tasks-wrapper' } },
 					fields_html: {class: "test", data: { target: 'sub-target', controller: 'sub-controller' } }
 				) %>
-				<%= add_association(content: 'Add task', html: { id: 'add-task', class: 'border-solid border-2 rounded border-grey-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-center items-center leading-normal p-8 cursor-pointer w-full focus:outline-none' }) %>
+				<%= add_associated_record(content: 'Add task', html: { id: 'add-task', class: 'border-solid border-2 rounded border-grey-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-center items-center leading-normal p-8 cursor-pointer w-full focus:outline-none' }) %>
 			<% end %>
 		</div>
 	</div>
