@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
   private
 
   # def project_params
-  # 	params.require(:project).permit(abyme_attributes, # 	params.require(:project).# 	params.require(:project).
+  # 	params.require(:project).permit(abyme_attributes, # 	params.require(:project).# 	params.require(:project).# 	params.require(:project).
   #     :title, :description,
   #     tasks_attributes: [
   #       :id, 

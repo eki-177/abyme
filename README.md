@@ -1,4 +1,4 @@
-# Abyme 🕳
+# abyme 🕳
 
 [![Gem Version](https://badge.fury.io/rb/abyme.svg)](https://badge.fury.io/rb/abyme)
 ![build](https://github.com/bear-in-mind/abyme/workflows/build/badge.svg)
@@ -16,7 +16,7 @@ abyme makes it easy to handle nested attributes in Rails, using [stimulus](https
   <%= f.abyme_for(:tasks) %>
 <% end %>
 ```
-Supposing you have a partial located in `views/abyme/_task_fields` containing your fields for `tasks`, this command will generate and display 3 elements in this order :
+Supposing you have a `Project` that `has_many :tasks` and a partial located in `views/abyme/_task_fields` containing your form fields for `tasks`, the `abyme_for` command will generate and display 3 elements in this order :
 - A div containing all task fields for `@project.tasks` (either persisted or already built instances of `tasks`)
 - A div which will contain all additional tasks about to be created (added through the `Add task` button below)
 - A button to generate fields for new instances of tasks
@@ -145,12 +145,12 @@ A few explanations here.
 ## Basic Usage
 
 Dealing with nested attributes means you'll generally have to handle a few things inside your form:
-* Display fields for the **persisted records** (here, already existing `:tasks`)
+* Display fields for the **persisted records** (here, pre-existing `:tasks`)
 * Display fields for the **new records** (future `:tasks` not yet persisted)
 * A button to **trigger the addition** of fields for a new resource (an `Add a new task` button)
 * A button to **remove fields** for a given resource (`Remove task`)
 
-abyme provides helper methods for all these. Here's how our form for `Project` looks like when using default values:
+abyme provides helper methods for all these. Here's how our form for `Project` looks like when using default values and `simple_form` (`abyme` is agnostic and should work with any `FormBuilder`):
 
 ```ruby
 # views/projects/_form.html.erb
@@ -215,6 +215,39 @@ Which is the way you would configure `nested_attributes` 90% of the time. Should
 
 ### Views
 
+#### #abyme_for(:association, options = {})
+This is the container for all your nested fields. It takes the symbolized association as a parameter, along with options. Please note an id is automatically added to this element, which value is : `abyme--association_name`. 
+* `partial:` : allows you to indicate a custom partial path for both `records` and `new_records`
+```ruby
+  <%= f.abyme_for(:tasks, partial: 'projects/task_fields') do |abyme| %>
+    <%= abyme.records %>
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
+* `limit:` : allows you to limit the number of new fields that can be created through JS. If you need to limit the number of associations in database, you will need to add validations. You can also pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for).
+```ruby
+  <%= f.abyme_for(:tasks, limit: 5) do |abyme| %>
+    # Beyond 5 tasks, the add button won't add any more fields. See events section below to see how to handle the 'abyme:limit-reached' event
+    <%= abyme.records %>
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
+* `min_count` : by default, there won't be any blank fields added on page load. By passing a `min_count` option, you can set how many empty fields should appear in the form.
+```ruby
+  <%= f.abyme_for(:tasks, min_count: 1) do |abyme| %>
+    # 1 blank task will automatically be added to the form.
+    <%= abyme.records %>
+    <%= abyme.new_records %>
+    <%= add_association %>
+  <% end %>
+```
+
+*When in auto mode*, the `abyme_for` method can take a few options:
+* `button_text:` : this will set the `add_association` button text to the string of your choice.
+* All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
+
 #### #records
 A few options can be passed to `abyme.records`:
 * `collection:` : allows you to pass a collection of your choice to only display specific objects.
@@ -236,8 +269,8 @@ A few options can be passed to `abyme.records`:
 * `partial:` : allows you to indicate a custom partial, if one has not already been passed to `abyme_for`.
 ```ruby
   <%= f.abyme_for(:tasks) do |abyme| %>
-    <%= abyme.records %>
-    <%= abyme.new_records(partial: 'projects/task_fields') %>
+    <%= abyme.records(partial: 'projects/task_fields') %>
+    <%= abyme.new_records %>
     <%= add_association %>
   <% end %>
 ```
@@ -250,7 +283,7 @@ A few options can be passed to `abyme.records`:
     <%= add_association %>
   <% end %>
 ```
-* `wrapper_html:` : gives you the possibility to add any HTML attribute you may want to the wrapper containing all fields.
+* `wrapper_html:` : gives you the possibility to add any HTML attribute you may want to the wrapper containing all persisted fields.
 ```ruby
   <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records(wrapper_html: { class: "persisted-records" }) %>
@@ -295,39 +328,6 @@ As you may have seen above, you can also pass a block to the method to give it w
     <% end %>
   <% end %>
 ```
-
-#### #abyme_for(:association, form_object)
-This is the container for all your nested fields. It takes two parameters (the symbolized association and the `form_builder`), and some optional ones. Please note an id is automatically added to this element, which value is : `abyme--association`. 
-* `partial:` : allows you to indicate a custom partial path for both `records` and `new_records`
-```ruby
-  <%= f.abyme_for(:tasks, partial: 'projects/task_fields') do |abyme| %>
-    <%= abyme.records %>
-    <%= abyme.new_records %>
-    <%= add_association %>
-  <% end %>
-```
-* `limit:` : allows you to limit the number of new fields that can be created through JS. If you need to limit the number of associations in database, you will need to add validations. You can also pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for).
-```ruby
-  <%= f.abyme_for(:tasks, limit: 5) do |abyme| %>
-    # Beyond 5 tasks, the add button won't add any more fields. See events section below to see how to handle the 'abyme:limit-reached' event
-    <%= abyme.records %>
-    <%= abyme.new_records %>
-    <%= add_association %>
-  <% end %>
-```
-* `min_count` : by default, there won't be any blank fields added on page load. By passing a `min_count` option, you can set how many empty fields should appear in the form.
-```ruby
-  <%= f.abyme_for(:tasks, min_count: 1) do |abyme| %>
-    # 1 blank task will automatically be added to the form.
-    <%= abyme.records %>
-    <%= abyme.new_records %>
-    <%= add_association %>
-  <% end %>
-```
-
-*When in auto mode*, the abyme_for method can take a few options:
-* `button_text:` : this will set the `add_association` button text to the string of your choice.
-* All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
 
 ## Events
 This part is still a work in progress and subject to change. We're providing some basic self-explanatory events to attach to. These are emitted by the main container (created by the `abyme_for` method).

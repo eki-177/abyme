@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'database_cleaner-active_record'
   spec.add_development_dependency 'capybara'
   spec.add_development_dependency 'webdrivers'
+  spec.add_development_dependency "generator_spec"
   
   # Dummy app
   spec.add_development_dependency "sqlite3"
