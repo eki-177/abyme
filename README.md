@@ -162,12 +162,12 @@ abyme provides helper methods for all these. Here's how our form for `Project` l
   <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records %>
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 <% end %>
 ```
 
-`abyme.records` will contain the persisted associations fields, while `abyme.new_records` will contain fields for the new associations. `add_association` will by default generate a button with a text of type "Add `resource_name`". To work properly, this method **has** to be called **inside the block** passed to the `abyme_for` method.
+`abyme.records` will contain the persisted associations fields, while `abyme.new_records` will contain fields for the new associations. `add_associated_record` will by default generate a button with a text of type "Add `resource_name`". To work properly, this method **has** to be called **inside the block** passed to the `abyme_for` method.
 
 Now where's the code for these fields ? abyme will assume a **partial** to be present in the directory `/views/abyme` with a *name respecting this naming convention* (just like with [cocoon](https://github.com/nathanvda/cocoon#basic-usage)): `_singular_association_name_fields.html.erb`. 
 
@@ -178,12 +178,12 @@ This partial might look like this:
 <%= f.input :description %>
 <%= f.hidden_field :_destroy %>
 
-<%= remove_association(tag: :div) do %>
+<%= remove_associated_record(tag: :div) do %>
   <i class="fas fa-trash"></i>
 <% end %>
 ```
 
-Note the presence of the `remove_association` button. Here, we pass it an option to make it a `<div>`, as well as a block to customize its content. Don't forget the `_destroy` attribute, needed to mark items for destruction.
+Note the presence of the `remove_associated_record` button. Here, we pass it an option to make it a `<div>`, as well as a block to customize its content. Don't forget the `_destroy` attribute, needed to mark items for destruction.
 
 ### What about the controller ?
 
@@ -222,7 +222,7 @@ A few options can be passed to `abyme.records`:
   <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records(collection: @project.tasks.where(done: false)) %>
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 * `order:` : allows you to pass an ActiveRecord `order` method to sort your instances the way you want.
@@ -230,7 +230,7 @@ A few options can be passed to `abyme.records`:
   <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records(order: { created_at: :asc }) %>
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 * `partial:` : allows you to indicate a custom partial, if one has not already been passed to `abyme_for`.
@@ -238,7 +238,7 @@ A few options can be passed to `abyme.records`:
   <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records %>
     <%= abyme.new_records(partial: 'projects/task_fields') %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 * `fields_html:` : gives you the possibility to add any HTML attribute you may want to each set of fields. By default, an `abyme--fields` and an `singular_association-fields` class are already present.
@@ -247,7 +247,7 @@ A few options can be passed to `abyme.records`:
     <%= abyme.records(fields_html: { class: "some-class" }) %>
     # Every set of persisted fields will have these 3 classes : 'abyme--fields', 'task-fields', and 'some-class'
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 * `wrapper_html:` : gives you the possibility to add any HTML attribute you may want to the wrapper containing all fields.
@@ -256,7 +256,7 @@ A few options can be passed to `abyme.records`:
     <%= abyme.records(wrapper_html: { class: "persisted-records" }) %>
     # The wrapper containing all persisted task fields will have an id "abyme-tasks-wrapper" and a class "persisted-records"
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 #### #new_records
@@ -266,14 +266,14 @@ Here are the options that can be passed to `abyme.new_records`:
   <%= f.abyme_for(:tasks) do |abyme| %>
     <%= abyme.records %>
     <%= abyme.new_records(position: :start) %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 * `partial:` : same as `#records`
 * `fields_html:` : same as `#records`
 * `wrapper_html:` : same as `#records`
 
-#### #add_association, #remove_association
+#### #add_associated_record, #remove_associated_record
 These 2 methods behave the same. Here are their options :
 * `tag:` : allows you to specify a tag of your choosing, like `:a`, or `:div`. Default is `:button`.
 * `content:` : the text to display inside the element. Default is `Add association_name`
@@ -281,7 +281,7 @@ These 2 methods behave the same. Here are their options :
 ```ruby
   <%= f.abyme_for(:tasks) do |abyme| %>
     # ...
-    <%= add_association(tag: :a, content: "Add a super task", html: {id: "add-super-task"}) %>
+    <%= add_associated_record(tag: :a, content: "Add a super task", html: {id: "add-super-task"}) %>
   <% end %>
 ```
 
@@ -289,7 +289,7 @@ As you may have seen above, you can also pass a block to the method to give it w
 ```ruby
   <%= f.abyme_for(:tasks) do |abyme| %>
     # ...
-    <%= add_association(tag: :div, html: {id: "add-super-task", class: "flex"}) do %>
+    <%= add_associated_record(tag: :div, html: {id: "add-super-task", class: "flex"}) do %>
       <i class="fas fa-plus"></i>
       <h2>Add a super task</h2>
     <% end %>
@@ -303,7 +303,7 @@ This is the container for all your nested fields. It takes two parameters (the s
   <%= f.abyme_for(:tasks, partial: 'projects/task_fields') do |abyme| %>
     <%= abyme.records %>
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 * `limit:` : allows you to limit the number of new fields that can be created through JS. If you need to limit the number of associations in database, you will need to add validations. You can also pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for).
@@ -312,7 +312,7 @@ This is the container for all your nested fields. It takes two parameters (the s
     # Beyond 5 tasks, the add button won't add any more fields. See events section below to see how to handle the 'abyme:limit-reached' event
     <%= abyme.records %>
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 * `min_count` : by default, there won't be any blank fields added on page load. By passing a `min_count` option, you can set how many empty fields should appear in the form.
@@ -321,12 +321,12 @@ This is the container for all your nested fields. It takes two parameters (the s
     # 1 blank task will automatically be added to the form.
     <%= abyme.records %>
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 
 *When in auto mode*, the abyme_for method can take a few options:
-* `button_text:` : this will set the `add_association` button text to the string of your choice.
+* `button_text:` : this will set the `add_associated_record` button text to the string of your choice.
 * All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
 
 ## Events
