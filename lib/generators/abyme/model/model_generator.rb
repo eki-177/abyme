@@ -17,12 +17,24 @@ module Abyme
 
       def insert_abymized_association
         insert_into_file(model_file_path, after: /(^\s*(has_many|has_one|belongs_to)\s*:#{Regexp.quote(association)}.*$)/ ) do
-          "\n  abymize :#{association}#{inject_abyme_attributes}\n"
+          "\n#{insert_indentation}abymize :#{association}#{inject_abyme_attributes}\n"
         end
       end
 
       def insert_abyme_configuration
-        inject_into_class(model_file_path, class_name, "  include Abyme::Model\n\n")
+        if namespaced_model
+          model = namespaced_model[2]
+          namespace = namespaced_model[1]
+          insert_into_file(model_file_path, after: /(^\s*class.*#{Regexp.quote(model)}.*$)/) do
+            "\n    include Abyme::Model\n"
+          end
+        else
+          inject_into_class(model_file_path, class_name, "  include Abyme::Model\n\n")
+        end
+      end
+
+      def namespaced_model
+        class_name.match(/(.*)[\/::](.*)/)
       end
 
       def assign_names!(name)
@@ -48,6 +60,10 @@ module Abyme
 
       def model_configured?
         File.read(model_file_path).match?(/Abyme::Model/)
+      end
+
+      def insert_indentation
+        namespaced_model ? "    " : "  "
       end
     end
   end
