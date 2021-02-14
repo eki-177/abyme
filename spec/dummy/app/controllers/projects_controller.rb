@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
   private
 
   # def project_params
-  # 	params.require(:project).permit(abyme_attributes, # 	params.require(:project).# 	params.require(:project).# 	params.require(:project).
+  # 	params.require(:project).permit(
   #     :title, :description,
   #     tasks_attributes: [
   #       :id, 
@@ -43,7 +43,6 @@ class ProjectsController < ApplicationController
   #   )
   # end
 
-  # TODO: abstract the call to Klass.abyme_attributes inside a controller method
   def project_params
     params.require(:project).permit(
       abyme_attributes, :title, :description

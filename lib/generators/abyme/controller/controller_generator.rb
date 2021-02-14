@@ -16,7 +16,7 @@ module Abyme
       private
 
       def controller_file_path
-        Rails.root.join('app', 'controllers', "#{name.pluralize}_controller.rb")
+        Rails.root.join('app', 'controllers', "#{name.downcase.pluralize}_controller.rb")
       end
     end
   end

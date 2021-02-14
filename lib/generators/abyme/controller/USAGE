@@ -1,0 +1,16 @@
+Description:
+    Injects the call to the `abyme_attributes` in the strong params definition of the targeted controller.
+    Also works with namespaced controllers.
+
+Example:
+    Before :
+    def project_params
+        params.require(:project).permit(:title, :description)
+    end
+
+    rails generate abyme:controller Projects
+
+    After:
+    def project_params
+        params.require(:project).permit(abyme_attributes, :title, :description)
+    end

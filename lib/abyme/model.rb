@@ -32,12 +32,16 @@ module Abyme
       authorized_attributes = [:_destroy, :id] # Default
       if attributes[:permit] == :all_attributes
         authorized_attributes += add_all_attributes(model)
-        authorized_attributes << nested_attributes unless (nested_attributes.blank? || authorized_attributes.include?(nested_attributes))
+        insert_nested_attributes(authorized_attributes, nested_attributes)
       else
-        attributes[:permit] << nested_attributes unless (nested_attributes.blank? || nested_attributes.key?("#{association}_attributes".to_sym))
+        insert_nested_attributes(attributes[:permit], nested_attributes)
         authorized_attributes += attributes[:permit]
       end
       authorized_attributes
+    end
+
+    def self.insert_nested_attributes(destination, attributes)
+      destination << attributes unless (attributes.blank? || destination.include?(attributes))
     end
 
     def self.add_all_attributes(model)
