@@ -23,6 +23,16 @@ Supposing you have a partial located in `views/abyme/_task_fields` containing yo
 
 Have a look below to learn more about the different options and needed configuration.
 
+## Breaking changes
+Careful ! As of February 12th, we changed quite a few methods name :
+In model:
+- `abyme_for` became `abymize`
+In views:
+- `abymize(:association, f)` became `f.abyme_for(:association)`
+- `add_association` became `add_associated_record`
+- `remove_association` became `remove_associated_record`
+
+If you update, don't forget to change those ! All changes are reflected in the README below.
 
 ## Disclaimer
 This project is still a work in progress and subject to change. We would advise not to use it in production code just yet.
