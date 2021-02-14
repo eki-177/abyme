@@ -33,14 +33,14 @@ module Abyme
         end
       end
 
-      def namespaced_model
-        class_name.match(/(.*)[\/::](.*)/)
-      end
-
       def assign_names!(name)
         # Remove abyme namespace
         name.gsub!(/abyme_/, "")
         super
+      end
+
+      def namespaced_model
+        class_name.match(/(.*)[\/::](.*)/)
       end
 
       def model_file_path
