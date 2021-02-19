@@ -44,8 +44,6 @@ class ProjectsController < ApplicationController
   # end
 
   def project_params
-    params.require(:project).permit(
-      abyme_attributes, :title, :description
-    )
+    params.require(:project).permit(abyme_attributes, :title, :description)
   end
 end

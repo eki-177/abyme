@@ -5,8 +5,10 @@ class Project < ApplicationRecord
   abymize :tasks, permit: [:description, :title]
 
   has_many :comments, through: :tasks
+  abymize :comments, permit: :all_attributes
+
   has_many :participants
-  abymize :participants, permit: [:email, :name]
+  # abymize :participants, permit: [:email, :name]
 
   validates :title, presence: true
   validates :description, presence: true
