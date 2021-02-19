@@ -21,7 +21,7 @@ module Abyme
     attr_reader   :permitted_attributes
 
     def self.add(class_name, association, attributes)
-      @permitted_attributes[class_name]["#{association}_attributes".to_sym] = build_attributes_list(class_name, association, attributes)
+      @permitted_attributes[class_name]["#{association}_attributes".to_sym] = AttributesBuilder.new(class_name, association, attributes).build_attributes
     end
 
     def self.included(klass)
@@ -30,36 +30,40 @@ module Abyme
       klass.extend ClassMethods
     end
 
-    private
-
-    # TODO: Remove _destroy from default attributes if allow_destroy is false
-    def self.build_attributes_list(model, association, attributes_list)
-      association_class = association.to_s.classify.constantize
-      # If nested association is abymized itself
-      nested_attributes = association_class.abyme_attributes if association_class.respond_to? :abyme_attributes
-      authorized_attributes = build_default_attributes(model, association)
-      if attributes_list == :all_attributes
-        authorized_attributes += add_all_attributes(association_class)
-        authorized_attributes << nested_attributes unless (nested_attributes.blank? || authorized_attributes.include?(nested_attributes))
-      else
-        attributes_list << nested_attributes unless (nested_attributes.blank? || nested_attributes.key?("#{association}_attributes".to_sym))
-        authorized_attributes += attributes_list
+    class AttributesBuilder
+      def initialize(model, association, attributes)
+        @model = model
+        @association = association
+        @attributes_list = attributes
+        @association_class = @association.to_s.classify.constantize
       end
-      authorized_attributes
-    end
 
-    def self.destroy_allowed?(model, association)
-      @allow_destroy.dig(model, association)
-    end
+      def build_attributes
+        nested_attributes = @association_class.abyme_attributes if @association_class.respond_to? :abyme_attributes
+        authorized_attributes = build_default_attributes
+        if @attributes_list == :all_attributes
+          authorized_attributes += add_all_attributes
+          authorized_attributes << nested_attributes unless (nested_attributes.blank? || authorized_attributes.include?(nested_attributes))
+        else
+          @attributes_list << nested_attributes unless (nested_attributes.blank? || @attributes_list.include?(nested_attributes))
+          authorized_attributes += @attributes_list
+        end
+        authorized_attributes
+      end
 
-    def self.add_all_attributes(model)
-      model.column_names.map(&:to_sym).reject { |attr| [:id, :created_at, :updated_at].include?(attr) }
-    end
+      def destroy_allowed?
+        Abyme::Model.instance_variable_get(:@allow_destroy).dig(@model, @association)
+      end
 
-    def self.build_default_attributes(model, association)
-      attributes = [:id]
-      attributes << :_destroy if destroy_allowed?(model, association)
-      attributes
+      def add_all_attributes
+        @association_class.column_names.map(&:to_sym).reject { |attr| [:id, :created_at, :updated_at].include?(attr) }
+      end
+
+      def build_default_attributes
+        attributes = [:id]
+        attributes << :_destroy if destroy_allowed?
+        attributes
+      end
     end
   end
 end
