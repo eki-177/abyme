@@ -31,8 +31,8 @@ module Abyme
 
       def simple_form_fields
         rejected_keys(name.classify.constantize.new.attributes.keys).map do |key|
-          "<%= f.input :#{key} %>\n"
-        end.join
+          "<%= f.input :#{key} %>"
+        end.join("\n")
       end
 
       def rejected_keys(keys)
