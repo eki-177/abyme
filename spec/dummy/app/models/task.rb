@@ -6,6 +6,9 @@ class Task < ApplicationRecord
 
   abymize :comments, permit: :all_attributes
 
+  has_many :attachments, as: :attachable
+  abymize :attachments, reject: [:name]
+
   validates :title, presence: true
   validates :description, presence: true
 
