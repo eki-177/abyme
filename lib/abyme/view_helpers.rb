@@ -10,7 +10,7 @@ module Abyme
     # it takes the Symbolized name of the association (plural) and the form object
     # then you can pass a hash of options (see exemple below)
     # if no block given it will generate a default markup for
-    # #persisted_records_for, #new_records_for & #add_association methods
+    # #persisted_records_for, #new_records_for & #add_associated_record methods
     # if a block is given it will instanciate a new AbymeBuilder and pass to it
     # the name of the association, the form object and the lookup_context
 
@@ -49,7 +49,7 @@ module Abyme
           model = association.to_s.singularize.classify.constantize
           concat(persisted_records_for(association, form, options))
           concat(new_records_for(association, form, options)) 
-          concat(add_association(content: options[:button_text] || "Add #{model}"))
+          concat(add_associated_record(content: options[:button_text] || "Add #{model}"))
         end
       end
     end
@@ -190,13 +190,13 @@ module Abyme
     # to generate the buttons for add and remove associations
     # with the right action and a default content text for each button
   
-    def add_association(options = {}, &block)
+    def add_associated_record(options = {}, &block)
       action = 'click->abyme#add_association'
       options[:content] ||= 'Add Association'
       create_button(action, options, &block)
     end
   
-    def remove_association(options = {}, &block)
+    def remove_associated_record(options = {}, &block)
       action = 'click->abyme#remove_association'
       options[:content] ||= 'Remove Association'
       create_button(action, options, &block)
@@ -206,7 +206,7 @@ module Abyme
 
     # CREATE_BUTTON
 
-    # this helper is call by either add_association or remove_association
+    # this helper is call by either add_associated_record or remove_associated_record
     # by default it will generate a button tag.
 
     # == Options
