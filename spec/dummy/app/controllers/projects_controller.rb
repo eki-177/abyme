@@ -25,28 +25,7 @@ class ProjectsController < ApplicationController
 
   private
 
-  # def project_params
-  # 	params.require(:project).permit(abyme_attributes, # 	params.require(:project).# 	params.require(:project).# 	params.require(:project).
-  #     :title, :description,
-  #     tasks_attributes: [
-  #       :id, 
-  #       :title, 
-  #       :description, 
-  #       :_destroy, 
-  #       comments_attributes: [
-  #         :id, 
-  #         :content, 
-  #         :_destroy
-  #       ]
-  #     ],
-  #     participants_attributes: [:id, :email, :_destroy]
-  #   )
-  # end
-
-  # TODO: abstract the call to Klass.abyme_attributes inside a controller method
   def project_params
-    params.require(:project).permit(
-      abyme_attributes, :title, :description
-    )
+    params.require(:project).permit(abyme_attributes, :title, :description)
   end
 end

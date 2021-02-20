@@ -2,8 +2,8 @@ class Task < ApplicationRecord
   include Abyme::Model
 
   belongs_to :project
-  has_many :comments, inverse_of: :task, dependent: :destroy
 
+  has_many :comments, inverse_of: :task, dependent: :destroy
   abymize :comments, permit: :all_attributes
 
   has_many :attachments, as: :attachable
