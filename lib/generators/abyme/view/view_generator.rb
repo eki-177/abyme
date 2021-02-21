@@ -11,7 +11,7 @@ module Abyme
         if defined?(SimpleForm)
           insert_fields(:simple_form)
         else
-          insert_fields(:simple_form)
+          insert_fields(nil)
         end
       end
 
