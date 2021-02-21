@@ -5,29 +5,23 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/f591a9e00f7cf5188ad5/maintainability)](https://codeclimate.com/github/bear-in-mind/abyme/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/bear-in-mind/abyme/badge.svg)](https://coveralls.io/github/bear-in-mind/abyme?branch=master)
 
-abyme makes it easy to handle nested attributes in Rails, using [stimulus](https://stimulusjs.org/handbook/introduction) under the hood. Here's an example :
+abyme is an easy and framework-agnostic way to handle nested attributes in Rails, using [stimulus](https://stimulusjs.org/handbook/introduction) under the hood. Here's an example :
 ```ruby
 # views/projects/_form.html.erb
-<%= simple_form_for @project do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
+<%= form_for @project do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :description %>
   <%= f.submit 'Save' %>
 
   <%= f.abyme_for(:tasks) %>
 <% end %>
 ```
 Supposing you have a `Project` that `has_many :tasks` and a partial located in `views/abyme/_task_fields` containing your form fields for `tasks`, the `abyme_for` command will generate and display 3 elements in this order :
-- A div containing all task fields for `@project.tasks` (either persisted or already built instances of `tasks`)
-- A div which will contain all additional tasks about to be created (added through the `Add task` button below)
-- A button to generate fields for new instances of tasks
+- A `div` containing all task fields for `@project.tasks` (either persisted or already built instances of `tasks`)
+- A `div` which will contain all additional tasks about to be created (added through the `Add task` button below)
+- A `button` to generate fields for new instances of tasks
 
-Have a look below to learn more about the different options and needed configuration.
-
-
-## Disclaimer
-This project is still a work in progress and subject to change. We would advise not to use it in production code just yet.
-
-Any enhancement proposition or bug report welcome !
+Have a look below to learn more about configuration and all its different options.
 
 ## Demo app
 
@@ -66,158 +60,62 @@ application.load(definitionsFromContext(context))
 application.register('abyme', AbymeController)
 ```
 
-## What are nested forms and why a new gem ?
+## Get started
 
-Nested forms (or more accurately *nested fields* or *nested attributes*) are forms that deal with associated models. Let's picture a `Project` model that `has_many :tasks`. A nested form will allow you to create a project along with one or several tasks **within a single form**. If `Tasks` were to have associations on their own, like `:comments`, you could also, still in the same form, instantiate comments along with their parent models.
+To learn more about the *why* of this gem, check out our [wiki](https://github.com/bear-in-mind/abyme/wiki/What-are-nested-forms-and-why-a-new-gem-%3F)
 
-Rails provides [its own helper](https://api.rubyonrails.org/v6.0.1/classes/ActionView/Helpers/FormHelper.html#method-i-fields_for) to handle nested attributes. **abyme** is basically a smart wrapper around it, offering easier syntax along with some fancy additions. To work properly, some configuration will be required in both models and controllers (see below).
+You may also check out our [step by step tutorial](https://github.com/bear-in-mind/abyme/wiki/Step-by-step-Tutorial)
 
-What Rails doesn't provide natively is the possibility to **dynamically add new associations on the fly**, which requires Javascript implementation. What this means it that you would normally have to know in advance how many fields you'd like to display (1, 2 or any number of `:tasks`), which isn't very usable in this day and age. This is what the [cocoon gem](https://github.com/nathanvda/cocoon) has been helping with for the past 7 years. This gem still being implemented in JQuery (which [Rails dropped as a dependency](https://github.com/rails/rails/issues/25208)), we wanted to propose a more plug'n'play approach, using Basecamp's [Stimulus](https://stimulusjs.org/) instead.
 
-## Basic Configuration
+### Model
 
-### Models
-Let's consider a to-do application with Projects having many Taks, themselves having many Comments.
-```ruby
-# models/project.rb
-class Project < ApplicationRecord
-  has_many :tasks
-  validates :title, :description, presence: true
-end
+💡 Don't forget to `include Abyme::Model` in your parent model
 
-# models/task.rb
-class Task < ApplicationRecord
-  belongs_to :project
-  has_many :comments
-  validates :title, :description, presence: true
-end
-
-# models/comment.rb
-class Comment < ApplicationRecord
-  belongs_to :task
-  validates :content, presence: true
-end
-```
-The end-goal here is to be able to create a project along with different tasks, and immediately add comments to some of these tasks ; all within a single form.
-What we'll have is a 2-level nested form. Thus, we'll need to configure our `Project` and `Task` models like so :
-```ruby
-# models/project.rb
-class Project < ApplicationRecord
-  include Abyme::Model
-  has_many :tasks, inverse_of: :project
-  # ...
-  abymize :tasks
-end
-
-# models/task.rb
-class Task < ApplicationRecord
-  include Abyme::Model
-  has_many :comments, inverse_of: :task
-  # ...
-  abymize :comments
-end
-```
-Note the use of the `inverse_of` option. It is needed for Rails to effectively associate children to their yet unsaved parent. Have a peek to the bottom of [this page](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for) for more info.
-
-### Controller
-Since we're dealing with one form, we're only concerned with one controller : the one the form routes to. In our example, this would be the `ProjectsController`.
-The only configuration needed here will concern our strong params. Nested attributes require a very specific syntax to white-list the permitted attributes. It looks like this :
-
-```ruby
-def project_params
-  params.require(:project).permit(
-    :title, :description, tasks_attributes: [
-      :id, :title, :description, :_destroy, comments_attributes: [
-        :id, :content, :_destroy
-      ]
-    ]
-  )
-end
-```
-A few explanations here. 
-
-* To permit a nested model attributes in your params, you'll need to pass the `association_attributes: [...]` hash at the end of your resource attributes. Key will always be `association_name` followed by `_attributes`, while the value will be an array of symbolized attributes, just like usual.
-
-> **Note**: if your association is a singular one (`has_one` or `belongs_to`) the association will be singular ; if a Project `has_one :owner`, you would then need to pass `owner_attributes: [...]`)
-
-* You may have remarked the presence of `id` and `_destroy` among those params. These are necessary for edit actions : if you want to allow your users to destroy or update existing records, these are **mandatory**.  Otherwise, Rails won't be able to recognize these records as existing ones, and will just create new ones. More info [here](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html).
-
-## Basic Usage
-
-Dealing with nested attributes means you'll generally have to handle a few things inside your form:
-* Display fields for the **persisted records** (here, pre-existing `:tasks`)
-* Display fields for the **new records** (future `:tasks` not yet persisted)
-* A button to **trigger the addition** of fields for a new resource (an `Add a new task` button)
-* A button to **remove fields** for a given resource (`Remove task`)
-
-abyme provides helper methods for all these. Here's how our form for `Project` looks like when using default values and `simple_form` (`abyme` is agnostic and should work with any `FormBuilder`):
-
-```ruby
-# views/projects/_form.html.erb
-<%= simple_form_for @project do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.submit 'Save' %>
-
-  <%= f.abyme_for(:tasks) do |abyme| %>
-    <%= abyme.records %>
-    <%= abyme.new_records %>
-    <%= add_associated_record %>
-  <% end %>
-<% end %>
-```
-
-`abyme.records` will contain the persisted associations fields, while `abyme.new_records` will contain fields for the new associations. `add_associated_record` will by default generate a button with a text of type "Add `resource_name`". To work properly, this method **has** to be called **inside the block** passed to the `abyme_for` method.
-
-Now where's the code for these fields ? abyme will assume a **partial** to be present in the directory `/views/abyme` with a *name respecting this naming convention* (just like with [cocoon](https://github.com/nathanvda/cocoon#basic-usage)): `_singular_association_name_fields.html.erb`. 
-
-This partial might look like this:
-```ruby
-# views/abyme/_task_fields.html.erb
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.hidden_field :_destroy %>
-
-<%= remove_associated_record(tag: :div) do %>
-  <i class="fas fa-trash"></i>
-<% end %>
-```
-
-Note the presence of the `remove_associated_record` button. Here, we pass it an option to make it a `<div>`, as well as a block to customize its content. Don't forget the `_destroy` attribute, needed to mark items for destruction.
-
-### What about the controller ?
-
-What about it ? Well, not much. That's the actual magical thing about `nested_attributes`: once your model is aware of its acceptance of those for a given association, and your strong params are correctly configured, there's nothing else to do.
-`@project.create(project_params)` is all you'll need to save a project along with its descendants 👨‍👧‍👧
-
-### Auto mode
-
-Let's now take care of our comments fields. We'll add these using our neat *automatic mode*: just stick this line at the end of the partial :
-```ruby
-# views/abyme/_task_fields.html.erb
-# ... rest of the partial above
-<%= f.abyme_for(:comments) %>
-```
-Where's the rest of the code ? Well, if the default configuration you saw above in the `_form.html.erb` suits you, and the order in which the different resources appear feels right (persisted first, new fields second, and the 'Add' button last), then you can just spare the block, and it will be taken care of for you. We'll just write our `_comment_fields.html.erb` partial in the `views/abyme` directory and we'll be all set.
-
-## Advanced usage
-### Models
+#### #abymize(:association, permit: nil, reject: nil, options = {})
 In models, the `abyme_for :association` acts as an alias for this command :
-
 ```ruby
   accepts_nested_attributes_for :association, reject_if: :all_blank, :allow_destroy: true
 ```
 
-Which is the way you would configure `nested_attributes` 90% of the time. Should you want to pass [any available options](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for) to this method or change those, you may just pass them as with the original method :
+* `permit: []` : allows you to generate a hash of attributes that can be easily called on the controller side through the `::abyme_attributes` class method (see details below).
+```ruby
+  abymize :association, permit: [:name, :description]
+  
+  # You may also permit all attributes like so :
+  abymize :association, permit: :all_attributes 
+```
+
+* `reject: []` : allows you to add all attributes to `::abyme_attributes`, excepted the ones specified.
+```ruby
+  abymize :association, reject: [:password]
+```
+
+* `options: {}` : [the same options] you may pass to the `accepts_nested_attributes` method (see [this link](https://api.rubyonrails.org/v6.1.0/classes/ActiveRecord/NestedAttributes/ClassMethods.html) for details)
 ```ruby
   abyme_for :association, limit: 3, allow_destroy: false
+```
+
+#### ::abyme_attributes
+Returns a hash to the right format to be included in the `strong params` on the controller side. For a `Project` model with nested `:tasks` :
+```ruby
+  Project.abyme_attributes
+  # => {tasks_attributes: [:title, :description, :id, :_destroy]}
+```
+
+### Controller
+#### #abyme_attributes
+Infers the name of the resource from the controller name, and calls the `::abyme_attributes` method on it. Hence, in your `ProjectsController` :
+```ruby
+  def project_params
+    params.require(:project).permit(:title, :description, abyme_attributes)
+  end
 ```
 
 ### Views
 
 #### #abyme_for(:association, options = {})
 This is the container for all your nested fields. It takes the symbolized association as a parameter, along with options. Please note an id is automatically added to this element, which value is : `abyme--association_name`. 
-* `partial:` : allows you to indicate a custom partial path for both `records` and `new_records`
+* `partial: ` : allows you to indicate a custom partial path for both `records` and `new_records`
 ```ruby
   <%= f.abyme_for(:tasks, partial: 'projects/task_fields') do |abyme| %>
     <%= abyme.records %>
