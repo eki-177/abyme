@@ -31,6 +31,17 @@ Check out our demo app here : https://abyme-demo.herokuapp.com/
 
 Source code is right here : https://github.com/bear-in-mind/abyme_demo
 
+## Breaking changes
+Careful ! As of February 12th, we changed quite a few methods name :
+In model:
+- `abyme_for` became `abymize`
+In views:
+- `abymize(:association, f)` became `f.abyme_for(:association)`
+- `add_association` became `add_associated_record`
+- `remove_association` became `remove_associated_record`
+
+If you update, don't forget to change those ! All changes are reflected in the README below.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -113,8 +124,12 @@ Infers the name of the resource from the controller name, and calls the `::abyme
 
 ### Views
 
-#### #abyme_for(:association, options = {})
-This is the container for all your nested fields. It takes the symbolized association as a parameter, along with options. Please note an id is automatically added to this element, which value is : `abyme--association_name`. 
+#### #abyme_for(:association, options = {}, &block)
+This is the container for all your nested fields. It takes the symbolized association as a parameter, along with options, and an optional block to specify any layout you may wish for the different parts of the `abyme` builder. 
+
+💡 Please note an id is automatically added to this element, which value is : `abyme--association_name`.
+
+💡  If you don't pass a block, `records`, `new_records` and `add_association` will be called and will appear in this order in your layout.
 * `partial: ` : allows you to indicate a custom partial path for both `records` and `new_records`
 ```ruby
   <%= f.abyme_for(:tasks, partial: 'projects/task_fields') do |abyme| %>
@@ -123,7 +138,7 @@ This is the container for all your nested fields. It takes the symbolized associ
     <%= add_association %>
   <% end %>
 ```
-* `limit:` : allows you to limit the number of new fields that can be created through JS. If you need to limit the number of associations in database, you will need to add validations. You can also pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for).
+* `limit: ` : allows you to limit the number of new fields that can be created through JS. If you need to limit the number of associations in database, you will need to add validations. You can also pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for).
 ```ruby
   <%= f.abyme_for(:tasks, limit: 5) do |abyme| %>
     # Beyond 5 tasks, the add button won't add any more fields. See events section below to see how to handle the 'abyme:limit-reached' event
@@ -132,7 +147,7 @@ This is the container for all your nested fields. It takes the symbolized associ
     <%= add_association %>
   <% end %>
 ```
-* `min_count` : by default, there won't be any blank fields added on page load. By passing a `min_count` option, you can set how many empty fields should appear in the form.
+* `min_count: ` by default, there won't be any blank fields added on page load. By passing a `min_count` option, you can set how many empty fields should appear in the form.
 ```ruby
   <%= f.abyme_for(:tasks, min_count: 1) do |abyme| %>
     # 1 blank task will automatically be added to the form.
@@ -142,9 +157,10 @@ This is the container for all your nested fields. It takes the symbolized associ
   <% end %>
 ```
 
-*When in auto mode*, the `abyme_for` method can take a few options:
-* `button_text:` : this will set the `add_association` button text to the string of your choice.
-* All options that should be passed to either `records` or `new_records` can be passed here and will be passed down.
+*If you're not passing a block*, the `abyme_for` method can take a few additional options:
+* `button_text: ` this will set the `add_association` button text to the string of your choice.
+
+💡 All options that should be passed to either `records` or `new_records` below can be passed here and will be passed down.
 
 #### #records
 A few options can be passed to `abyme.records`:
