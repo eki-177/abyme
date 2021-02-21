@@ -11,7 +11,7 @@ module Abyme
         if defined?(SimpleForm)
           insert_fields(:simple_form)
         else
-          insert_fields(nil)
+          insert_fields(:simple_form)
         end
       end
 
@@ -32,7 +32,7 @@ module Abyme
       def simple_form_fields
         rejected_keys(name.classify.constantize.new.attributes.keys).map do |key|
           "<%= f.input :#{key} %>"
-        end.join("\n")
+        end.push("<%= remove_association %>").join("\n")
       end
 
       def rejected_keys(keys)
