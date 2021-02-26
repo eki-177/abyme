@@ -1,3 +1,7 @@
+<%# Trying to reference controller methods and collections to check if context is passed ; otherwise these will raise an error %>
+<% current_user %>
+<% @collection %>
+
 <div class="field mb-4 relative">
   <%= f.text_field :email, class: 'text-4xl font-bold mb-4 w-full', 
                       label: false,

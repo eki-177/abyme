@@ -55,11 +55,13 @@ RSpec.configure do |config|
   # `post` in specs under `spec/controllers`.
   #
 
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
+  # config.around(:each) do |example|
+  #   DatabaseCleaner.cleaning do
+  #     example.run
+  #   end
+  # end
+
+  config.use_transactional_fixtures = true
 
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:

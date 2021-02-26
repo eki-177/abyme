@@ -3,7 +3,7 @@ require_relative "abyme_builder"
 module Abyme
   module ViewHelpers
 
-    # ABYMIZE
+    # ABYME_FOR
 
     # this helper will generate the top level wrapper markup
     # with the bare minimum html attributes (data-controller="abyme")
@@ -23,12 +23,12 @@ module Abyme
     # set the default number of blank fields to display
 
     # - partial (String)
-    # to customize the partial path by default #abymize will expect 
+    # to customize the partial path by default #abyme_for will expect 
     # a partial to bbe present in views/abyme
 
     # - Exemple
 
-    # <%= abymize(:tasks, f, limit: 3) do |abyme| %>
+    # <%= abyme_for(:tasks, f, limit: 3) do |abyme| %>
     #   ...
     # <% end %>
 
@@ -42,7 +42,7 @@ module Abyme
       content_tag(:div, data: { controller: 'abyme', limit: options[:limit], min_count: options[:min_count] }, id: "abyme--#{association}") do
         if block_given?
           yield(Abyme::AbymeBuilder.new(
-            association: association, form: form, lookup_context: self.lookup_context, partial: options[:partial]
+            association: association, form: form, context: self, partial: options[:partial]
             )
           )
         else
@@ -62,7 +62,7 @@ module Abyme
     # then a hash of options.
 
     # - Exemple
-    # <%= abymize(:tasks, f) do |abyme| %>
+    # <%= abyme_for(:tasks, f) do |abyme| %>
     #   <%= abyme.new_records %>
     #   ...
     # <% end %>
@@ -85,7 +85,7 @@ module Abyme
     # :end is the default value
 
     # - partial (String)
-    # to customize the partial path by default #abymize will expect 
+    # to customize the partial path by default #abyme_for will expect 
     # a partial to bbe present in views/abyme
 
     # - fields_html (Hash)
@@ -113,7 +113,8 @@ module Abyme
           form.fields_for association, association.to_s.classify.constantize.new, child_index: 'NEW_RECORD' do |f|
             content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
               # Here, if a block is passed, we're passing the association fields to it, rather than the form itself
-              block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
+              # block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
+              block_given? ? yield(f) : render_association_partial(association, f, options[:partial])
             end
           end
         end
@@ -128,7 +129,7 @@ module Abyme
     # then a hash of options.
 
     # - Exemple
-    # <%= abymize(:tasks, f) do |abyme| %>
+    # <%= abyme_for(:tasks, f) do |abyme| %>
     #   <%= abyme.records %>
     #   ...
     # <% end %>
@@ -151,7 +152,7 @@ module Abyme
     # ex: order: { created_at: :desc }
 
     # - partial (String)
-    # to customize the partial path by default #abymize will expect 
+    # to customize the partial path by default #abyme_for will expect 
     # a partial to bbe present in views/abyme
 
     # - fields_html (Hash)
@@ -178,7 +179,7 @@ module Abyme
       content_tag(:div, options[:wrapper_html]) do
         form.fields_for(association, records) do |f|
           content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
-            block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
+            block_given? ? yield(f) : render_association_partial(association, f, options[:partial])
           end
         end
       end
@@ -262,8 +263,18 @@ module Abyme
         # Add new data attributes (keys & values)
         default[:data] = default[:data].merge(attr[:data].reject { |key, _| default[:data][key] })
       end
-      # Merge data attributes to the hash ok html attributes
+      # Merge data attributes to the hash of html attributes
       default.merge(attr.reject { |key, _| key == :data })
+    end
+
+    # RENDER PARTIAL
+
+    # renders a partial based on the passed path, or will expect a partial to be found in the views/abyme directory. 
+
+    def render_association_partial(association, form, partial = nil, context = nil)
+      partial_path = partial ||"abyme/#{association.to_s.singularize}_fields"
+      context ||= self
+      context.render(partial: partial_path, locals: {f: form})
     end
 
   end
