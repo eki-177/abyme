@@ -10,6 +10,8 @@ module Abyme
         Abyme::Model.permit_attributes(self.name, association, permit || reject, permit.present?) if permit.present? || reject.present?
       end
 
+      alias :abyme_for :abymize
+
       def abyme_attributes
         Abyme::Model.instance_variable_get(:@permitted_attributes)[self.name]
       end

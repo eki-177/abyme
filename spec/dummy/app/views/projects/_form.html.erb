@@ -30,6 +30,12 @@
 				) %>
 				<%= add_associated_record(content: 'Add task', html: { id: 'add-task', class: 'border-solid border-2 rounded border-grey-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-center items-center leading-normal p-8 cursor-pointer w-full focus:outline-none' }) %>
 			<% end %>
+			<%# Trying old syntax for retrocompatibility %>
+			<%= f.abymize(:meetings) do |abyme| %>
+				<%= abyme.records %>
+				<%= abyme.new_records %>
+				<%= add_association(content: "Add meeting") %>
+			<% end %>
 		</div>
 	</div>
 <% end %>
