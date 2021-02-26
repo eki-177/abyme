@@ -1,10 +1,9 @@
 require 'rails_helper'
-require 'generator_spec'
 require 'generators/abyme/controller/controller_generator'
 
 RSpec.describe Abyme::Generators::ControllerGenerator, type: :generator do
   p File.expand_path("../dummy/", __dir__)
-  destination File.expand_path("../dummy/", __dir__)
+  destination File.expand_path("../../dummy/", __dir__)
   arguments %w(tasks)
 
   before(:all) do
@@ -21,7 +20,8 @@ RSpec.describe Abyme::Generators::ControllerGenerator, type: :generator do
   end
 
   it "adds abyme_attributes to strong params" do
-    assert_file "app/controllers/tasks_controller.rb", /abyme_attributes/
+    assert_file "app/controllers/tasks_controller.rb",
+      /params\.require\(:task\)\.permit\(abyme_attributes, :title, :description\)/
   end
 
   def copy_rails_bin

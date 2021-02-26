@@ -5,7 +5,6 @@ class Project < ApplicationRecord
   abymize :tasks, permit: [:description, :title]
 
   has_many :comments, through: :tasks
-  abymize :comments, permit: :all_attributes
 
   has_many :participants
   has_many :meetings
