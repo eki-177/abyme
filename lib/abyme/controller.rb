@@ -2,6 +2,7 @@ module Abyme
   module Controller
     def abyme_attributes
       return [] if resource_class.nil?
+      
       resource_class.abyme_attributes
     end
 

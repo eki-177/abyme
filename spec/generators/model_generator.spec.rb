@@ -2,8 +2,7 @@ require 'rails_helper'
 require 'generator_spec'
 require 'generators/abyme/controller/controller_generator'
 
-RSpec.describe Abyme::Generators::ControllerGenerator, type: :generator do
-  p File.expand_path("../dummy/", __dir__)
+RSpec.describe Abyme::Generators::ModelGenerator, type: :generator do
   destination File.expand_path("../dummy/", __dir__)
   arguments %w(tasks)
 
