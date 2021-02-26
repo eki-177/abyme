@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @collection = [1, 2, 3]
   end
 
   def create
