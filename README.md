@@ -5,7 +5,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/f591a9e00f7cf5188ad5/maintainability)](https://codeclimate.com/github/bear-in-mind/abyme/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/bear-in-mind/abyme/badge.svg)](https://coveralls.io/github/bear-in-mind/abyme?branch=master)
 
-abyme is an easy and framework-agnostic way to handle nested attributes in Rails, using [stimulus](https://stimulusjs.org/handbook/introduction) under the hood. Here's an example :
+abyme is an easy and form-agnostic way to handle nested attributes in Rails, using [stimulus](https://stimulusjs.org/handbook/introduction) under the hood. Here's an example :
 ```ruby
 # views/projects/_form.html.erb
 <%= form_for @project do |f| %>
@@ -40,6 +40,7 @@ In views:
 - `add_association` became `add_associated_record`
 - `remove_association` became `remove_associated_record`
 
+The former method names will be deprecated soon.
 If you update, don't forget to change those ! All changes are reflected in the README below.
 
 ## Installation
