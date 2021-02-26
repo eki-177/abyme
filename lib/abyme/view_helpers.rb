@@ -54,6 +54,8 @@ module Abyme
       end
     end
 
+    alias :abymize :abyme_for
+
     # NEW_RECORDS_FOR
 
     # this helper is call by the AbymeBuilder #new_records instance method
@@ -202,6 +204,9 @@ module Abyme
       options[:content] ||= 'Remove Association'
       create_button(action, options, &block)
     end
+
+    alias :add_association    :add_associated_record 
+    alias :remove_association :remove_associated_record
 
     private
 
