@@ -8,10 +8,11 @@ module Abyme
     # the form object, lookup_context optionaly a partial path
     # then yield itself to the block 
 
-    def initialize(association:, form:, lookup_context:, partial:, &block)
+    def initialize(association:, form:, context:, partial:, &block)
       @association = association
       @form = form
-      @lookup_context = lookup_context
+      @context = context
+      @lookup_context = context.lookup_context
       @partial = partial
       yield(self) if block_given?
     end
@@ -23,7 +24,7 @@ module Abyme
   
     def records(options = {})
       persisted_records_for(@association, @form, options) do |fields_for_association|
-        render_association_partial(fields_for_association, options)
+        render_association_partial(@association, fields_for_association, @partial, @context)
       end
     end
 
@@ -34,15 +35,9 @@ module Abyme
     
     def new_records(options = {}, &block)
       new_records_for(@association, @form, options) do |fields_for_association|
-        render_association_partial(fields_for_association, options)
+        render_association_partial(@association, fields_for_association, @partial, @context)
       end
     end
   
-    private
-
-    def render_association_partial(fields, options)
-      partial = @partial || options[:partial] || "abyme/#{@association.to_s.singularize}_fields"
-      ActionController::Base.render(partial: partial, locals: { f: fields })
-    end
   end
 end

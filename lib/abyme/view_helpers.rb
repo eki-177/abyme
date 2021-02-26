@@ -42,7 +42,7 @@ module Abyme
       content_tag(:div, data: { controller: 'abyme', limit: options[:limit], min_count: options[:min_count] }, id: "abyme--#{association}") do
         if block_given?
           yield(Abyme::AbymeBuilder.new(
-            association: association, form: form, lookup_context: self.lookup_context, partial: options[:partial]
+            association: association, form: form, context: self, partial: options[:partial]
             )
           )
         else
@@ -179,7 +179,6 @@ module Abyme
       content_tag(:div, options[:wrapper_html]) do
         form.fields_for(association, records) do |f|
           content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
-            # block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
             block_given? ? yield(f) : render_association_partial(association, f, options[:partial])
           end
         end
@@ -264,12 +263,18 @@ module Abyme
         # Add new data attributes (keys & values)
         default[:data] = default[:data].merge(attr[:data].reject { |key, _| default[:data][key] })
       end
-      # Merge data attributes to the hash ok html attributes
+      # Merge data attributes to the hash of html attributes
       default.merge(attr.reject { |key, _| key == :data })
     end
 
-    def render_association_partial(association, fields, partial)
-      render(partial || "abyme/#{association.to_s.singularize}_fields", f: fields)
+    # RENDER PARTIAL
+
+    # renders a partial based on the passed path, or will expect a partial to be found in the views/abyme directory. 
+
+    def render_association_partial(association, form, partial = nil, context = nil)
+      partial_path = partial ||"abyme/#{association.to_s.singularize}_fields"
+      context ||= self
+      context.render(partial: partial_path, locals: {f: form})
     end
 
   end

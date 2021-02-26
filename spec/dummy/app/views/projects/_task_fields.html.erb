@@ -1,8 +1,6 @@
-<%# Trying to reference a class to check if context is passed ; otherwise this will raise an error %>
-<%= current_user %>
-<%= @collection %>
-<%= controller_name %>
-<%= action_name %>
+<%# Trying to reference controller methods and collections to check if context is passed ; otherwise these will raise an error %>
+<% current_user %>
+<% @collection %>
 
 <div class="custom-partial border-solid border-grey-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal mb-5">
   <div class="flex align-center justify-between task-card">
