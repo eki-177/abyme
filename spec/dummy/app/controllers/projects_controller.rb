@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @collection = [1, 2, 3]
   end
 
   def create
@@ -26,20 +27,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-  	params.require(:project).permit(
-      :title, :description,
-      tasks_attributes: [
-        :id, 
-        :title, 
-        :description, 
-        :_destroy, 
-        comments_attributes: [
-          :id, 
-          :content, 
-          :_destroy
-        ]
-      ],
-      participants_attributes: [:id, :email, :_destroy]
-    )
+    params.require(:project).permit(abyme_attributes, :title, :description)
   end
 end

@@ -6,6 +6,9 @@ module Abyme
       ActiveSupport.on_load :action_view do
         include Abyme::ViewHelpers
       end
+      ActiveSupport.on_load :action_controller do
+        include Abyme::Controller
+      end
     end
   end
 end

@@ -1,6 +1,7 @@
 require "abyme/version"
 require 'abyme/view_helpers'
 require 'abyme/engine'
+require 'abyme/controller'
 require 'abyme/action_view_extensions/builder'
 
 module Abyme
