@@ -76,8 +76,7 @@ application.register('abyme', AbymeController)
 
 To learn more about the *why* of this gem, check out our [wiki](https://github.com/bear-in-mind/abyme/wiki/What-are-nested-forms-and-why-a-new-gem-%3F)
 
-You may also check out our [step by step tutorial](https://github.com/bear-in-mind/abyme/wiki/Step-by-step-Tutorial)
-
+You may also check out our [step by step tutorial](https://github.com/bear-in-mind/abyme/wiki/Step-by-step-Tutorial) and our [advanced configuration guide](https://github.com/bear-in-mind/abyme/wiki/Step-by-step-:-Advanced-configuration) (currently in construction).
 ## Documentation
 
 ### Model
