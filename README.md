@@ -78,6 +78,7 @@ To learn more about the *why* of this gem, check out our [wiki](https://github.c
 
 You may also check out our [step by step tutorial](https://github.com/bear-in-mind/abyme/wiki/Step-by-step-Tutorial)
 
+## Documentation
 
 ### Model
 
