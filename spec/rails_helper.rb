@@ -62,7 +62,7 @@ RSpec.configure do |config|
   #   end
   # end
 
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
