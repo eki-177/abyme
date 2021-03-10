@@ -5,13 +5,15 @@ module Abyme
     class ViewGenerator < Rails::Generators::NamedBase
       source_root File.expand_path('templates', __dir__)
 
+      argument :attributes, type: :array, default: [], banner: "field field"
+
       def create_partial_file
         create_file partial_file_path
 
         if defined?(SimpleForm)
           insert_fields(:simple_form)
         else
-          insert_fields(nil)
+          insert_fields(:simple_form)
         end
       end
 
@@ -30,9 +32,15 @@ module Abyme
       end
 
       def simple_form_fields
-        rejected_keys(name.classify.constantize.new.attributes.keys).map do |key|
-          "<%= f.input :#{key} %>"
-        end.push("<%= remove_association %>").join("\n")
+        if attributes.map(&:name).include?('all')
+          rejected_keys(name.classify.constantize.new.attributes.keys).map do |key|
+            "<%= f.input :#{key} %>"
+          end.push("<%= remove_association %>").join("\n")
+        else
+          attributes.map(&:name).map do |key|
+            "<%= f.input :#{key} %>"
+          end.push("<%= remove_association %>").join("\n")
+        end
       end
 
       def rejected_keys(keys)
