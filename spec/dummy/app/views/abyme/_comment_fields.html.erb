@@ -1,2 +1,17 @@
-<%= f.input :content %>
-<%= remove_association %>
+<%# Trying to reference controller methods and collections to check if context is passed ; otherwise these will raise an error %>
+<% current_user %>
+<% @collection %>
+
+<div class="comment relative">
+  <%= f.text_field :content, 
+            class: 'form-input-alt h-full focus:outline-none focus:shadow-outline text-white',
+            placeholder: 'Your comment...',
+            label: false %>
+
+  <%= f.hidden_field :_destroy %>
+  <%= remove_associated_record(tag: :span) do %>
+    <span class="text-2xl text-white absolute cursor-pointer"  style="top: 8px; right: 30px;">
+      <i class="far fa-times-circle absolute text-2xl"></i>
+    </span>
+  <% end %>
+</div>

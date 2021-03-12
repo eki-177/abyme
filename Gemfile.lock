@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    abyme (0.3.0)
+    abyme (0.5.1)
 
 GEM
   remote: https://rubygems.org/

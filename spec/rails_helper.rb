@@ -31,6 +31,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'spec_helper'
+require 'generator_spec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -61,7 +62,7 @@ RSpec.configure do |config|
   #   end
   # end
 
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:

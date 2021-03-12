@@ -10,7 +10,7 @@ module Abyme
     # it takes the Symbolized name of the association (plural) and the form object
     # then you can pass a hash of options (see exemple below)
     # if no block given it will generate a default markup for
-    # #persisted_records_for, #new_records_for & #add_association methods
+    # #persisted_records_for, #new_records_for & #add_associated_record methods
     # if a block is given it will instanciate a new AbymeBuilder and pass to it
     # the name of the association, the form object and the lookup_context
 
@@ -42,17 +42,19 @@ module Abyme
       content_tag(:div, data: { controller: 'abyme', limit: options[:limit], min_count: options[:min_count] }, id: "abyme--#{association}") do
         if block_given?
           yield(Abyme::AbymeBuilder.new(
-            association: association, form: form, lookup_context: self.lookup_context, partial: options[:partial]
+            association: association, form: form, context: self, partial: options[:partial]
             )
           )
         else
           model = association.to_s.singularize.classify.constantize
           concat(persisted_records_for(association, form, options))
           concat(new_records_for(association, form, options)) 
-          concat(add_association(content: options[:button_text] || "Add #{model}"))
+          concat(add_associated_record(content: options[:button_text] || "Add #{model}"))
         end
       end
     end
+
+    alias :abymize :abyme_for
 
     # NEW_RECORDS_FOR
 
@@ -113,7 +115,8 @@ module Abyme
           form.fields_for association, association.to_s.classify.constantize.new, child_index: 'NEW_RECORD' do |f|
             content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
               # Here, if a block is passed, we're passing the association fields to it, rather than the form itself
-              block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
+              # block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
+              block_given? ? yield(f) : render_association_partial(association, f, options[:partial])
             end
           end
         end
@@ -178,7 +181,7 @@ module Abyme
       content_tag(:div, options[:wrapper_html]) do
         form.fields_for(association, records) do |f|
           content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
-            block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
+            block_given? ? yield(f) : render_association_partial(association, f, options[:partial])
           end
         end
       end
@@ -190,23 +193,26 @@ module Abyme
     # to generate the buttons for add and remove associations
     # with the right action and a default content text for each button
   
-    def add_association(options = {}, &block)
+    def add_associated_record(options = {}, &block)
       action = 'click->abyme#add_association'
       options[:content] ||= 'Add Association'
       create_button(action, options, &block)
     end
   
-    def remove_association(options = {}, &block)
+    def remove_associated_record(options = {}, &block)
       action = 'click->abyme#remove_association'
       options[:content] ||= 'Remove Association'
       create_button(action, options, &block)
     end
 
+    alias :add_association    :add_associated_record 
+    alias :remove_association :remove_associated_record
+
     private
 
     # CREATE_BUTTON
 
-    # this helper is call by either add_association or remove_association
+    # this helper is call by either add_associated_record or remove_associated_record
     # by default it will generate a button tag.
 
     # == Options
@@ -262,8 +268,18 @@ module Abyme
         # Add new data attributes (keys & values)
         default[:data] = default[:data].merge(attr[:data].reject { |key, _| default[:data][key] })
       end
-      # Merge data attributes to the hash ok html attributes
+      # Merge data attributes to the hash of html attributes
       default.merge(attr.reject { |key, _| key == :data })
+    end
+
+    # RENDER PARTIAL
+
+    # renders a partial based on the passed path, or will expect a partial to be found in the views/abyme directory. 
+
+    def render_association_partial(association, form, partial = nil, context = nil)
+      partial_path = partial ||"abyme/#{association.to_s.singularize}_fields"
+      context ||= self
+      context.render(partial: partial_path, locals: {f: form})
     end
 
   end
