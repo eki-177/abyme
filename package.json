@@ -1,13 +1,13 @@
 {
   "name": "abyme",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "JS companion to abyme gem",
   "files": [
     "package.json",
-    "javascript/**/*"
+    "src/**/*"
   ],
   "directories": {
-    "lib": "javascript"
+    "lib": "src"
   },
   "repository": {
     "url": "https://github.com/bear-in-mind/abyme",
@@ -34,30 +34,22 @@
     "@types/jest": "^26.0.20",
     "babel-jest": "^26.6.3",
     "jest": "^26.6.3",
+    "microbundle": "^0.13.0",
     "mutationobserver-shim": "^0.3.7"
   },
+  "main": "dist/abyme.js",
+  "exports": "./dist/abyme.modern.js",
+  "module": "dist/abyme.module.js",
+  "unpkg": "dist/abyme.umd.js",
   "scripts": {
-    "build": "pika build",
-    "pika:publish": "pika publish --no-2fa",
-    "version": "yarn build",
-    "test": "BABEL_ENV=test jest"
+    "build": "microbundle --globals stimulus=Stimulus",
+    "dev": "microbundle watch",
+    "prepublish": "yarn build",
+    "test": "NODE_ENV=test jest"
   },
   "jest": {
     "setupFiles": [
       "<rootDir>/jest/jest-setup.js"
-    ]
-  },
-  "@pika/pack": {
-    "pipeline": [
-      [
-        "@pika/plugin-standard-pkg"
-      ],
-      [
-        "@pika/plugin-build-web"
-      ],
-      [
-        "@pika/plugin-build-node"
-      ]
     ]
   }
 }
