@@ -24,17 +24,28 @@
   "devDependencies": {
     "@babel/core": "7.11.6",
     "@babel/plugin-syntax-class-properties": "7.10.4",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "7.11.5",
     "@pika/pack": "0.5.0",
     "@pika/plugin-build-node": "0.9.2",
     "@pika/plugin-build-web": "0.9.2",
-    "@pika/plugin-standard-pkg": "0.9.2"
+    "@pika/plugin-standard-pkg": "0.9.2",
+    "@testing-library/dom": "^7.29.6",
+    "@types/jest": "^26.0.20",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "mutationobserver-shim": "^0.3.7"
   },
   "scripts": {
     "build": "pika build",
     "pika:publish": "pika publish --no-2fa",
     "version": "yarn build",
-    "test": ""
+    "test": "BABEL_ENV=test jest"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/jest/jest-setup.js"
+    ]
   },
   "@pika/pack": {
     "pipeline": [
