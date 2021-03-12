@@ -2,7 +2,6 @@
   "name": "abyme",
   "version": "0.2.5",
   "description": "JS companion to abyme gem",
-  "main": "javascript/index.js",
   "files": [
     "package.json",
     "javascript/**/*"
@@ -21,5 +20,32 @@
   "bugs": "https://github.com/bear-in-mind/abyme/issues",
   "dependencies": {
     "stimulus": "^2.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.11.6",
+    "@babel/plugin-syntax-class-properties": "7.10.4",
+    "@babel/preset-env": "7.11.5",
+    "@pika/pack": "0.5.0",
+    "@pika/plugin-build-node": "0.9.2",
+    "@pika/plugin-build-web": "0.9.2",
+    "@pika/plugin-standard-pkg": "0.9.2"
+  },
+  "scripts": {
+    "build": "pika build",
+    "pika:publish": "pika publish --no-2fa",
+    "version": "yarn build"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ]
+    ]
   }
 }
