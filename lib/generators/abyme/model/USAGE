@@ -1,0 +1,21 @@
+Description:
+    Generates configuration for the model part :
+    ✅ Adds the `includes Abyme::Model` at the top
+    ✅ Will add the call to `abymize` below the targeted association, including the optional permitted attributes
+    
+    💡 Works with namespaced models
+
+Example:
+    rails generate abyme:model project tasks description title
+    rails generate abyme:model project participants all
+
+    In project.rb, you will find :
+    class Project < ApplicationRecord
+        include Abyme::Model
+
+        has_many :tasks
+        abymize :tasks, permit: [:description, :title]
+
+        has_many :participants
+        abymize :participants, permit: :all_attributes
+    end
