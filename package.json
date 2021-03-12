@@ -33,7 +33,8 @@
   "scripts": {
     "build": "pika build",
     "pika:publish": "pika publish --no-2fa",
-    "version": "yarn build"
+    "version": "yarn build",
+    "test": ""
   },
   "@pika/pack": {
     "pipeline": [
