@@ -6,6 +6,8 @@ module Abyme
       source_root File.expand_path('templates', __dir__)
 
       def insert_abyme_attributes_in_strong_params
+        return unless File.exists? controller_file_path
+
         insert_into_file(
           controller_file_path,
           "abyme_attributes, ",

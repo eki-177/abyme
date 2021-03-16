@@ -4,6 +4,8 @@ module Abyme
       def abyme_for(association, options = {}, &block)
         @template.abyme_for(association, self, options, &block)
       end
+
+      alias :abymize :abyme_for
     end
   end
 end

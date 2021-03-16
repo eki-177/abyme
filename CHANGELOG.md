@@ -2,11 +2,32 @@
 
 ## [Unreleased](https://github.com/bear-in-mind/abyme/tree/HEAD)
 
-[Full Changelog](https://github.com/bear-in-mind/abyme/compare/v0.2.4...HEAD)
+[Full Changelog](https://github.com/bear-in-mind/abyme/compare/v0.5.0...HEAD)
+
+**Merged pull requests:**
+
+- retro compatibility with former public method names [\#26](https://github.com/bear-in-mind/abyme/pull/26) ([bear-in-mind](https://github.com/bear-in-mind))
+
+## [v0.5.0](https://github.com/bear-in-mind/abyme/tree/v0.5.0) (2021-02-26)
+
+[Full Changelog](https://github.com/bear-in-mind/abyme/compare/v0.2.5...v0.5.0)
+
+**Merged pull requests:**
+
+- Dynamic strong params for nested attributes [\#23](https://github.com/bear-in-mind/abyme/pull/23) ([bear-in-mind](https://github.com/bear-in-mind))
+
+## [v0.2.5](https://github.com/bear-in-mind/abyme/tree/v0.2.5) (2021-02-12)
+
+[Full Changelog](https://github.com/bear-in-mind/abyme/compare/v0.4.0...v0.2.5)
+
+## [v0.4.0](https://github.com/bear-in-mind/abyme/tree/v0.4.0) (2021-02-12)
+
+[Full Changelog](https://github.com/bear-in-mind/abyme/compare/v0.2.4...v0.4.0)
 
 **Merged pull requests:**
 
 - Bump nokogiri from 1.10.10 to 1.11.1 [\#22](https://github.com/bear-in-mind/abyme/pull/22) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Methods naming change & FormBuilder extension [\#21](https://github.com/bear-in-mind/abyme/pull/21) ([bear-in-mind](https://github.com/bear-in-mind))
 - Solved JS compile bug [\#19](https://github.com/bear-in-mind/abyme/pull/19) ([bear-in-mind](https://github.com/bear-in-mind))
 
 ## [v0.2.4](https://github.com/bear-in-mind/abyme/tree/v0.2.4) (2020-10-18)

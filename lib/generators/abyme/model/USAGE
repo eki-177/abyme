@@ -1,8 +1,9 @@
 Description:
     Generates configuration for the model part :
-    - Adds the `includes Abyme::Model` at the top
-    - Will add the call to `abymize` below the targeted association, including the optional permitted attributes
-    Works with namespaced models
+    ✅ Adds the `includes Abyme::Model` at the top
+    ✅ Will add the call to `abymize` below the targeted association, including the optional permitted attributes
+    
+    💡 Works with namespaced models
 
 Example:
     rails generate abyme:model project tasks description title
