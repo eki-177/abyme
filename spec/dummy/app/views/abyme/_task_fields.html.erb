@@ -1,0 +1,8 @@
+<%# Partial for task fields %>
+
+<%= f.input :name %>
+<%= f.input :description %>
+
+<%= f.hidden_field :_destroy %>
+<%= remove_associated_record content: "Remove task" %>
+        
