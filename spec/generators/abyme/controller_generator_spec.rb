@@ -8,7 +8,7 @@ RSpec.describe Abyme::Generators::ControllerGenerator, type: :generator do
 
   before(:all) do
     copy_tasks_controller
-    copy_rails_bin
+    # copy_rails_bin
   end
 
   before(:each) do
@@ -24,9 +24,9 @@ RSpec.describe Abyme::Generators::ControllerGenerator, type: :generator do
       /params\.require\(:task\)\.permit\(abyme_attributes, :title, :description\)/
   end
 
-  def copy_rails_bin
-    FileUtils.copy_file('spec/fixtures/rails', File.join(destination_root, 'bin/rails'))
-  end
+  # def copy_rails_bin
+  #   FileUtils.copy_file('spec/fixtures/rails', File.join(destination_root, 'bin/rails'))
+  # end
 
   def copy_tasks_controller
     FileUtils.copy_file('spec/fixtures/tasks_controller.rb', File.join(destination_root, 'app/controllers/tasks_controller.rb'))

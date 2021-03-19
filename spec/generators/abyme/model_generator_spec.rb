@@ -6,7 +6,6 @@ RSpec.describe Abyme::Generators::ModelGenerator, type: :generator do
 
   before(:all) do
     copy_test_model
-    copy_rails_bin
   end
 
   context "with no arguments" do
@@ -61,10 +60,6 @@ RSpec.describe Abyme::Generators::ModelGenerator, type: :generator do
     it "adds abymize for target model with specified attributes" do
       assert_file "app/models/admin/test.rb", /has_many :participants\s*abymize :participants, permit: \[:email, :name\]/
     end
-  end
-
-  def copy_rails_bin
-    FileUtils.copy_file('spec/fixtures/rails', File.join(destination_root, 'bin/rails'))
   end
 
   def copy_test_model
