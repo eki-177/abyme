@@ -20,7 +20,7 @@ module Abyme
       private
 
       def partial_file_path
-        Rails.root.join('app', 'views', 'abyme', "_#{association.downcase}_fields.html.erb")
+        Rails.root.join('app', 'views', 'abyme', "_#{association.downcase.singularize}_fields.html.erb")
       end
 
       def insert_fields(builder = nil)

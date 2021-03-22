@@ -1,16 +1,8 @@
-<%# Trying to reference controller methods and collections to check if context is passed ; otherwise these will raise an error %>
-<% current_user %>
-<% @collection %>
+<%# Partial for meeting fields %>
 
-<div class="field mb-4 relative">
-  <%= f.text_field :start_time, class: 'text-4xl font-bold mb-4 w-full', 
-                      label: false,
-                      placeholder: 'Start...' %>
-  <%= f.text_field :end_time, class: 'text-4xl font-bold mb-4 w-full', 
-                    label: false,
-                    placeholder: 'End...' %>
-  <%= f.hidden_field :_destroy %>
-  <%= remove_association(tag: :div) do %>
-    Remove
-  <% end %>
-</div>
+<%= f.input :start_time %>
+<%= f.input :end_time %>
+
+<%= f.hidden_field :_destroy %>
+<%#= remove_associated_record content: "Remove meetings" %>
+        

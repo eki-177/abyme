@@ -1,4 +1,4 @@
-<%= form_for @project do |f| %>
+<%= simple_form_for @project do |f| %>
 	<div class="full-height-wrapper text-gray-800 flex" data-controller="projects">
 		<div class="project-details container bg-white p-8 w-1/3 bg-indigo-200 overflow-scroll">	
 			<div class="field mb-4">
@@ -15,7 +15,7 @@
 			<%= f.submit 'Save', class: 'main-btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full cursor-pointer' %>
 
 			<div class="w-full py-6">
-				<%= abyme_for(:participants, f, button_text: 'add participant', fields_html: { class: 'participant-fields' }) %>
+				<%#= abyme_for(:participants, f, button_text: 'add participant', fields_html: { class: 'participant-fields' }) %>
 			</div>
 		</div>
 		<div class="container bg-white p-8 w-2/3 overflow-scroll">
@@ -28,13 +28,12 @@
 					wrapper_html: { class: "new-tasks", data: { target: 'wrapper-target', controller: 'tasks-wrapper' } },
 					fields_html: {class: "test", data: { target: 'sub-target', controller: 'sub-controller' } }
 				) %>
-				<%= add_associated_record(content: 'Add task', html: { id: 'add-task', class: 'border-solid border-2 rounded border-grey-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-center items-center leading-normal p-8 cursor-pointer w-full focus:outline-none' }) %>
+				<%= add_associated_record(content: 'Add Task', html: { id: 'add-task', class: 'border-solid border-2 rounded border-grey-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-center items-center leading-normal p-8 cursor-pointer w-full focus:outline-none' }) %>
 			<% end %>
 			<%# Trying old syntax for retrocompatibility %>
-			<%= f.abymize(:meetings) do |abyme| %>
+			<%= f.abymize(:meetings, min_count: 2) do |abyme| %>
 				<%= abyme.records %>
 				<%= abyme.new_records %>
-				<%= add_association(content: "Add meeting") %>
 			<% end %>
 		</div>
 	</div>

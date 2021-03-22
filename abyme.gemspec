@@ -41,6 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rails'
   spec.add_development_dependency 'pry-rails'
   spec.add_development_dependency 'web-console'
+  spec.add_development_dependency 'simple_form'
 
   spec.add_development_dependency 'puma'
   spec.add_development_dependency 'simplecov'
