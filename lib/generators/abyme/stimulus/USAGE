@@ -1,0 +1,5 @@
+Description:
+	Registers the Abyme stimulus controller into the javascript/controllers/index.js
+
+Example:
+	rails generate abyme:stimulus

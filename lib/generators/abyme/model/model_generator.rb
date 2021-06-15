@@ -49,7 +49,7 @@ module Abyme
 
       def inject_abyme_attributes
         return '' if attributes.empty?
-        return ", permit: :all_attributes" if attributes.map(&:name).include?('all')
+        return ", permit: :all_attributes" if attributes.map(&:name).include?('all_attributes')
 
         ", permit: [#{symbolized_attributes.join(', ')}]"  
       end

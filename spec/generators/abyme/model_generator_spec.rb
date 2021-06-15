@@ -40,7 +40,7 @@ RSpec.describe Abyme::Generators::ModelGenerator, type: :generator do
     end
 
     it "adds abymize for target model with all attributes" do
-      run_generator %w[test participants all]
+      run_generator %w[test participants all_attributes]
       assert_file "app/models/test.rb", /has_many :participants\s{3}abymize :participants, permit: :all_attributes/
     end
   end
