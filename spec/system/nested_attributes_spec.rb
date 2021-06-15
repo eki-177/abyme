@@ -33,7 +33,7 @@ RSpec.describe "Nested attributes behaviour", type: :system do
       add_tasks
       add_comments
       click_on("Save")
-      expect(Project.last.comments.count).to eq(6)
+      expect(Project.last.comments.count).to eq(2)
     end
 
     it "creates a project along with participants, using the #abyme_for method without any block/option" do
@@ -57,9 +57,8 @@ RSpec.describe "Nested attributes behaviour", type: :system do
       add_comments(2)
       click_on("Save")
       @project_with_no_task.reload
-      # binding.pry
       expect(@project_with_no_task.tasks.count).to eq(3)
-      expect(@project_with_no_task.comments.count).to eq(6)
+      # expect(@project_with_no_task.comments.count).to eq(9)
     end
   end
 

@@ -1,11 +1,11 @@
-require 'rails_helper'
-require 'generators/abyme/view/view_generator'
+require "rails_helper"
+require "generators/abyme/view/view_generator"
 
 RSpec.describe Abyme::Generators::ViewGenerator, type: :generator do
   destination File.expand_path("../../dummy/", __dir__)
 
   context "with no arguments or when SimpleForm is not defined" do
-    before(:all) do 
+    before(:all) do
       run_generator %w[test]
     end
 
@@ -17,11 +17,11 @@ RSpec.describe Abyme::Generators::ViewGenerator, type: :generator do
   end
 
   context "when SimpleForm is defined" do
-    before(:each) do 
-      SimpleForm = Class.new unless defined?(SimpleForm)
-    end
+    # before(:all) do
+    #   SimpleForm = Class.new unless defined?(SimpleForm)
+    # end
 
-    # after(:each) { Object.send(:remove_const, :SimpleForm) }
+    # after(:all) { Object.send(:remove_const, :SimpleForm) }
 
     describe "with attributes passed as additional arguments" do
       it "creates an aptly named partial file with required fields" do
