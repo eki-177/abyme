@@ -7,7 +7,7 @@ Description:
 
 Example:
 	rails generate abyme:model project tasks description title
-	rails generate abyme:model project participants all
+	rails generate abyme:model project participants all_attributes
 
 	In project.rb, you will find :
 	class Project < ApplicationRecord

@@ -1,0 +1,11 @@
+Description:
+	Generates some boilerplate for the view partial containing the fields for a given association.
+	If SimpleForm is installed and attributes are permitted in the model, will add input fields for them.
+
+Example:
+	# Without attributes
+	rails generate abyme:view project tasks
+	# With a few attributes
+	rails generate abyme:view project tasks name description
+	# With all attributes
+	rails generate abyme:view project tasks all_attributes

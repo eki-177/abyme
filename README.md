@@ -72,12 +72,55 @@ application.load(definitionsFromContext(context))
 application.register('abyme', AbymeController)
 ```
 
-## Get started
+## Getting started
 
 To learn more about the *why* of this gem, check out our [wiki](https://github.com/bear-in-mind/abyme/wiki/What-are-nested-forms-and-why-a-new-gem-%3F)
 
 You may also check out our [step by step tutorial](https://github.com/bear-in-mind/abyme/wiki/Step-by-step-Tutorial) and our [advanced configuration guide](https://github.com/bear-in-mind/abyme/wiki/Step-by-step-:-Advanced-configuration) (currently in construction).
 ## Documentation
+As in our [our tutorial](https://github.com/bear-in-mind/abyme/wiki/Step-by-step-Tutorial), we'll assume we have a `Project` model, that `has_many :tasks` for the rest of the documentation.
+### Generators
+To skip the relatively painful setup of nested attributes, we built a few generators to go faster. Feel free to skip these if you prefer a manual implementation.
+#### Resource
+To generate everything you need with one command, use this generator :
+```bash
+rails generate abyme:model project tasks
+# Includes configuration in Project model
+# Adds abyme_attributes in ProjectsController permitted params
+# Creates a partial and minimum boilerplate in app/views/abyme/_task_fields.html.erb
+```
+You can specify [attributes to be permitted](https://github.com/eki-177/abyme#model), or permit all of them (see below). This will populate the partial with input fields for the specified attributes
+```bash
+rails generate abyme:model project tasks description title
+# Includes configuration in Project model, including permitted attributes
+# Adds abyme_attributes in ProjectsController permitted params
+# Creates a partial with input fields for the specified attributes in app/views/abyme/_task_fields.html.erb
+```
+#### Stimulus
+To automatically install and register the `stimulus` controller, you can use this command :
+```bash
+rails generate abyme:stimulus
+```
+#### Individual generators
+All the generators launched by the main `resource` generator are available individually :
+```bash
+# Controller
+rails generate abyme:controller Projects
+
+# Model
+# Permit only a few attributes
+rails generate abyme:model project tasks description title
+# Permit all attributes
+rails generate abyme:model project participants all_attributes
+
+# Views
+# Without attributes (use this if you're not using SimpleForm or don't care about generating input fields)
+rails generate abyme:view project tasks
+# With a few attributes
+rails generate abyme:view project tasks name description
+# With all attributes
+rails generate abyme:view project tasks all_attributes
+```
 
 ### Model
 
