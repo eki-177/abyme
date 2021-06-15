@@ -136,7 +136,7 @@ This is the container for all your nested fields. It takes the symbolized associ
   <%= f.abyme_for(:tasks, partial: 'projects/task_fields') do |abyme| %>
     <%= abyme.records %>
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 * `limit: ` : allows you to limit the number of new fields that can be created through JS. If you need to limit the number of associations in database, you will need to add validations. You can also pass an option [in your model as well](https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html#method-i-accepts_nested_attributes_for).
@@ -145,7 +145,7 @@ This is the container for all your nested fields. It takes the symbolized associ
     # Beyond 5 tasks, the add button won't add any more fields. See events section below to see how to handle the 'abyme:limit-reached' event
     <%= abyme.records %>
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 * `min_count: ` by default, there won't be any blank fields added on page load. By passing a `min_count` option, you can set how many empty fields should appear in the form.
@@ -154,7 +154,7 @@ This is the container for all your nested fields. It takes the symbolized associ
     # 1 blank task will automatically be added to the form.
     <%= abyme.records %>
     <%= abyme.new_records %>
-    <%= add_association %>
+    <%= add_associated_record %>
   <% end %>
 ```
 
