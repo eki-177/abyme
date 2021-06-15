@@ -9,9 +9,9 @@ module Abyme
       argument :attributes, type: :array, default: [], banner: "field field"
 
       def call_generators
-        generate "abyme:model #{name} #{association} #{attributes.map(&:name).join(' ')}"
-        generate "abyme:controller #{name.pluralize.capitalize}"
-        generate "abyme:view #{association} #{attributes.map(&:name).join(' ')}"
+        Rails::Generators.invoke "abyme:model", [name, association, *attributes.map(&:name)]
+        Rails::Generators.invoke "abyme:controller", [name]
+        Rails::Generators.invoke "abyme:view", [association, *attributes.map(&:name)]
       end
     end
   end

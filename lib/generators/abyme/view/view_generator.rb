@@ -33,7 +33,7 @@ module Abyme
       end
 
       def simple_form_fields
-        if attributes.include?('all')
+        if attributes.include?('all_attributes')
           inputs = rejected_keys(association.classify.constantize.new.attributes.keys).map do |key|
             "<%= f.input :#{key} %>"
           end

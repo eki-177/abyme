@@ -1,0 +1,10 @@
+Description:
+	Generates configuration for the model and controller, as well as views templates (see each individual usage pages)
+
+Example:
+  # Generate files and configuration, not handling attributes
+	rails generate abyme:model project tasks 
+  # Generate files and configuration, permitting specified attributes
+	rails generate abyme:model project tasks description title
+  # Generate files and configuration, permitting all attributes
+	rails generate abyme:model project tasks all_attributes
