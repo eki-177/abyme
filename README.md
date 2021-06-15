@@ -68,7 +68,7 @@ You may also check out our [step by step tutorial](https://github.com/bear-in-mi
 ## Documentation
 As in our [our tutorial](https://github.com/bear-in-mind/abyme/wiki/Step-by-step-Tutorial), we'll assume we have a `Project` model, that `has_many :tasks` for the rest of the documentation.
 ### Generators
-To skip the relatively painful setup of nested attributes, we built a few generators to go faster. Feel free to skip these if you prefer a manual implementation.
+To be up and running in no time, we built a few generators. Feel free to skip these if you prefer a manual implementation.
 #### Resource
 To generate everything you need with one command, use this generator :
 ```bash
