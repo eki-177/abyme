@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   
   # Dummy app
   spec.add_development_dependency "sqlite3"
-  spec.add_development_dependency 'rails'
+  spec.add_development_dependency 'rails', "~> 6.0.3.6"
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'web-console'
