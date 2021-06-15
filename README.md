@@ -31,18 +31,6 @@ Check out our demo app here : https://abyme-demo.herokuapp.com/
 
 Source code is right here : https://github.com/bear-in-mind/abyme_demo
 
-## Breaking changes
-Careful ! As of February 12th, we changed quite a few methods name :
-In model:
-- `abyme_for` became `abymize`
-In views:
-- `abymize(:association, f)` became `f.abyme_for(:association)`
-- `add_association` became `add_associated_record`
-- `remove_association` became `remove_associated_record`
-
-The former method names will be deprecated soon.
-If you update, don't forget to change those ! All changes are reflected in the README below.
-
 ## Installation
 
 Add this line to your application's Gemfile:
