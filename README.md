@@ -45,7 +45,12 @@ And then execute:
     $ yarn add abyme
 
 
-Assuming you [already installed Stimulus](https://stimulusjs.org/handbook/introduction), add this in `app/javascript/controllers/index.js` :
+Assuming you [already installed Stimulus](https://stimulusjs.org/handbook/introduction), you need to register the `stimulus` controller that takes care of the JavaScript behaviour. You can launch this generator :
+```bash
+rails generate abyme:stimulus
+```
+Or you can register it yourself :
+
 ```javascript
 // app/javascript/controllers/index.js
 import { Application } from "stimulus"
