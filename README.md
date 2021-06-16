@@ -72,14 +72,14 @@ To be up and running in no time, we built a few generators. Feel free to skip th
 #### Resource
 To generate everything you need with one command, use this generator :
 ```bash
-rails generate abyme:model project tasks
+rails generate abyme:resource project tasks
 # Includes configuration in Project model
 # Adds abyme_attributes in ProjectsController permitted params
 # Creates a partial and minimum boilerplate in app/views/abyme/_task_fields.html.erb
 ```
 You can specify [attributes to be permitted](https://github.com/eki-177/abyme#model), or permit all of them (see below). This will populate the partial with input fields for the specified attributes
 ```bash
-rails generate abyme:model project tasks description title
+rails generate abyme:resource project tasks description title
 # Includes configuration in Project model, including permitted attributes
 # Adds abyme_attributes in ProjectsController permitted params
 # Creates a partial with input fields for the specified attributes in app/views/abyme/_task_fields.html.erb
