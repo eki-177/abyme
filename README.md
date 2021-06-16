@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/abyme.svg)](https://badge.fury.io/rb/abyme)
 ![build](https://github.com/bear-in-mind/abyme/workflows/build/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f591a9e00f7cf5188ad5/maintainability)](https://codeclimate.com/github/bear-in-mind/abyme/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/bear-in-mind/abyme/badge.svg)](https://coveralls.io/github/bear-in-mind/abyme?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/bear-in-mind/abyme/badge.svg?branch=master)](https://coveralls.io/github/bear-in-mind/abyme?branch=master)
 
 abyme is an easy and form-agnostic way to handle nested attributes in Rails, using [stimulus](https://stimulusjs.org/handbook/introduction) under the hood. Here's an example :
 ```ruby
