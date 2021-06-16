@@ -77,7 +77,9 @@ rails generate abyme:resource project tasks
 # Adds abyme_attributes in ProjectsController permitted params
 # Creates a partial and minimum boilerplate in app/views/abyme/_task_fields.html.erb
 ```
-You can specify [attributes to be permitted](https://github.com/eki-177/abyme#model), or permit all of them (see below). This will populate the partial with input fields for the specified attributes
+Now, head to your parent form and [keep reading](https://github.com/eki-177/abyme#abyme_forassociation-options---block) !
+
+You can also specify [attributes to be permitted](https://github.com/eki-177/abyme#model), or permit all of them (see below). This will populate the partial with input fields for the specified attributes
 ```bash
 rails generate abyme:resource project tasks description title
 # Includes configuration in Project model, including permitted attributes
