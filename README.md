@@ -91,11 +91,7 @@ rails generate abyme:resource project tasks description title
 # Adds abyme_attributes in ProjectsController permitted params
 # Creates a partial with input fields for the specified attributes in app/views/abyme/_task_fields.html.erb
 ```
-#### Stimulus
-To automatically install and register the `stimulus` controller, you can use this command :
-```bash
-rails generate abyme:stimulus
-```
+
 #### Individual generators
 All the generators launched by the main `resource` generator are available individually :
 ```bash
