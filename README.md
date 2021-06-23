@@ -11,6 +11,7 @@ abyme is an easy and form-agnostic way to handle nested attributes in Rails, usi
 <%= form_for @project do |f| %>
   <%= f.text_field :title %>
   <%= f.text_area :description %>
+  
   <%= f.abyme_for(:tasks) %>
   
   <%= f.submit 'Save' %>
