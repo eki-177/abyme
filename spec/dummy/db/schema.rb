@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_153047) do
+ActiveRecord::Schema.define(version: 2021_06_23_160659) do
+
+  create_table "admin_tasks", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "project_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_admin_tasks_on_project_id"
+  end
 
   create_table "attachments", force: :cascade do |t|
     t.string "attachable_type", null: false
@@ -63,6 +72,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_153047) do
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
+  add_foreign_key "admin_tasks", "projects"
   add_foreign_key "comments", "tasks"
   add_foreign_key "meetings", "projects"
   add_foreign_key "participants", "projects"

@@ -1,52 +1,53 @@
 module Abyme
   module Model
     module ClassMethods
-      def abymize(association, permit: nil, reject: nil, **options)
+      def abymize(association, permit: nil, reject: nil, association_class_name: nil, **options)
         default_options = {reject_if: :all_blank, allow_destroy: true}
+        binding.pry
         nested_attributes_options = default_options.merge(options)
         accepts_nested_attributes_for association, nested_attributes_options
         # Save allow_destroy value for this model/association for later
         save_destroy_option(association, nested_attributes_options[:allow_destroy])
-        Abyme::Model.permit_attributes(self.name, association, permit || reject, permit.present?) if permit.present? || reject.present?
+        Abyme::Model.permit_attributes(name, association, permit || reject, permit.present?, association_class_name) if permit.present? || reject.present?
       end
 
-      alias :abyme_for :abymize
+      alias_method :abyme_for, :abymize
 
       def abyme_attributes
-        Abyme::Model.instance_variable_get(:@permitted_attributes)[self.name]
+        Abyme::Model.instance_variable_get(:@permitted_attributes)[name]
       end
 
       private
 
       def save_destroy_option(association, value)
-        Abyme::Model.instance_variable_get(:@allow_destroy)[self.name][association] = value
+        Abyme::Model.instance_variable_get(:@allow_destroy)[name][association] = value
       end
     end
 
     @permitted_attributes ||= {}
-    @allow_destroy        ||= {}
+    @allow_destroy ||= {}
 
     attr_accessor :allow_destroy
-    attr_reader   :permitted_attributes
+    attr_reader :permitted_attributes
 
-    def self.permit_attributes(class_name, association, attributes, permit)
-      @permitted_attributes[class_name]["#{association}_attributes".to_sym] = AttributesBuilder.new(class_name, association, attributes, permit)
-                                                                                               .build_attributes
+    def self.permit_attributes(class_name, association, attributes, permit, association_class_name = nil)
+      @permitted_attributes[class_name]["#{association}_attributes".to_sym] = AttributesBuilder.new(class_name, association, attributes, permit, association_class_name)
+        .build_attributes
     end
 
     def self.included(klass)
       @permitted_attributes[klass.name] ||= {}
-      @allow_destroy[klass.name]        ||= {}
+      @allow_destroy[klass.name] ||= {}
       klass.extend ClassMethods
     end
 
     class AttributesBuilder
-      def initialize(model, association, attributes, permit = true)
+      def initialize(model, association, attributes, permit = true, association_class_name = nil)
         @model = model
         @association = association
         @attributes_list = attributes
         @permit = permit
-        @association_class = @association.to_s.classify.constantize
+        @association_class = association_class_name || @association.to_s.classify.constantize
       end
 
       def build_attributes
@@ -55,7 +56,7 @@ module Abyme
         if @permit && @attributes_list == :all_attributes
           authorized_attributes = build_all_attributes(authorized_attributes, nested_attributes)
         elsif @permit
-          @attributes_list << nested_attributes unless (nested_attributes.blank? || @attributes_list.include?(nested_attributes))
+          @attributes_list << nested_attributes unless nested_attributes.blank? || @attributes_list.include?(nested_attributes)
           authorized_attributes += @attributes_list
         else
           authorized_attributes = build_all_attributes(authorized_attributes, nested_attributes)
@@ -74,7 +75,7 @@ module Abyme
 
       def build_all_attributes(authorized_attributes, nested_attributes)
         authorized_attributes += add_all_attributes
-        authorized_attributes << nested_attributes unless (nested_attributes.blank? || authorized_attributes.include?(nested_attributes))
+        authorized_attributes << nested_attributes unless nested_attributes.blank? || authorized_attributes.include?(nested_attributes)
         authorized_attributes
       end
 

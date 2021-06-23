@@ -4,6 +4,9 @@ class Project < ApplicationRecord
   has_many :tasks, inverse_of: :project, dependent: :destroy
   abymize :tasks, permit: [:description, :title]
 
+  has_many :admin_tasks, class_name: "Admin::Task"
+  abymize :admin_tasks, permit: [:description, :title], class_name: "Admin::Task"
+
   has_many :comments, through: :tasks
 
   has_many :participants

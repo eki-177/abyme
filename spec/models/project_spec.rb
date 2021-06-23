@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Project, type: :model do
-  describe '::abyme_params' do
-    it 'correctly builds a hash of authorized attributes with several levels of nesting' do
+  describe "::abyme_params" do
+    it "correctly builds a hash of authorized attributes with several levels of nesting" do
       tasks_attributes = [:description, :title, :id, :_destroy]
       comments_attributes = [:content, :id, :_destroy, :task_id]
       # p "Task abyme params: #{Task.abyme_params}"
@@ -20,10 +20,10 @@ RSpec.describe Project, type: :model do
       expect(project_attributes[:participants_attributes]).to match_array(participants_attributes)
     end
   end
-  
+
   describe "::abymize" do
     it "accepts both attributes and options" do
-      # In Project.rb :
+      # In project.rb :
       # abymize :participants, permit: [:email, :name], allow_destroy: false
       participants_attributes = [:id, :email, :name]
       project_attributes = Project.abyme_attributes
@@ -32,7 +32,7 @@ RSpec.describe Project, type: :model do
     end
 
     it "accepts only options without any attributes" do
-      # In Project.rb :
+      # In project.rb :
       # abymize :meetings, allow_destroy: false
       project_attributes = Project.abyme_attributes
       expect(project_attributes[:meetings_attributes]).to be_nil
@@ -40,11 +40,19 @@ RSpec.describe Project, type: :model do
     end
 
     it "can be called without attributes nor any options" do
-      # In Project.rb :
+      # In project.rb :
       # abymize :attachments
       project_attributes = Project.abyme_attributes
       expect(project_attributes[:attachments_attributes]).to be_nil
       expect(Abyme::Model.instance_variable_get(:@allow_destroy).dig("Project", :attachments)).to be_truthy
+    end
+
+    it "works with named or namespaced associations" do
+      # In project.rb :
+      # abymize :admin_tasks
+      project_attributes = Project.abyme_attributes
+      expect(project_attributes[:admin_tasks_attributes]).to be_nil
+      expect(Abyme::Model.instance_variable_get(:@allow_destroy).dig("Project", :admin_tasks)).to be_truthy
     end
   end
 end
