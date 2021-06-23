@@ -46,7 +46,7 @@ module Abyme
         @association = association
         @attributes_list = attributes
         @permit = permit
-        @association_class = association_class_name || @association.to_s.classify.constantize
+        @association_class = association_class_name&.safe_constantize || @association.to_s.classify.constantize
       end
 
       def build_attributes
