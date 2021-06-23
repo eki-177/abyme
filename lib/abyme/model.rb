@@ -1,14 +1,13 @@
 module Abyme
   module Model
     module ClassMethods
-      def abymize(association, permit: nil, reject: nil, association_class_name: nil, **options)
+      def abymize(association, permit: nil, reject: nil, class_name: nil, **options)
         default_options = {reject_if: :all_blank, allow_destroy: true}
-        binding.pry
         nested_attributes_options = default_options.merge(options)
         accepts_nested_attributes_for association, nested_attributes_options
         # Save allow_destroy value for this model/association for later
         save_destroy_option(association, nested_attributes_options[:allow_destroy])
-        Abyme::Model.permit_attributes(name, association, permit || reject, permit.present?, association_class_name) if permit.present? || reject.present?
+        Abyme::Model.permit_attributes(name, association, permit || reject, permit.present?, class_name) if permit.present? || reject.present?
       end
 
       alias_method :abyme_for, :abymize

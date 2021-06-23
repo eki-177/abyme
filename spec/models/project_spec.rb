@@ -51,7 +51,8 @@ RSpec.describe Project, type: :model do
       # In project.rb :
       # abymize :admin_tasks
       project_attributes = Project.abyme_attributes
-      expect(project_attributes[:admin_tasks_attributes]).to be_nil
+      admin_tasks_attributes = [:id, :title, :description, :_destroy]
+      expect(project_attributes[:admin_tasks_attributes]).to match_array(admin_tasks_attributes)
       expect(Abyme::Model.instance_variable_get(:@allow_destroy).dig("Project", :admin_tasks)).to be_truthy
     end
   end
