@@ -11,9 +11,9 @@ abyme is an easy and form-agnostic way to handle nested attributes in Rails, usi
 <%= form_for @project do |f| %>
   <%= f.text_field :title %>
   <%= f.text_area :description %>
-  <%= f.submit 'Save' %>
-
   <%= f.abyme_for(:tasks) %>
+  
+  <%= f.submit 'Save' %>
 <% end %>
 ```
 Supposing you have a `Project` that `has_many :tasks` and a partial located in `views/abyme/_task_fields` containing your form fields for `tasks`, the `abyme_for` command will generate and display 3 elements in this order :
