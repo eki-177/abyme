@@ -4,8 +4,8 @@ Description:
 
 Example:
 	# Without attributes
-	rails generate abyme:view project tasks
+	rails generate abyme:view tasks
 	# With a few attributes
-	rails generate abyme:view project tasks name description
+	rails generate abyme:view tasks name description
 	# With all attributes
-	rails generate abyme:view project tasks all_attributes
+	rails generate abyme:view tasks all_attributes
