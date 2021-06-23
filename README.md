@@ -107,11 +107,11 @@ rails generate abyme:model project participants all_attributes
 
 # Views
 # Without attributes (use this if you're not using SimpleForm or don't care about generating input fields)
-rails generate abyme:view project tasks
+rails generate abyme:view tasks
 # With a few attributes
-rails generate abyme:view project tasks name description
+rails generate abyme:view tasks name description
 # With all attributes
-rails generate abyme:view project tasks all_attributes
+rails generate abyme:view tasks all_attributes
 ```
 
 ### Model
