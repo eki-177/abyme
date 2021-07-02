@@ -6,24 +6,24 @@ RSpec.describe "Helper options", type: :system do
     driven_by :selenium_chrome_headless
   end
 
-  context 'For new resources' do
+  context "For new resources" do
     describe "Partials default & custom path" do
-      it 'should set the correct partial when path specified' do
+      it "should set the correct partial when path specified" do
         visit new_project_path
         add_tasks(1)
-        element = find('.custom-partial')
+        element = find(".custom-partial")
         expect(element).not_to be_nil
       end
-    
-      it 'should set the correct partial when path not specified' do
+
+      it "should set the correct partial when path not specified" do
         visit new_project_path
-        click_on('add participant')
-        within('#abyme--participants') do
+        click_on("add participant")
+        within("#abyme--participants") do
           expect(".abyme--fields").not_to be_nil
         end
       end
     end
-    
+
     # describe "Render error feedback", type: :system do
     #   it 'should render error feedback for main resource' do
     #     visit new_project_path
@@ -33,7 +33,7 @@ RSpec.describe "Helper options", type: :system do
     #     element = find('.error')
     #     expect(element).not_to be_nil
     #   end
-    
+
     #   it 'should render error feedback for nested resources' do
     #     visit new_project_path
     #     fill_in('project_title', with: "A project with two tasks")
@@ -46,71 +46,71 @@ RSpec.describe "Helper options", type: :system do
     #     expect(element).not_to be_nil
     #   end
     # end
-  
+
     describe "HTML attributes for 'abyme-fields' & add/remove association" do
-      it 'should create the correct id' do
+      it "should create the correct id" do
         visit new_project_path
-        element = find('#add-task')
+        element = find("#add-task")
         expect(element).not_to be_nil
       end
-    
-      it 'should create the correct classes' do 
+
+      it "should create the correct classes" do
         visit new_project_path
-        click_on('add participant')
-        element = find('.participant-fields')
+        click_on("add participant")
+        element = find(".participant-fields")
         expect(element).not_to be_nil
       end
-    
+
       it 'should add the base classes "abyme--fields" and "association-fields' do
         visit new_project_path
-        click_on('add participant')
-        element = find('.abyme--fields.participant-fields')
+        click_on("add participant")
+        element = find(".abyme--fields.participant-fields")
         expect(element).not_to be_nil
       end
-  
-      it 'should allow HTML to be passed to the wrapper' do
+
+      it "should allow HTML to be passed to the wrapper" do
         visit new_project_path
-        click_on('Add task')
-        expect(find('.new-tasks')).not_to be_nil
+        click_on("Add task")
+        expect(find(".new-tasks")).not_to be_nil
       end
-  
-      it 'should allow HTML to be passed to each field' do
+
+      it "should allow HTML to be passed to each field" do
         visit new_project_path
-        2.times { click_on('Add task') }
-        expect(find_all('.test').length).to eq(2)
+        2.times { click_on("Add task") }
+        expect(find_all(".test").length).to eq(2)
       end
-  
-      it 'should allow data-attributes to be passed to the wrapper' do
+
+      it "should allow data-attributes to be passed to the wrapper" do
         visit new_project_path
-        click_on('Add task')
+        click_on("Add task")
         expect(find('.new-tasks[data-controller="tasks-wrapper"]')).not_to be_nil
       end
-  
-      it 'should allow data-attributes to be passed to the fields without overwriting the defaults' do
+
+      it "should allow data-attributes to be passed to the fields without overwriting the defaults" do
         visit new_project_path
-        click_on('Add task')
+        click_on("Add task")
         expect(find('.test[data-target="abyme.fields abyme.newFields sub-target"]')).not_to be_nil
       end
-    
-      it 'should set the correct inner text for the add association button' do
+
+      it "should set the correct inner text for the add association button" do
         visit new_project_path
-        element = find('button', text: 'add participant')
+        element = find("button", text: "add participant")
         expect(element).not_to be_nil
       end
-  
-      it 'should not create more than 3 tasks' do
+
+      it "should not create more than 3 tasks" do
         visit new_project_path
-        4.times { click_on('Add task') }
+        4.times { click_on("Add task") }
         task_fields = []
-        within('#abyme--tasks') { expect(all('.task-fields').length).to eq(3) }
+        within("#abyme--tasks") { expect(all(".task-fields").length).to eq(3) }
       end
-      
-      it 'should display 1 default empty comment per task' do
+
+      it "should display 1 default empty comment per task" do
         visit new_project_path
-        click_on('Add task')
-        within('#abyme--comments') do
-          expect(find('.comment-fields')).not_to be_nil
-        end 
+        click_on("Add task")
+        within("#abyme--comments") do
+          expect(find(".comment-fields")).not_to be_nil
+        end
       end
     end
   end
@@ -123,28 +123,35 @@ RSpec.describe "Helper options", type: :system do
 
     it 'should add the base classes "abyme--fields" and "association-fields' do
       visit edit_project_path(@project)
-      elements = find_all('.abyme--fields.task-fields')
+      elements = find_all(".abyme--fields.task-fields")
       expect(elements).not_to be_empty
     end
 
-    it 'should allow HTML to be passed to the wrapper' do
+    it "should allow HTML to be passed to the wrapper" do
       visit edit_project_path(@project)
-      expect(find('.persisted-tasks')).not_to be_nil
+      expect(find(".persisted-tasks")).not_to be_nil
     end
 
-    it 'should allow HTML to be passed to each field withot overwriting defaults' do
+    it "should allow HTML to be passed to each field withot overwriting defaults" do
       visit edit_project_path(@project)
-      expect(find_all('.abyme--fields.task-fields.persisted-fields')).not_to be_empty
+      expect(find_all(".abyme--fields.task-fields.persisted-fields")).not_to be_empty
     end
 
-    it 'should allow data-attributes to be passed to the wrapper' do
+    it "should allow data-attributes to be passed to the wrapper" do
       visit edit_project_path(@project)
       expect(find('.persisted-tasks[data-controller="tasks-wrapper"]')).not_to be_nil
     end
 
-    it 'should allow data-attributes to be passed to the fields without overwriting the defaults' do
+    it "should allow data-attributes to be passed to the fields without overwriting the defaults" do
       visit edit_project_path(@project)
       expect(find('.persisted-fields[data-abyme-target="fields"][data-target="tasks-wrapper.test"]')).not_to be_nil
+    end
+  end
+
+  context "With SimpleForm" do
+    it "works with simple_form and calls simple_fields_for as expected" do
+      visit new_task_path
+      expect(find(".input")).not_to be_nil
     end
   end
 end

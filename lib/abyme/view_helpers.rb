@@ -217,7 +217,7 @@ module Abyme
 
     # If form builder inherits from SimpleForm, we should use its fields_for helper to keep the wrapper options
     def fields_for_builder(form, association, records, options = {}, &block)
-      if form.instance_of?(SimpleForm::FormBuilder)
+      if defined?(SimpleForm) && form.instance_of?(SimpleForm::FormBuilder)
         form.simple_fields_for(association, records, options, &block)
       else
         form.fields_for(association, records, options, &block)
