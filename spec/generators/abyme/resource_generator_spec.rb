@@ -1,5 +1,5 @@
-require 'rails_helper'
-require 'generators/abyme/resource/resource_generator'
+require "rails_helper"
+require "generators/abyme/resource/resource_generator"
 
 RSpec.describe Abyme::Generators::ResourceGenerator, type: :generator do
   destination File.expand_path("../../dummy/", __dir__)
@@ -8,10 +8,11 @@ RSpec.describe Abyme::Generators::ResourceGenerator, type: :generator do
     copy_test_model
     copy_tests_controller
     # For a parent model Test that has many attachments
-    run_generator %w[test attachments all_attributes]
-  end  
-  
-  after(:all) do 
+    # run_generator %w[test attachments all_attributes]
+    Rails::Generators.invoke "abyme:resource", %w[test attachments all_attributes]
+  end
+
+  after(:all) do
     remove_test_view
     remove_test_model
     remove_tests_controller
@@ -30,20 +31,20 @@ RSpec.describe Abyme::Generators::ResourceGenerator, type: :generator do
   private
 
   def copy_tests_controller
-    FileUtils.copy_file('spec/fixtures/tests_controller.rb', File.join(destination_root, 'app/controllers/tests_controller.rb'))
+    FileUtils.copy_file("spec/fixtures/tests_controller.rb", File.join(destination_root, "app/controllers/tests_controller.rb"))
   end
 
   def remove_tests_controller
-    file_path = File.join(destination_root, 'app/controllers/tests_controller.rb')
+    file_path = File.join(destination_root, "app/controllers/tests_controller.rb")
     File.delete(file_path) if File.exist?(file_path)
   end
 
   def copy_test_model
-    FileUtils.copy_file('spec/fixtures/test.rb', File.join(destination_root, "app/models/test.rb"))
+    FileUtils.copy_file("spec/fixtures/test.rb", File.join(destination_root, "app/models/test.rb"))
   end
 
   def remove_test_model
-    file_path = File.join(destination_root, 'app/models/test.rb')
+    file_path = File.join(destination_root, "app/models/test.rb")
     File.delete(file_path) if File.exist?(file_path)
   end
 
