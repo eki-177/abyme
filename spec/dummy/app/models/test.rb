@@ -6,4 +6,5 @@ class Test < ApplicationRecord
   has_many :meetings
   has_many :attachments, as: :attachable
   abymize :attachments, permit: :all_attributes
+
 end
