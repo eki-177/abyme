@@ -21,7 +21,7 @@ RSpec.describe Abyme::Generators::ControllerGenerator, type: :generator do
 
   it "adds abyme_attributes to strong params" do
     assert_file "app/controllers/tests_controller.rb",
-      /params\.require\(:task\)\.permit\(abyme_attributes, :title, :description\)/
+      /params\.require\(:test\)\.permit\(abyme_attributes, :title, :description\)/
   end
 
   # def copy_rails_bin

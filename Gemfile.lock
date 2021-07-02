@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     abyme (0.6.3)
-      simple_form
 
 GEM
   remote: https://rubygems.org/
@@ -225,6 +224,7 @@ DEPENDENCIES
   rails-controller-testing
   rake (~> 13.0)
   rspec-rails
+  simple_form
   simplecov
   simplecov-lcov
   sqlite3
