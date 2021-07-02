@@ -21,7 +21,7 @@ RSpec.describe Abyme::Generators::ViewGenerator, type: :generator do
       SimpleForm = Class.new unless defined?(SimpleForm)
     end
 
-    after(:all) { Object.send(:remove_const, :SimpleForm) }
+    # after(:all) { Object.send(:remove_const, :SimpleForm) }
 
     describe "with attributes passed as additional arguments" do
       it "creates an aptly named partial file with required fields" do

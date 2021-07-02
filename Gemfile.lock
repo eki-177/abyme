@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     abyme (0.6.3)
-      simple_form
 
 GEM
   remote: https://rubygems.org/
