@@ -1,0 +1,3 @@
+<%= simple_form_for @task do |f| %>
+  <%= f.abyme_for :comments, partial: 'tasks/comment_fields', min_count: 1 %>
+<% end %>

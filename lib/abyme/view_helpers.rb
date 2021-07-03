@@ -113,7 +113,7 @@ module Abyme
 
       content_tag(:div, build_attributes(wrapper_default, options[:wrapper_html])) do
         content_tag(:template, class: "abyme--#{association.to_s.singularize}_template", data: {abyme_target: "template"}) do
-          form.fields_for association, association.to_s.classify.constantize.new, child_index: "NEW_RECORD" do |f|
+          fields_for_builder form, association, association.to_s.classify.constantize.new, child_index: "NEW_RECORD" do |f|
             content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
               # Here, if a block is passed, we're passing the association fields to it, rather than the form itself
               # block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
@@ -182,7 +182,7 @@ module Abyme
       end
 
       content_tag(:div, options[:wrapper_html]) do
-        form.fields_for(association, records) do |f|
+        fields_for_builder(form, association, records) do |f|
           content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
             block_given? ? yield(f) : render_association_partial(association, f, options[:partial])
           end
@@ -212,6 +212,19 @@ module Abyme
     alias_method :remove_association, :remove_associated_record
 
     private
+
+    # FORM BUILDER SELECTION
+
+    # If form builder inherits from SimpleForm, we should use its fields_for helper to keep the wrapper options
+    # :nocov:
+    def fields_for_builder(form, association, records, options = {}, &block)
+      if defined?(SimpleForm) && form.instance_of?(SimpleForm::FormBuilder)
+        form.simple_fields_for(association, records, options, &block)
+      else
+        form.fields_for(association, records, options, &block)
+      end
+    end
+    # :nocov:
 
     # CREATE_BUTTON
 

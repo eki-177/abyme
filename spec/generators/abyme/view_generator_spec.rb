@@ -32,7 +32,8 @@ RSpec.describe Abyme::Generators::ViewGenerator, type: :generator do
     end
     describe "with 'all_attributes' passed as an option" do
       it "adds fields for all attributes" do
-        run_generator %w[attachment all_attributes]
+        # run_generator %w[attachment all_attributes]
+        remove_test_view("attachment")
         Rails::Generators.invoke "abyme:view", %w[attachment all_attributes]
         assert_file "app/views/abyme/_attachment_fields.html.erb", /<%= f\.input :attachable_type %>\s<%= f\.input :name %>/
         remove_test_view("attachment")

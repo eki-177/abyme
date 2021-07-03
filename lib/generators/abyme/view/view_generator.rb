@@ -8,6 +8,7 @@ module Abyme
       argument :association, type: :string, required: true, banner: "association association"
       argument :attributes, type: :array, default: [], banner: "field field"
 
+      # :nocov:
       def create_partial_file
         create_file partial_file_path
         if defined?(SimpleForm)
@@ -16,6 +17,7 @@ module Abyme
           insert_fields
         end
       end
+      # :nocov:
 
       private
 
@@ -23,6 +25,7 @@ module Abyme
         Rails.root.join("app", "views", "abyme", "_#{association.downcase.singularize}_fields.html.erb")
       end
 
+      # :nocov:
       def insert_fields(builder = nil)
         return unless File.exist? partial_file_path
         if builder == :simple_form
@@ -31,6 +34,7 @@ module Abyme
           insert_into_file(partial_file_path, "<%# Insert #{association.downcase} fields below %>\n" << default_keys)
         end
       end
+      # :nocov:
 
       def simple_form_fields
         inputs = if attributes.include?("all_attributes")
