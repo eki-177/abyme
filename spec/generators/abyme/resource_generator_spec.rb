@@ -13,7 +13,7 @@ RSpec.describe Abyme::Generators::ResourceGenerator, type: :generator do
   end
 
   after(:all) do
-    remove_test_view
+    remove_test_view("attachments")
     remove_test_model
     remove_tests_controller
   end
