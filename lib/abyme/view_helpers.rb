@@ -216,6 +216,7 @@ module Abyme
     # FORM BUILDER SELECTION
 
     # If form builder inherits from SimpleForm, we should use its fields_for helper to keep the wrapper options
+    # :nocov:
     def fields_for_builder(form, association, records, options = {}, &block)
       if defined?(SimpleForm) && form.instance_of?(SimpleForm::FormBuilder)
         form.simple_fields_for(association, records, options, &block)
@@ -223,6 +224,7 @@ module Abyme
         form.fields_for(association, records, options, &block)
       end
     end
+    # :nocov:
 
     # CREATE_BUTTON
 

@@ -148,10 +148,10 @@ RSpec.describe "Helper options", type: :system do
     end
   end
 
-  context "With SimpleForm" do
-    it "works with simple_form and calls simple_fields_for as expected" do
-      visit new_task_path
-      expect(find(".input")).not_to be_nil
-    end
-  end
+  # context "With SimpleForm" do
+  #   it "works with simple_form and calls simple_fields_for as expected" do
+  #     visit new_task_path
+  #     expect(find(".input")).not_to be_nil
+  #   end
+  # end
 end
