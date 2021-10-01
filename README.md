@@ -45,8 +45,14 @@ And then execute:
     $ bundle
     $ yarn add abyme
 
+***IMPORTANT : With the launch of Stimulus V3 (which introduced a lot of changes), the connection with the AbymeController won't work. Please, make sure you're using Stimulus V2 for now.***
 
-Assuming you [already installed Stimulus](https://stimulusjs.org/handbook/introduction), you need to register the `stimulus` controller that takes care of the JavaScript behaviour. You can launch this generator :
+If you don't have Stimulus installed yet, please run :
+```bash
+yarn add stimulus@2.0.0
+```
+
+With [Stimulus](https://stimulusjs.org/handbook/introduction) installed, you need to register the `stimulus` controller that takes care of the JavaScript behaviour. You can launch this generator :
 ```bash
 rails generate abyme:stimulus
 ```
