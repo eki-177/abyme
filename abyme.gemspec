@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   # SimpleForm dependency is only required for test purposes and optional behaviour
   spec.add_development_dependency 'simple_form'
 
-  spec.add_development_dependency "bundler", "~> 2.0"
+  spec.add_development_dependency "bundler", "~> 2"
   spec.add_development_dependency "rake", "~> 13.0"
   # Tests
   spec.add_development_dependency "rspec-rails"
@@ -41,7 +41,7 @@ Gem::Specification.new do |spec|
   
   # Dummy app
   spec.add_development_dependency "sqlite3"
-  spec.add_development_dependency 'rails', "~> 6.0.3.6"
+  spec.add_development_dependency 'rails', "~> 6.1"
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'web-console'
