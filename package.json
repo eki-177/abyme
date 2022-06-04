@@ -1,14 +1,11 @@
 {
   "name": "abyme",
-  "version": "0.3.1",
+  "version": "0.6.5",
   "description": "JS companion to abyme gem",
   "files": [
     "package.json",
     "src/**/*"
   ],
-  "directories": {
-    "lib": "src"
-  },
   "repository": {
     "url": "https://github.com/bear-in-mind/abyme",
     "type": "git"
@@ -37,6 +34,7 @@
     "microbundle": "^0.13.0",
     "mutationobserver-shim": "^0.3.7"
   },
+  "source": "src/index.js",
   "main": "dist/abyme.js",
   "exports": "./dist/abyme.modern.js",
   "module": "dist/abyme.module.js",
