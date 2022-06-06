@@ -1,6 +1,8 @@
 <%# Trying to reference controller methods and collections to check if context is passed ; otherwise these will raise an error %>
 <% current_user %>
 <% @collection %>
+<%# Calling test_variable to ensure it is properly passed by #abyme_for method %>
+<% test_variable %>
 
 <div class="comment relative">
   <%= f.text_field :content, 

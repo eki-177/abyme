@@ -1,6 +1,8 @@
 <%# Trying to reference controller methods and collections to check if context is passed ; otherwise these will raise an error %>
 <% current_user %>
 <% @collection %>
+<%# Calling test_variable to ensure it is properly passed by #abyme_for method %>
+<% test_variable %>
 
 <div class="custom-partial border-solid border-grey-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal mb-5">
   <div class="flex align-center justify-between task-card">
@@ -28,7 +30,7 @@
       <% end %>
     </div>
     <div class="w-1/2 border-gray-300 comments-container bg-gray-200 p-4">
-      <%= f.abyme_for(:comments, min_count: 1) %>
+      <%= f.abyme_for(:comments, min_count: 1, locals: {test_variable: "momo"}) %>
     </div>
   </div>
 </div>
