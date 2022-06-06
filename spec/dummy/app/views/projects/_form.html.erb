@@ -19,14 +19,16 @@
 			</div>
 		</div>
 		<div class="container bg-white p-8 w-2/3 overflow-scroll">
-			<%= f.abyme_for(:tasks, limit: 3, partial: 'projects/task_fields', locals: {test_variable: "toto"}) do |abyme| %>
+			<%= f.abyme_for(:tasks, limit: 3, partial: 'projects/task_fields') do |abyme| %>
 				<%= abyme.records(order: {created_at: :asc},
 					wrapper_html: { class: "persisted-tasks", data: { controller: "tasks-wrapper" } },
-					fields_html: { class: "persisted-fields", data: { target: "tasks-wrapper.test" } }
+					fields_html: { class: "persisted-fields", data: { target: "tasks-wrapper.test" } },
+					locals: {test_variable: "toto"}
 				) %>
 				<%= abyme.new_records(position: :end, 
 					wrapper_html: { class: "new-tasks", data: { target: 'wrapper-target', controller: 'tasks-wrapper' } },
-					fields_html: {class: "test", data: { target: 'sub-target', controller: 'sub-controller' } }
+					fields_html: {class: "test", data: { target: 'sub-target', controller: 'sub-controller' } },
+					locals: {test_variable: "tata"}
 				) %>
 				<%= add_associated_record(content: 'Add task', html: { id: 'add-task', class: 'border-solid border-2 rounded border-grey-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-center items-center leading-normal p-8 cursor-pointer w-full focus:outline-none' }) %>
 			<% end %>
