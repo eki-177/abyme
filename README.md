@@ -199,20 +199,11 @@ This is the container for all your nested fields. It takes the symbolized associ
   <% end %>
 ```
 
-* `locals: {}: ` : allows you to pass some arbitrary variables to your partial.
+* `locals: {}` : allows you to pass some arbitrary variables to your partial.
 ```ruby
-<%# When passed to the top level #abyme_for method, the same value will be passed to the variable : %>
 <%= f.abyme_for(:comments, locals: {count: 0}) %>
-The `count` variable will be available in `_comment_fields.html.erb`
-
-<%# When passed to either #records or #new_records, the value will be different depending on whether the record for which the partial is called is persisted or not %>
-<%= f.abyme_for(:tasks) do |abyme| %>
-  <%= abyme.records(locals: {count: 1}) %>
-  <%= abyme.new_records(locals: {count: 2} %>
-  <%= add_associated_record(content: 'Add task' %>
-<% end %>
-In `_task_fields.html.erb`, if the record has been dynamically added with the "Add" button, the `count`variable will be equal to 2. If the record has been loaded from existing associations, it will equal 1.
 ```
+The `count` variable will be available in `_comment_fields.html.erb` and equal 0 for both new and persisted records.
 
 *If you're not passing a block*, the `abyme_for` method can take a few additional options:
 * `button_text: ` this will set the `add_association` button text to the string of your choice.
@@ -263,6 +254,18 @@ A few options can be passed to `abyme.records`:
     <%= add_associated_record %>
   <% end %>
 ```
+* `locals: {}` : allows you to pass some arbitrary variables to your partial. When passed to either #records or #new_records, the value will be different depending on whether the record for which the partial is called is persisted or not
+```ruby
+<%= f.abyme_for(:tasks) do |abyme| %>
+  <%= abyme.records(locals: {count: 1}) %>
+  <%= abyme.new_records(locals: {count: 2} %>
+  <%= add_associated_record(content: 'Add task' %>
+<% end %>
+```
+
+In `_task_fields.html.erb`, if the record has been dynamically added with the "Add" button, the `count`variable will be equal to 2. 
+If the record has been loaded from existing associations, it will equal 1.
+
 #### #new_records
 Here are the options that can be passed to `abyme.new_records`:
 * `position:` : allows you to specify whether new fields added dynamically should go at the top or at the bottom. `:end` is the default value.
@@ -276,6 +279,7 @@ Here are the options that can be passed to `abyme.new_records`:
 * `partial:` : same as `#records`
 * `fields_html:` : same as `#records`
 * `wrapper_html:` : same as `#records`
+* * `locals:` : same as `#records`
 
 #### #add_associated_record, #remove_associated_record
 These 2 methods behave the same. Here are their options :
