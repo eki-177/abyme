@@ -189,7 +189,7 @@ This is the container for all your nested fields. It takes the symbolized associ
     <%= add_associated_record %>
   <% end %>
 ```
-* `min_count: ` by default, there won't be any blank fields added on page load. By passing a `min_count` option, you can set how many empty fields should appear in the form.
+* `min_count: ` : by default, there won't be any blank fields added on page load. By passing a `min_count` option, you can set how many empty fields should appear in the form.
 ```ruby
   <%= f.abyme_for(:tasks, min_count: 1) do |abyme| %>
     # 1 blank task will automatically be added to the form.
@@ -197,6 +197,21 @@ This is the container for all your nested fields. It takes the symbolized associ
     <%= abyme.new_records %>
     <%= add_associated_record %>
   <% end %>
+```
+
+* `locals: {}: ` : allows you to pass some arbitrary variables to your partial.
+```ruby
+<%# When passed to the top level #abyme_for method, the same value will be passed to the variable : %>
+<%= f.abyme_for(:comments, locals: {count: 0}) %>
+The `count` variable will be available in `_comment_fields.html.erb`
+
+<%# When passed to either #records or #new_records, the value will be different depending on whether the record for which the partial is called is persisted or not %>
+<%= f.abyme_for(:tasks) do |abyme| %>
+  <%= abyme.records(locals: {count: 1}) %>
+  <%= abyme.new_records(locals: {count: 2} %>
+  <%= add_associated_record(content: 'Add task' %>
+<% end %>
+In `_task_fields.html.erb`, if the record has been dynamically added with the "Add" button, the `count`variable will be equal to 2. If the record has been loaded from existing associations, it will equal 1.
 ```
 
 *If you're not passing a block*, the `abyme_for` method can take a few additional options:
