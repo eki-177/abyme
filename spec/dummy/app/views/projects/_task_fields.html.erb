@@ -30,7 +30,7 @@
       <% end %>
     </div>
     <div class="w-1/2 border-gray-300 comments-container bg-gray-200 p-4">
-      <%= f.abyme_for(:comments, min_count: 1) %>
+      <%= f.abyme_for(:comments, min_count: 1, locals: {test_variable: "momo"}) %>
     </div>
   </div>
 </div>
