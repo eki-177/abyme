@@ -42,11 +42,10 @@ module Abyme
         if block
           yield(
             Abyme::AbymeBuilder.new(
-              association: association, form: form, context: self, partial: options[:partial]
+              association: association, form: form, context: self, partial: options[:partial], locals: options[:locals]
             )
           )
         else
-          # model = association.to_s.singularize.classify.constantize
           model = association.to_s.singularize
           concat(persisted_records_for(association, form, options))
           concat(new_records_for(association, form, options))
@@ -117,7 +116,7 @@ module Abyme
             content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
               # Here, if a block is passed, we're passing the association fields to it, rather than the form itself
               # block_given? ? yield(f) : render(options[:partial] || "abyme/#{association.to_s.singularize}_fields", f: f)
-              block ? yield(f) : render_association_partial(association, f, options[:partial])
+              block ? yield(f) : render_association_partial(association, f, options[:partial], options[:locals])
             end
           end
         end
@@ -184,7 +183,7 @@ module Abyme
       content_tag(:div, options[:wrapper_html]) do
         fields_for_builder(form, association, records) do |f|
           content_tag(:div, build_attributes(fields_default, basic_fields_markup(options[:fields_html], association))) do
-            block_given? ? yield(f) : render_association_partial(association, f, options[:partial])
+            block_given? ? yield(f) : render_association_partial(association, f, options[:partial], options[:locals])
           end
         end
       end
@@ -291,11 +290,13 @@ module Abyme
     # RENDER PARTIAL
 
     # renders a partial based on the passed path, or will expect a partial to be found in the views/abyme directory.
+    # If any locals have been passed as options, they will be passed on and made available in the partial
 
-    def render_association_partial(association, form, partial = nil, context = nil)
+    def render_association_partial(association, form, partial = nil, locals = nil, context = nil)
       partial_path = partial || "abyme/#{association.to_s.singularize}_fields"
+      locals ||= {}
       context ||= self
-      context.render(partial: partial_path, locals: {f: form})
+      context.render(partial: partial_path, locals: locals.merge(f: form))
     end
   end
 end

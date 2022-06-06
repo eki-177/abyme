@@ -8,12 +8,13 @@ module Abyme
     # the form object, lookup_context optionaly a partial path
     # then yield itself to the block
 
-    def initialize(association:, form:, context:, partial:, &block)
+    def initialize(association:, form:, context:, partial:, locals:, &block)
       @association = association
       @form = form
       @context = context
       @lookup_context = context.lookup_context
       @partial = partial
+      @locals = locals || {}
       yield(self) if block
     end
 
@@ -24,7 +25,7 @@ module Abyme
 
     def records(options = {})
       persisted_records_for(@association, @form, options) do |fields_for_association|
-        render_association_partial(@association, fields_for_association, @partial, @context)
+        render_association_partial(@association, fields_for_association, @partial, @locals, @context)
       end
     end
 
@@ -34,7 +35,7 @@ module Abyme
     # passing association, form and options to it
     def new_records(options = {}, &block)
       new_records_for(@association, @form, options) do |fields_for_association|
-        render_association_partial(@association, fields_for_association, @partial, @context)
+        render_association_partial(@association, fields_for_association, @partial, @locals, @context)
       end
     end
   end
