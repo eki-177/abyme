@@ -203,7 +203,7 @@ This is the container for all your nested fields. It takes the symbolized associ
 ```ruby
 <%= f.abyme_for(:comments, locals: {count: 0}) %>
 ```
-The `count` variable will be available in `_comment_fields.html.erb` and equal 0 for both new and persisted records.
+The `count` variable will be available in `_comment_fields.html.erb` and equal 0 for both new and persisted records. If you need to differentiate between both, you can pass the same option to either #records and #new_records (see below)
 
 *If you're not passing a block*, the `abyme_for` method can take a few additional options:
 * `button_text: ` this will set the `add_association` button text to the string of your choice.
