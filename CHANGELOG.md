@@ -1,5 +1,29 @@
 # Changelog
 
+## [v0.7.0](https://github.com/eki-177/abyme/tree/v0.7.0) (2023-01-09)
+
+[Full Changelog](https://github.com/eki-177/abyme/compare/v0.6.5...v0.7.0)
+
+**Closed issues:**
+
+- abyme yarn package doesn't import in 0.3.1 [\#39](https://github.com/eki-177/abyme/issues/39)
+
+**Merged pull requests:**
+
+- Bump minimist from 1.2.5 to 1.2.7 [\#46](https://github.com/eki-177/abyme/pull/46) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update stimulus [\#45](https://github.com/eki-177/abyme/pull/45) ([bear-in-mind](https://github.com/bear-in-mind))
+- Ability to pass arbitrary local variables to partials [\#43](https://github.com/eki-177/abyme/pull/43) ([bear-in-mind](https://github.com/bear-in-mind))
+- Trying to repair JS bundle [\#42](https://github.com/eki-177/abyme/pull/42) ([bear-in-mind](https://github.com/bear-in-mind))
+- Add infos about stimulus v2 in the ReadMe [\#40](https://github.com/eki-177/abyme/pull/40) ([alex59495](https://github.com/alex59495))
+
+## [v0.6.5](https://github.com/eki-177/abyme/tree/v0.6.5) (2021-12-20)
+
+[Full Changelog](https://github.com/eki-177/abyme/compare/v0.6.4...v0.6.5)
+
+**Merged pull requests:**
+
+- Fix bug with named associations [\#41](https://github.com/eki-177/abyme/pull/41) ([bear-in-mind](https://github.com/bear-in-mind))
+
 ## [v0.6.4](https://github.com/eki-177/abyme/tree/v0.6.4) (2021-07-03)
 
 [Full Changelog](https://github.com/eki-177/abyme/compare/v0.6.3...v0.6.4)
