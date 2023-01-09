@@ -11,6 +11,7 @@ yarn-error.log
 
 # rspec failure tracking
 .rspec_status
+.ruby-version
 node_modules
 
 # Dummy app

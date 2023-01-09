@@ -1,14 +1,14 @@
-import { Controller } from 'stimulus';
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   // static targets = ['template', 'associations', 'fields', 'newFields'];
-  // Some applications don't compile correctly with the usual static syntax. 
+  // Some applications don't compile correctly with the usual static syntax.
   // Thus implementing targets with standard getters below
 
-  static targets = ['template', 'associations', 'fields', 'newFields']
+  static targets = ["template", "associations", "fields", "newFields"];
 
   connect() {
-    console.log("Abyme Connected")
+    console.log("Abyme Connected");
 
     if (this.count) {
       // If data-count is present,
@@ -23,12 +23,14 @@ export default class extends Controller {
   get count() {
     return this.element.dataset.minCount || 0;
   }
-  
+
   // return the value of the data-position attribute
   // if there is no position specified set end as default
 
   get position() {
-    return this.associationsTarget.dataset.abymePosition === 'end' ? 'beforeend' : 'afterbegin';
+    return this.associationsTarget.dataset.abymePosition === "end"
+      ? "beforeend"
+      : "afterbegin";
   }
 
   // ADD_ASSOCIATION
@@ -41,7 +43,7 @@ export default class extends Controller {
   // will be call without an event so we have to check
   // this case
 
-  // check for limit reached 
+  // check for limit reached
   // dispatch an event if the limit is reached
 
   // - call the function build_html that take care
@@ -56,14 +58,14 @@ export default class extends Controller {
     }
 
     if (this.element.dataset.limit && this.limit_check()) {
-      this.create_event('limit-reached')
-      return false
+      this.create_event("limit-reached");
+      return false;
     }
 
     const html = this.build_html();
-    this.create_event('before-add');
+    this.create_event("before-add");
     this.associationsTarget.insertAdjacentHTML(this.position, html);
-    this.create_event('after-add');
+    this.create_event("after-add");
   }
 
   // REMOVE_ASSOCIATION
@@ -81,9 +83,9 @@ export default class extends Controller {
   remove_association(event) {
     event.preventDefault();
 
-    this.create_event('before-remove');
+    this.create_event("before-remove");
     this.mark_for_destroy(event);
-    this.create_event('after-remove');
+    this.create_event("after-remove");
   }
 
   // LIFECYCLE EVENTS RELATED
@@ -91,11 +93,13 @@ export default class extends Controller {
   // CREATE_EVENT
 
   // take a stage (String) => before-add, after-add...
-  // create a new custom event 
+  // create a new custom event
   // and dispatch at at the controller level
 
   create_event(stage, html = null) {
-    const event = new CustomEvent(`abyme:${stage}`, { detail: {controller: this, content: html} });
+    const event = new CustomEvent(`abyme:${stage}`, {
+      detail: { controller: this, content: html },
+    });
     this.element.dispatchEvent(event);
     // WIP
     this.dispatch(event, stage);
@@ -103,23 +107,22 @@ export default class extends Controller {
 
   // WIP : Trying to integrate event handling through controller inheritance
   dispatch(event, stage) {
-    if (stage === 'before-add' && this.abymeBeforeAdd) this.abymeBeforeAdd(event);
-    if (stage === 'after-add' && this.abymeAfterAdd) this.abymeAfterAdd(event);
-    if (stage === 'before-remove' && this.abymeBeforeRemove) this.abymeBeforeAdd(event);
-    if (stage === 'after-remove' && this.abymeAfterRemove) this.abymeAfterRemove(event);
+    if (stage === "before-add" && this.abymeBeforeAdd)
+      this.abymeBeforeAdd(event);
+    if (stage === "after-add" && this.abymeAfterAdd) this.abymeAfterAdd(event);
+    if (stage === "before-remove" && this.abymeBeforeRemove)
+      this.abymeBeforeAdd(event);
+    if (stage === "after-remove" && this.abymeAfterRemove)
+      this.abymeAfterRemove(event);
   }
 
-  abymeBeforeAdd(event) {
-  }
+  abymeBeforeAdd(event) {}
 
-  abymeAfterAdd(event) {
-  }
+  abymeAfterAdd(event) {}
 
-  abymeBeforeRemove(event) {
-  }
+  abymeBeforeRemove(event) {}
 
-  abymeAfterRemove(event) {
-  }
+  abymeAfterRemove(event) {}
 
   // BUILD HTML
 
@@ -127,25 +130,25 @@ export default class extends Controller {
   // NEW_RECORD for a generated timestamp
   // then if there is a sub template in the html (multiple nested level)
   // set all the sub timestamps back as NEW_RECORD
-  // finally returns the html  
+  // finally returns the html
 
   build_html() {
     let html = this.templateTarget.innerHTML.replace(
       /NEW_RECORD/g,
       new Date().getTime()
     );
-      
+
     if (html.match(/<template[\s\S]+<\/template>/)) {
       const template = html
-      .match(/<template[\s\S]+<\/template>/)[0]
-      .replace(/(\[\d{12,}\])(\[[^\[\]]+\]"){1}/g, `[NEW_RECORD]$2`);
-      
+        .match(/<template[\s\S]+<\/template>/)[0]
+        .replace(/(\[\d{12,}\])(\[[^\[\]]+\]"){1}/g, `[NEW_RECORD]$2`);
+
       html = html.replace(/<template[\s\S]+<\/template>/g, template);
     }
 
     return html;
   }
-  
+
   // MARK_FOR_DESTROY
 
   // mark association for destruction
@@ -155,12 +158,11 @@ export default class extends Controller {
   // add the class of abyme--marked-for-destroy to the element
 
   mark_for_destroy(event) {
-    let item = event.target.closest('.abyme--fields');
+    let item = event.target.closest(".abyme--fields");
     item.querySelector("input[name*='_destroy']").value = 1;
-    item.style.display = 'none';
-    item.classList.add('abyme--marked-for-destroy')
+    item.style.display = "none";
+    item.classList.add("abyme--marked-for-destroy");
   }
-
 
   // LIMIT_CHECK
 
@@ -169,9 +171,11 @@ export default class extends Controller {
   // persisted fields are ignored
 
   limit_check() {
-    return (this.newFieldsTargets
-                .filter(item => !item.classList.contains('abyme--marked-for-destroy'))).length 
-                >= parseInt(this.element.dataset.limit)
+    return (
+      this.newFieldsTargets.filter(
+        (item) => !item.classList.contains("abyme--marked-for-destroy")
+      ).length >= parseInt(this.element.dataset.limit)
+    );
   }
 
   // ADD_DEFAULT_ASSOCIATION
@@ -180,15 +184,15 @@ export default class extends Controller {
   // call sleep function to ensure uniqueness of timestamp
 
   async add_default_associations() {
-    let i = 0
+    let i = 0;
     while (i < this.count) {
-      this.add_association()
-      i++
+      this.add_association();
+      i++;
       await this.sleep(1);
     }
   }
 
   sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
