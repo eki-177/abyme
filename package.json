@@ -35,9 +35,9 @@
     "mutationobserver-shim": "^0.3.7"
   },
   "source": "src/index.js",
-  "main": "dist/abyme.js",
-  "exports": "./dist/abyme.modern.js",
-  "module": "dist/abyme.module.js",
+  "main": "dist/abyme.umd.js",
+  "exports": "./dist/abyme.modern.mjs",
+  "module": "dist/abyme.module.mjs",
   "unpkg": "dist/abyme.umd.js",
   "scripts": {
     "build": "microbundle --globals stimulus=Stimulus",
