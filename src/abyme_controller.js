@@ -1,10 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  // static targets = ['template', 'associations', 'fields', 'newFields'];
-  // Some applications don't compile correctly with the usual static syntax.
-  // Thus implementing targets with standard getters below
-
   static targets = ["template", "associations", "fields", "newFields"];
 
   connect() {
