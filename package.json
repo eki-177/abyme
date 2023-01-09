@@ -2,6 +2,7 @@
   "name": "abyme",
   "version": "0.7.2",
   "description": "JS companion to abyme gem",
+  "type": "module",
   "files": [
     "package.json",
     "src/**/*"
@@ -31,13 +32,13 @@
     "@types/jest": "^26.0.20",
     "babel-jest": "^26.6.3",
     "jest": "^26.6.3",
-    "microbundle": "^0.13.0",
+    "microbundle": "^0.15.1",
     "mutationobserver-shim": "^0.3.7"
   },
   "source": "src/index.js",
-  "main": "dist/abyme.umd.js",
+  "main": "dist/abyme.cjs",
   "exports": "./dist/abyme.modern.mjs",
-  "module": "dist/abyme.module.mjs",
+  "module": "dist/abyme.module.js",
   "unpkg": "dist/abyme.umd.js",
   "scripts": {
     "build": "microbundle --globals stimulus=Stimulus",
