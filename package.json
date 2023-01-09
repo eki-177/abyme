@@ -1,6 +1,6 @@
 {
   "name": "abyme",
-  "version": "0.6.6",
+  "version": "0.7.0",
   "description": "JS companion to abyme gem",
   "files": [
     "package.json",
@@ -16,7 +16,7 @@
   "homepage": "https://github.com/bear-in-mind/abyme",
   "bugs": "https://github.com/bear-in-mind/abyme/issues",
   "dependencies": {
-    "stimulus": "^2.0.0"
+    "stimulus": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.11.6",
