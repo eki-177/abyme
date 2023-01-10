@@ -1,6 +1,6 @@
 {
   "name": "abyme",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "JS companion to abyme gem",
   "type": "module",
   "repository": {
