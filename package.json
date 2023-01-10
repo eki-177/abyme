@@ -38,6 +38,10 @@
     "prepublish": "yarn build",
     "test": "NODE_ENV=test jest"
   },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ],
   "jest": {
     "setupFiles": [
       "<rootDir>/jest/jest-setup.js"
