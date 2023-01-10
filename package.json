@@ -3,10 +3,6 @@
   "version": "0.7.3",
   "description": "JS companion to abyme gem",
   "type": "module",
-  "files": [
-    "package.json",
-    "src/**/*"
-  ],
   "repository": {
     "url": "https://github.com/bear-in-mind/abyme",
     "type": "git"
@@ -16,18 +12,14 @@
   "private": false,
   "homepage": "https://github.com/bear-in-mind/abyme",
   "bugs": "https://github.com/bear-in-mind/abyme/issues",
-  "dependencies": {
-    "stimulus": "^3.0.0"
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.2.1"
   },
   "devDependencies": {
     "@babel/core": "7.11.6",
     "@babel/plugin-syntax-class-properties": "7.10.4",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "7.11.5",
-    "@pika/pack": "0.5.0",
-    "@pika/plugin-build-node": "0.9.2",
-    "@pika/plugin-build-web": "0.9.2",
-    "@pika/plugin-standard-pkg": "0.9.2",
     "@testing-library/dom": "^7.29.6",
     "@types/jest": "^26.0.20",
     "babel-jest": "^26.6.3",
@@ -41,7 +33,7 @@
   "module": "dist/abyme.module.js",
   "unpkg": "dist/abyme.umd.js",
   "scripts": {
-    "build": "microbundle --globals stimulus=Stimulus",
+    "build": "microbundle",
     "dev": "microbundle watch",
     "prepublish": "yarn build",
     "test": "NODE_ENV=test jest"
