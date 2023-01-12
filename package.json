@@ -29,8 +29,8 @@
     "@pika/plugin-standard-pkg": "0.9.2",
     "@testing-library/dom": "^7.29.6",
     "@types/jest": "^26.0.20",
-    "babel-jest": "^26.6.3",
-    "jest": "^26.6.3",
+    "babel-jest": "^29.3.1",
+    "jest": "^29.3.1",
     "microbundle": "^0.13.0",
     "mutationobserver-shim": "^0.3.7"
   },
