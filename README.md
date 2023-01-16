@@ -49,7 +49,7 @@ And then execute:
 
 If you don't have Stimulus installed yet, please run :
 ```bash
-yarn add stimulus@2.0.0
+yarn add @hotwired/stimulus
 ```
 
 With [Stimulus](https://stimulusjs.org/handbook/introduction) installed, you need to register the `stimulus` controller that takes care of the JavaScript behaviour. You can launch this generator :
@@ -60,7 +60,7 @@ Or you can register it yourself :
 
 ```javascript
 // app/javascript/controllers/index.js
-import { Application } from "stimulus"
+import { Application } from " @hotwired/stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 // Add this line below
 import { AbymeController } from 'abyme'
