@@ -1,11 +1,8 @@
 {
   "name": "abyme",
-  "version": "0.7.0",
+  "version": "0.7.4",
   "description": "JS companion to abyme gem",
-  "files": [
-    "package.json",
-    "src/**/*"
-  ],
+  "type": "module",
   "repository": {
     "url": "https://github.com/bear-in-mind/abyme",
     "type": "git"
@@ -15,36 +12,36 @@
   "private": false,
   "homepage": "https://github.com/bear-in-mind/abyme",
   "bugs": "https://github.com/bear-in-mind/abyme/issues",
-  "dependencies": {
-    "stimulus": "^3.0.0"
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.2.1"
   },
   "devDependencies": {
     "@babel/core": "7.11.6",
     "@babel/plugin-syntax-class-properties": "7.10.4",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "7.11.5",
-    "@pika/pack": "0.5.0",
-    "@pika/plugin-build-node": "0.9.2",
-    "@pika/plugin-build-web": "0.9.2",
-    "@pika/plugin-standard-pkg": "0.9.2",
     "@testing-library/dom": "^7.29.6",
     "@types/jest": "^26.0.20",
-    "babel-jest": "^29.3.1",
-    "jest": "^29.3.1",
-    "microbundle": "^0.13.0",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "microbundle": "^0.15.1",
     "mutationobserver-shim": "^0.3.7"
   },
   "source": "src/index.js",
-  "main": "dist/abyme.umd.js",
+  "main": "dist/abyme.cjs",
   "exports": "./dist/abyme.modern.mjs",
-  "module": "dist/abyme.module.mjs",
+  "module": "dist/abyme.module.js",
   "unpkg": "dist/abyme.umd.js",
   "scripts": {
-    "build": "microbundle --globals stimulus=Stimulus",
+    "build": "microbundle",
     "dev": "microbundle watch",
     "prepublish": "yarn build",
     "test": "NODE_ENV=test jest"
   },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ],
   "jest": {
     "setupFiles": [
       "<rootDir>/jest/jest-setup.js"
