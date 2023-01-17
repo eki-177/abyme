@@ -46,6 +46,7 @@ And then execute:
     $ yarn add abyme
 
 ***IMPORTANT : If you use stimulus < 3.0, please use yarn package v0.6.4 ***
+If you have any issue importing or compiling the controller, you can simply [copy-paste it](https://github.com/eki-177/abyme/blob/master/src/abyme_controller.js) in your own `app/javascript/controllers` directory.
 
 If you don't have Stimulus installed yet, please run :
 ```bash
