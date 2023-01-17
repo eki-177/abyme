@@ -45,7 +45,7 @@ And then execute:
     $ bundle
     $ yarn add abyme
 
-***IMPORTANT : With the launch of Stimulus V3 (which introduced a lot of changes), the connection with the AbymeController won't work. Please, make sure you're using Stimulus V2 for now.***
+***IMPORTANT : If you use stimulus < 3.0, please use yarn package v0.6.4 ***
 
 If you don't have Stimulus installed yet, please run :
 ```bash
